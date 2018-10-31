@@ -79,10 +79,11 @@ const sections = [
 
 
 const styles = {
-    navbar: {
+    Navbar: {
         background: '#dd0008',
         padding: '0',
         minHeight: 'auto',
+        marginBottom: 30,
         '& a': {
             fontFamily: 'Oswald',
             color: '#fff',
@@ -126,7 +127,7 @@ class Navbar extends Component {
 
     render() {
         return (
-            <div className={this.props.classes.navbar}>
+            <div className={this.props.classes.Navbar}>
                 <ResponsiveMenu 
                     menuOpenButton={<div className='menu_button'><Menu/></div>}
                     menuCloseButton={<div className='menu_button'><Menu/></div>}
@@ -134,25 +135,26 @@ class Navbar extends Component {
                     largeMenuClassName="large_menu"
                     smallMenuClassName="small_menu"
                     menu = {
-                            sections.map((section) => (
-                                <Link 
-                                    key={section.id} 
-                                    to={{
-                                        pathname: section.link,
-                                        state: { 
-                                            catId: section.catId,
-                                            catTitle: section.label 
-                                        }
-                                    }}
-                                >
-                                    {section.label}
-                                    </Link>
-                            ))
-                        }
+                        sections.map((section) => (
+                            <Link 
+                                key={section.id} 
+                                to={{
+                                    pathname: section.link,
+                                    state: { 
+                                        catId: section.catId,
+                                        catTitle: section.label 
+                                    }
+                                }}
+                            >
+                                {section.label}
+                            </Link>
+                        ))
+                    }
                 />
             </div>
         )
     }
+
 }
 
 export default withStyles(styles)(Navbar)

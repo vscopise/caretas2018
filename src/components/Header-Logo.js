@@ -24,9 +24,11 @@ const styles = {
 
 const HeaderLogo = (props) => (
     <div className={props.classes.HeaderLogo}>
-        <img src={logoMain} alt='Caras y Caretas' />
+        <a href='/' >
+            <img src={logoMain} alt='Caras y Caretas' />
+        </a>
         <p>Montevideo, {props.date}</p>
     </div>
 )
 
-export default withStyles(styles)(HeaderLogo);
+export default withStyles(styles)(HeaderLogo)

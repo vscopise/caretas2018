@@ -36,22 +36,21 @@ const styles = theme => ({
             maxWidth: '100%',
             height: 'auto'
         },
-        '& .entry-title': {
-            fontSize: '2.375rem',
-            marginBottom: 20
+        '& .entry-meta-cats': {
+            color: 'red',
+            textTransform: 'uppercase',
+            fontSize: '.75rem',
+            fontWeight: '700',
+            '&::after': {
+                content: `', '`,
+              },
+            
         },
-        '& .entry-excerpt': {
-            borderTop: '1px solid #888',
-            borderBottom: '1px solid #888',
-            marginTop: 15,
-            marginBottom: 15,
-            paddingTop: 8,
-            paddingBottom: 10,
+        '& .entry-meta-cats:last-child': {
+            '&::after': {
+                content: `''`,
+              },
         },
-        '& .entry-excerpt p': {
-            fontSize: '120%',
-            color: '#333',
-        }
     },
 })
 

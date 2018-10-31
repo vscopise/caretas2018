@@ -1,13 +1,29 @@
 import React, { Component} from 'react'
-
+import axios from 'axios'
 
 import { 
     Grid,
+    withStyles
 } from '@material-ui/core'
-import axios from 'axios'
 
-import Post from './Post'
+import Loading from './Loading'
 import PreviewPost from './Preview-Post'
+
+const styles = {
+    Categoria: {
+        '& a': {
+            textDecoration: 'none',
+            color: '#1f1e1e',
+        },
+        '& a:hover': {
+            color: '#d00',
+        },
+        '& a:hover h3': {
+            color: '#d00',
+        },
+
+    }
+}
 
 class Categoria extends Component {
 
@@ -51,49 +67,31 @@ class Categoria extends Component {
         }
     }
     
-    renderPost = (post) => {
-        this.setState({
-            post: post
-        })
-    }
-
-    render(){
-
-        const { catTitle } = this.props.location.state
-        
-        if ( this.state.isLoading ) {
-            return <p>Cargando...</p>
-        } else {
-            if ( null !== this.state.post ) {
-                return (
-                    <Post post={this.state.post} />
-                )
-            } else {
-                return (
-                    <Grid container spacing={24}>
-                        <Grid item md={8} xs={12}>
-                            <h1 className='page-title'>{catTitle}</h1>
-                            {
-                                this.state.posts.map( post => (
-                                        <PreviewPost post={post} key={post.id} renderPost={this.renderPost} size='medium' />
-                                ))
-                            }
-                        </Grid>
-                        <Grid item md={4} xs={12}>Sidebar</Grid>
+    render() {
+        if ( ! this.state.isLoading ) {
+            const { catTitle } = this.props.location.state
+            return (
+                <Grid container spacing={24} className={this.props.classes.Categoria}>
+                    <Grid item md={8} xs={12}>
+                        <h1 className='page-title'>{catTitle}</h1>
+                        {
+                            this.state.posts.map( post => (
+                                <PreviewPost 
+                                    post={post} 
+                                    key={post.id} 
+                                    renderPost={this.renderPost} 
+                                    categories={this.props.categories}
+                                    size='medium' 
+                                />
+                            ))
+                        }
                     </Grid>
-                )
-
-            }
+                    <Grid item md={4} xs={12}>Sidebar</Grid>
+                </Grid>
+            )
+        } else {
+            return <Loading/>
         }
-        
-
-        
-        /*const match = this.props.match
-        return ( 
-            <Route path={`${match.path}/:name`} render= {({match}) =>( 
-                <div> <h3> {match.params.name} </h3></div>
-            )}/>
-        )*/
     }
 }
-export default Categoria
+export default withStyles(styles)(Categoria)
