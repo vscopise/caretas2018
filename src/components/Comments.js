@@ -1,88 +1,82 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import { 
     withStyles
 } from '@material-ui/core'
 
-const styles = {
-    Comments: {
-        '& .comments-section-title': {
-            background: '#ccdee8',
-            fontSize: '.875rem',
-            fontWeight: '400',
-            textTransform: 'uppercase',
-            overflow: 'hidden',
-            marginBottom: '1.25rem',
-            color: '#1f1e1e',
-            '& .comments-count': {
-                background: '#d00',
-                color: '#fff',
-                padding: 20,
-                float: 'left',
-            },
-            '& .comments-count-more': {
-                padding: 20,
-                float: 'left',
-            },
-        },
-        '& .commentlist': {
-            padding: '20px 20px 5px',
-            marginBottom: 20,
-            background: '#efefef',
-            '& .comment': {
-                padding: '20px 20px 10px',
-                background: '#fff',
-                borderBottom: '5px solid #ccdee8',
-                marginBottom: 20,
-                '& .comment-meta': {
+import Loading from './Loading'
+import CommentForm from './Comment-Form'
+import CommentList from './Comment-List'
 
-                    marginBottom: '1.25rem',
-                }
-            }
-        }
-    }
-}
-
-
+import styles from '../assets/styles'
 
 class Comments extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            postId: this.props.id,
+            comments: {},
+            isLoading: true
+        }
     }
 
-    render (){
-        return(
+    componentDidMount() {
+        const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
+        this.setState({ 
+            isLoading: true 
+        })
+        axios
+            .get( url + 'comments/?order=asc&post='+ this.props.post.id )
+            .then(res => {
+                this.setState({ 
+                    comments: res.data,
+                    isLoading: false
+                })
+        })
+        .catch(error => console.log(error))
+    }
 
-            <div className={this.props.classes.Comments}>
-                <h4 className='comments-section-title'>
-                    <span className='comments-count'>{this.props.comments.length} comentarios</span>
-                    <span className='comments-count-more'>
-                        en {this.props.post.title.rendered}
-                    </span>
-                </h4>
-                <div className='commentlist'>
-                    {
-                        this.props.comments.map(comment => (
-                            <div className='comment' key={comment.id}>
-                                <h4 className='comment-meta'>
-                                    {comment.author_name}&nbsp;|&nbsp; 
-                                    {comment.date.toLocaleDateString}
-                                    {new Intl.DateTimeFormat('es-ES', { 
-                                        year: 'numeric', 
-                                        month: 'long', 
-                                        day: '2-digit' 
-                                    }).format(comment.date)}
+    sendNewComment = (comment) => {
+        const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
+        const postId = this.props.post.id
+        axios
+        .post( url + 'comments', {
+            'author_name': comment.author,
+            'author_email': comment.author,
+            'content': comment.author,
+            'post': postId
+        })
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(error => console.log(error))
+    }
 
-                                </h4>
-                                <div 
-                                    dangerouslySetInnerHTML={{__html: comment.content.rendered}} 
-                                />
-                            </div>
-                        ))
-                    }
+    render() {
+        if ( !this.state.isLoading ) {
+            return(
+                <div className={this.props.classes.Comments}>
+                    <h4 className='comments-section-title'>
+                        <span className='comments-count'>
+                            {this.state.comments.length} comentarios
+                        </span>
+                        <span className='comments-count-more'>
+                            en {this.props.post.title.rendered}
+                        </span>
+                    </h4>
+                    
+                    <CommentList 
+                        comments={this.state.comments} 
+                    />
+                    <CommentForm 
+                        handleComment={this.sendNewComment} 
+                    />
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return <Loading/>
+        }
 
     }
 }

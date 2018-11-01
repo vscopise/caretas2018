@@ -35,7 +35,7 @@ class Post extends Component {
         .catch(error => console.log(error))
 
         axios
-            .get( url + 'comments/?post='+ this.props.location.state.postId  )
+            .get( url + 'comments/?order=asc&post='+ this.props.location.state.postId  )
             .then(res => {
                 this.setState({ 
                     comments: res.data,
@@ -48,7 +48,11 @@ class Post extends Component {
         if (!this.state.isLoading) {
             const post = this.state.post
             const comments = this.state.comments
-            const date = new Date(post.date).toLocaleDateString('es-ES', {year: "numeric", month: "long", day: "numeric"})
+            const date = new Date(post.date).toLocaleDateString('es-ES', {
+                year: "numeric", 
+                month: "long", 
+                day: "numeric"
+            })
             return (
                 <Grid container spacing={24}>
                     <Grid item md={8} xs={12}>
