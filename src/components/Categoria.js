@@ -79,7 +79,6 @@ class Categoria extends Component {
                                 <PreviewPost 
                                     post={post} 
                                     key={post.id} 
-                                    renderPost={this.renderPost} 
                                     categories={this.props.categories}
                                     size='medium' 
                                 />

@@ -14,6 +14,7 @@ class Post extends Component {
         super(props)
         this.state = {
             post: {},
+            comments: {},
             isLoading: true
         }
     }
@@ -32,16 +33,26 @@ class Post extends Component {
                 })
         })
         .catch(error => console.log(error))
+
+        axios
+            .get( url + 'comments/?post='+ this.props.location.state.postId  )
+            .then(res => {
+                this.setState({ 
+                    comments: res.data,
+                })
+        })
+        .catch(error => console.log(error))
     }
     
     render() {
         if (!this.state.isLoading) {
             const post = this.state.post
+            const comments = this.state.comments
             const date = new Date(post.date).toLocaleDateString('es-ES', {year: "numeric", month: "long", day: "numeric"})
             return (
                 <Grid container spacing={24}>
                     <Grid item md={8} xs={12}>
-                        <PostContent post={post} date={date}/>
+                        <PostContent post={post} date={date} comments={comments}/>
                     </Grid>
                     <Grid item md={4} xs={12}>
                         <Sidebar/>

@@ -3,6 +3,8 @@ import {
     withStyles
 } from '@material-ui/core'
 
+import Comments from './Comments'
+
 const styles = {
     PostContent: {
         '& .colgado': {
@@ -70,6 +72,7 @@ const PostContent = (props) => (
             className='entry-content'
             dangerouslySetInnerHTML={{__html: props.post.content.rendered}} 
         />
+        <Comments post={props.post} comments={props.comments}/>
     </div>
 )
 

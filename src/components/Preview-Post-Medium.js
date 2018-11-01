@@ -4,7 +4,7 @@ import { Grid, WithStyles } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 const PreviewPostMedium = ( props ) => (
-    <Link to={'/' + props.post.slug}>
+    <Link to={{pathname: '/' + props.post.slug, state: {postId: props.post.id}}}>
         <Grid 
             container spacing={24} 
             className='content-list'
