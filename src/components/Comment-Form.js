@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { 
+    TextField,
     withStyles
 } from '@material-ui/core'
-
 import styles from '../assets/styles'
 
 class CommentForm extends Component {
@@ -11,37 +11,53 @@ class CommentForm extends Component {
         super(props)
         this.state = {
             comment: '',
+            commentError: '',
             author: '',
-            email: ''
+            authorError: '',
+            authorHelper: '',
+            email: '',
+            emailError: '',
         }
     }
 
-    handleComment = (e) => {
+    handleChange = (e) => {
         this.setState({
-            comment: e.target.value
+            [e.target.name]: e.target.value
         })
     }
     
-    handleAuthor = (e) => {
-        this.setState({
-            author: e.target.value
-        })
+   
+
+    validate = () => {
+        let isError = false
+        const errors = {}
+
+        if (this.state.author < 3) {
+            isError = true
+            errors.authorHelper = 'Debe ingresar el autor'
+        }
+
+        if (isError) {
+            this.setState({
+                ...this.state,
+                errors
+            })
+        }
+
+        return isError
     }
 
-    handleEmail = (e) => {
-        this.setState({
-            email: e.target.value
-        })
-    }
-
-    handleSubmit = (e) => {
+    handleCommentSubmit = (e) => {
         e.preventDefault()
+        const error = this.validate()
         let newComment = {
             author:this.state.author,
             email: this.state.email,
-            comment: this.state.comment
+            content: this.state.content
         }
-        this.props.handleComment(newComment)
+        if (!this.isError) {
+           // this.props.handleComment(newComment)
+        }
     }
 
     render() {
@@ -49,42 +65,40 @@ class CommentForm extends Component {
             <div className={this.props.classes.CommentForm}>
                 <h3 className='comment-reply-title'>Deja un comentario</h3>
                 <p>Tu dirección de correo no será publicada</p>
-                <p>
-                    <label>
-                        Comentario
-                        <textarea 
-                            name='comment' 
-                            cols='45' 
-                            rows='5' 
-                            onChange={this.handleComment}
-                        />
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        Nombre *
-                        <input 
-                            name='author'
-                            type='text' 
-                            onChange={this.handleAuthor}
-                        />
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        Correo electrónico *
-                        <input 
-                            name='email'
-                            type='text' 
-                            onChange={this.handleEmail}
-                        />
-                    </label>
-                </p>
+                <TextField 
+                    name= 'content'
+                    label='Comentario'
+                    multiline
+                    rows={5}
+                    className='textfield'
+                    fullWidth
+                    required
+                    onChange={this.handleChange}
+                />
+                <TextField 
+                    name='author'
+                    label='Nombre'
+                    className='textfield'
+                    fullWidth
+                    required
+                    onChange={this.handleChange}
+                    //error={false}
+                    //helperText={this.state.authorHelper}
+                />
+                <TextField 
+                    name='email'
+                    label='Email'
+                    className='textfield'
+                    fullWidth
+                    required
+                    onChange={this.handleChange}
+                    
+                />
                 
                 <p>
                     <input type='button'
                         value='PUBLICAR COMENTARIO' 
-                        onClick={this.handleSubmit}
+                        onClick={this.handleCommentSubmit}
                     />
                 </p>
             </div>

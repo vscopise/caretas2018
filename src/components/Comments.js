@@ -43,8 +43,8 @@ class Comments extends Component {
         axios
         .post( url + 'comments', {
             'author_name': comment.author,
-            'author_email': comment.author,
-            'content': comment.author,
+            'author_email': comment.email,
+            'content': comment.content,
             'post': postId
         })
         .then(res => {

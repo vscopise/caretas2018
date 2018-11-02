@@ -148,22 +148,17 @@ const styles = theme => ({
             marginTop: 0,
             fontSize: '1.5rem'
         },
-        '& textarea': {
-            width: '96%',
-            padding: '.3125rem',
-            border: '1px solid #d7d8d8',
-        },
-        '& input[type=text]': {
-            width: '96%',
-            border: '1px solid #d7d8d8',
-            padding: '.3125rem',
-            fontSize: '.75rem',
-        },
+        
+        
         '& input[type=button]': {
             background: '#d00',
             color: '#fff',
             padding: '14px',
             fontFamily: 'Oswald',
+        },
+        '& .textfield': {
+            background: '#fff',
+            marginTop:14
         }
     },
 
