@@ -1,4 +1,5 @@
 import React from 'react'
+import { TinyButton as ScrollUpButton} from 'react-scroll-up-button'
 import { 
     withStyles
 } from '@material-ui/core'
@@ -9,6 +10,7 @@ import styles from '../assets/styles'
 
 const PostContent = (props) => (
     <div className={props.classes.PostContent}>
+        <ScrollUpButton />
         <p className='colgado'>
             {props.post.colgado}
         </p>
@@ -34,6 +36,7 @@ const PostContent = (props) => (
             dangerouslySetInnerHTML={{__html: props.post.content.rendered}} 
         />
         <Comments post={props.post} />
+        
     </div>
 )
 

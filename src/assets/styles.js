@@ -52,6 +52,12 @@ const styles = theme => ({
               },
         },
     },
+    Home: {
+        '& .cabezal': {
+            height: 462,
+            
+        },
+    },
     PostContent: {
         '& .colgado': {
             fontFamily: 'Oswald',
