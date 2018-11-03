@@ -17,7 +17,8 @@ class Comments extends Component {
         this.state = {
             postId: this.props.id,
             comments: {},
-            isLoading: true
+            isLoading: true,
+            sendingCommentLabel: ''
         }
     }
 
@@ -37,9 +38,10 @@ class Comments extends Component {
         .catch(error => console.log(error))
     }
 
-    sendNewComment = (comment) => {
+    sendComment = (comment) => {
         const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         const postId = this.props.post.id
+        this.setState({sendingCommentLabel: 'Enviando...'})
         axios
         .post( url + 'comments', {
             'author_name': comment.author,
@@ -49,6 +51,9 @@ class Comments extends Component {
         })
         .then(res => {
             console.log(res.data)
+            this.setState({
+                sendingCommentLabel: 'Muchas gracias, su comentario fue enviado'
+            })
         })
         .catch(error => console.log(error))
     }
@@ -70,7 +75,8 @@ class Comments extends Component {
                         comments={this.state.comments} 
                     />
                     <CommentForm 
-                        handleComment={this.sendNewComment} 
+                        handleComment={this.sendComment} 
+                        sendingCommentLabel={this.state.sendingCommentLabel}
                     />
                 </div>
             )

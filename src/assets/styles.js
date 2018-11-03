@@ -157,8 +157,26 @@ const styles = theme => ({
             fontFamily: 'Oswald',
         },
         '& .textfield': {
-            background: '#fff',
-            marginTop:14
+            marginTop:14,
+            '& input': {
+                background: '#fff',
+            },
+           '& div': {
+                background:'#fff'
+           }
+        },
+        '& .button': {
+            marginTop: 14,
+            background: '#d00',
+            color: '#fff',
+            padding: 14,
+            fontFamily: 'Oswald',
+        },
+        '& .sending-comment-label': {
+            display: 'inline-block',
+            marginTop: 14,
+            lineHeight: '49px',
+            float: 'right'
         }
     },
 
