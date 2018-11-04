@@ -64,7 +64,8 @@ class Comments extends Component {
                 <div className={this.props.classes.Comments}>
                     <h4 className='comments-section-title'>
                         <span className='comments-count'>
-                            {this.state.comments.length} comentarios
+                            {this.state.comments.length>0 && `${this.state.comments.length} comentarios`}
+                            {this.state.comments.length===0 && 'Eres el primero en comentar'}
                         </span>
                         <span className='comments-count-more'>
                             en {this.props.post.title.rendered}

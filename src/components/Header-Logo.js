@@ -5,22 +5,7 @@ import {
 
 import logoMain from '../assets/logo-home.png'
 
-const styles = {
-    HeaderLogo: {
-        paddingTop: 20,
-        paddingBottom: 20,
-        textAlign: 'center',
-        '& img': {
-            maxWidth: '100%',
-        },
-        '& p': {
-          fontFamily: 'Oswald',
-          color: '#a0a0a0',
-          fontSize: '0.9rem',
-        },
-    }
-}
-
+import styles from '../assets/styles'
 
 const HeaderLogo = (props) => (
     <div className={props.classes.HeaderLogo}>

@@ -8,6 +8,7 @@ const styles = theme => ({
         marginRight: theme.spacing.unit * 3,
         paddingLeft: 20,
         paddingRight: 20,
+        paddingTop: 20,
         maxWidth: 1220,
         [theme.breakpoints.up(1180 + theme.spacing.unit * 3 * 2)]: {
             width: '90%',
@@ -27,6 +28,10 @@ const styles = theme => ({
         },
         '& .content-list': {
             cursor: 'pointer'
+        },
+        '& .content-lead-title': {
+            fontSize: '1.9rem',
+            marginBottom: 10
         },
         '& .content-list-title': {
             fontSize: '1.5rem',
@@ -51,12 +56,47 @@ const styles = theme => ({
                 content: `''`,
               },
         },
+        '& .entry-meta-date': {
+            fontSize: '.75rem',
+            fontWeight: '700',
+            textTransform: 'uppercase',
+        }
+    },
+    HeaderLogo: {
+        padding: '20px 0',
+        textAlign: 'center',
+        '& img': {
+            maxWidth: '100%',
+        },
+        '& p': {
+          fontFamily: 'Oswald',
+          color: '#a0a0a0',
+          fontSize: '0.9rem',
+          marginBottom: 0,
+        },
     },
     Home: {
         '& .cabezal': {
             height: 462,
             
         },
+    },
+    Categoria: {
+        '& a': {
+            textDecoration: 'none',
+            color: '#1f1e1e',
+        },
+        '& a:hover': {
+            color: '#d00',
+        },
+        '& a:hover h3': {
+            color: '#d00',
+        },
+
+    },
+    PreviewPost: {
+        borderBottom: '1px dotted #cdcdcd',
+        marginBottom: 20,
     },
     PostContent: {
         '& .colgado': {
@@ -179,7 +219,26 @@ const styles = theme => ({
             float: 'right'
         }
     },
-
+    Pagination: {
+        marginBottom:20,
+        '& .page-numbers': {
+            display: 'inline-block',
+            padding: '10px 20px',
+            background: '#efefef',
+            fontFamily: 'Oswald',
+            marginRight: 3,
+        },
+        '& .current-page': {
+            background: '#d00',
+            color: '#fff',
+        },
+        '& a:hover': {
+            background: '#ccdee8',
+            'a': {
+                color: '#d00',
+            }
+        }
+    },
 })
 
 export default styles

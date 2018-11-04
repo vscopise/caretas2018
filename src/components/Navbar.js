@@ -142,6 +142,7 @@ class Navbar extends Component {
                                     pathname: section.link,
                                     state: { 
                                         catId: section.catId,
+                                        page: 1,
                                         catTitle: section.label 
                                     }
                                 }}
