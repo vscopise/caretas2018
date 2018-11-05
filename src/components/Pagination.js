@@ -26,6 +26,7 @@ const Pagination = (props) => {
     
     //var prevLink = ( currentPage > 1 ) ? link + '/page/' + prevPage : link
     var prevLink = ( currentPage === 1 ) ? link + '/page/' + prevPage : prevPage
+    //var firstLink = prevLink.substring(0,4)
     //var prevLink = ( currentPage === 2 ) ? link : prevPage
     
 
@@ -34,7 +35,7 @@ const Pagination = (props) => {
             {
                 ( props.currentPage === 2 ) && (
                     <Link to={{
-                        pathname: link,
+                        pathname: 'google',
                         state: { 
                             catId: props.catId,
                             page: 1,

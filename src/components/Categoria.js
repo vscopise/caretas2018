@@ -26,7 +26,7 @@ class Categoria extends Component {
         } 
     }
 
-    fetch_posts = (catId, page) => {
+    fetch_posts = (catId, page=1) => {
         const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         this.setState({ 
             isLoading: true 
