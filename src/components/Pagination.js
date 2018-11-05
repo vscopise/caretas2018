@@ -14,20 +14,45 @@ const Pagination = (props) => {
         category => category.id === props.catId
     ).name
 
-    //var nextPage = 2
     var currentPage = props.currentPage
+
     var nextPage = currentPage + 1
-    var nextLink = link + '/page/' + nextPage
+    //var nextLink = link + '/page/' + nextPage
+    //var nextLink = nextPage
+    var nextLink = ( currentPage === 1 ) ? link + '/page/' + nextPage : nextPage
+
+    //var prevPage = currentPage - 1
+    var prevPage = ( currentPage === 1 ) ? '' : currentPage - 1
+    
+    //var prevLink = ( currentPage > 1 ) ? link + '/page/' + prevPage : link
+    var prevLink = ( currentPage === 1 ) ? link + '/page/' + prevPage : prevPage
+    //var prevLink = ( currentPage === 2 ) ? link : prevPage
+    
 
     return(
         <div className={props.classes.Pagination}>
             {
-                ( props.currentPage!==1 ) && (
+                ( props.currentPage === 2 ) && (
                     <Link to={{
                         pathname: link,
                         state: { 
                             catId: props.catId,
                             page: 1,
+                            catTitle: catTitle
+                        }
+                    }}
+                    className='page-numbers'
+                    >«</Link>
+                )
+            }
+            
+            {
+                ( props.currentPage > 2 ) && (
+                    <Link to={{
+                        pathname: prevLink,
+                        state: { 
+                            catId: props.catId,
+                            page: prevPage,
                             catTitle: catTitle
                         }
                     }}
@@ -46,12 +71,13 @@ const Pagination = (props) => {
                     : (
                         <Link 
                             to={{
-                                pathname: nextLink,
+                                pathname: prevLink,
                                 //pathname: link + '/page/' + i,
                                 //query: '/page/'+ i,
                                 state: { 
                                     catId: props.catId,
-                                    page: i,
+                                    //page: i,
+                                    page: nextPage,
                                     catTitle: catTitle
                                 }
                             }}
@@ -64,10 +90,9 @@ const Pagination = (props) => {
             }
 
             {
-                ( 
-                    props.currentPage!==props.pages ) && (
+                ( props.currentPage !== props.pages ) && (
                     <Link to={{
-                        pathname: link + '/page/' + nextPage,
+                        pathname: nextLink,
                         state: { 
                             catId: props.catId,
                             page: nextPage,
