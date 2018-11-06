@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core'
 import styles from '../assets/styles'
 
 const Pagination = (props) => {
-    var items = [1, 2]
+    var items = [1, 2, 3]
 
     var link = props.categories.find(
         category => category.id === props.catId
@@ -14,20 +14,17 @@ const Pagination = (props) => {
         category => category.id === props.catId
     ).name
 
+    var firstLink = link
+
     var currentPage = props.currentPage
 
     var nextPage = currentPage + 1
-    //var nextLink = link + '/page/' + nextPage
-    //var nextLink = nextPage
     var nextLink = ( currentPage === 1 ) ? link + '/page/' + nextPage : nextPage
 
-    //var prevPage = currentPage - 1
     var prevPage = ( currentPage === 1 ) ? '' : currentPage - 1
-    
-    //var prevLink = ( currentPage > 1 ) ? link + '/page/' + prevPage : link
     var prevLink = ( currentPage === 1 ) ? link + '/page/' + prevPage : prevPage
-    //var firstLink = prevLink.substring(0,4)
-    //var prevLink = ( currentPage === 2 ) ? link : prevPage
+
+    var lastPage = link + '/page/' + props.pages
     
 
     return(
@@ -35,10 +32,10 @@ const Pagination = (props) => {
             {
                 ( props.currentPage === 2 ) && (
                     <Link to={{
-                        pathname: 'google',
+                        pathname: `/categoria/${link}`,
                         state: { 
                             catId: props.catId,
-                            page: 1,
+                            page: prevPage,
                             catTitle: catTitle
                         }
                     }}
@@ -63,6 +60,21 @@ const Pagination = (props) => {
             }
 
             {
+                ( props.currentPage > 2 ) && (
+                    <Link to={{
+                        pathname: firstLink,
+                        state: { 
+                            catId: props.catId,
+                            page: 1,
+                            catTitle: catTitle
+                        }
+                    }}
+                    className='page-numbers'
+                    >1</Link>
+                )
+            }
+
+            {
                 items.map( i => 
                     ( i === props.currentPage) ?
                         <span 
@@ -72,12 +84,9 @@ const Pagination = (props) => {
                     : (
                         <Link 
                             to={{
-                                pathname: prevLink,
-                                //pathname: link + '/page/' + i,
-                                //query: '/page/'+ i,
+                                pathname: nextLink,
                                 state: { 
                                     catId: props.catId,
-                                    //page: i,
                                     page: nextPage,
                                     catTitle: catTitle
                                 }
@@ -89,6 +98,28 @@ const Pagination = (props) => {
                 
                 )
             }
+
+            {
+                ( 3 < props.pages ) && (
+                    <span className='page-numbers'>...</span>
+                )
+            }
+
+            {
+                ( props.currentPage < props.pages ) && (
+                    <Link to={{
+                        pathname: lastPage,
+                        state: {
+                            catId: props.catId,
+                            page: props.pages,
+                            catTitle: catTitle
+                        }
+                    }}
+                    className='page-numbers'
+                    >{props.pages}</Link>
+                )
+            }
+
 
             {
                 ( props.currentPage !== props.pages ) && (
