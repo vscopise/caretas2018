@@ -13,11 +13,15 @@ const PreviewPost = ( props ) => {
                 <Link 
                     to={{pathname: '/' + props.post.slug, state: {postId: props.post.id}}}
                 >
+                {
+                    (props.post.image_url) &&
                     <img 
                         className='content-list-thumb' 
                         src={props.post.image_url[2]} 
                         alt={props.post.title.rendered} 
                     />
+
+                }
                     <div className='entry-meta'>
                         {
                             props.post.categories.map(cat => (
@@ -57,11 +61,14 @@ const PreviewPost = ( props ) => {
                         className='content-list'
                     >
                         <Grid item md={4} xs={12}>
-                            <img 
-                                className='content-list-thumb' 
-                                src={props.post.image_url[1]} 
-                                alt={props.post.title.rendered} 
-                            />
+                            {
+                                (props.post.image_url) &&
+                                <img 
+                                    className='content-list-thumb' 
+                                    src={props.post.image_url[1]} 
+                                    alt={props.post.title.rendered} 
+                                />
+                            }
                         </Grid>
                         <Grid item md={8} xs={12}>
                             <div className='entry-meta'>
