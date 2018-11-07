@@ -16,7 +16,7 @@ const Pagination = (props) => {
 
     //var firstLink = link
 
-    //var currentPage = props.currentPage
+    const currentPage = props.currentPage
 
     //var nextPage = currentPage + 1
     //var nextLink = ( currentPage === 1 ) ? link + '/page/' + nextPage : nextPage
@@ -31,11 +31,11 @@ const Pagination = (props) => {
         <div className={props.classes.Pagination}>
             
             {
-                ( props.currentPage > 1 ) && (
+                ( currentPage > 1 ) && (
                     <Link to={{
                         state: { 
                             catId: props.catId,
-                            page: props.currentPage - 1,
+                            page: currentPage - 1,
                             catTitle: catTitle
                         }
                     }}
@@ -48,20 +48,18 @@ const Pagination = (props) => {
                 ( props.currentPage === 1 ) && (
                     <Fragment>
                         <span className='page-numbers current-page'>
-                            {props.currentPage}
+                            1
                         </span>
                         <Link 
                             to={{
-                                //pathname: nextLink,
                                 state: { 
                                     catId: props.catId,
-                                    page: props.currentPage + 1,
+                                    page: 2,
                                     catTitle: catTitle
                                 }
                             }}
-                            key={ props.currentPage + 1 }
                             className='page-numbers'
-                        >{ props.currentPage + 1 }</Link>
+                        >{ 2 }</Link>
                     </Fragment>
                 )
             }
@@ -81,47 +79,46 @@ const Pagination = (props) => {
             }
 
             {
-                ( 3 < props.currentPage ) && ( 3 + props.currentPage < props.pages ) && (
+                ( 3 < currentPage ) && (
                     <span className='page-numbers'>...</span>
                 )
             }
 
             {
-                ( 1 < props.currentPage ) && items.map( i => 
+                ( 1 < currentPage ) && ( currentPage < props.pages ) && 
+                items.map( i => 
                     ( i === 0) ?
                         <span 
                             className='page-numbers current-page'
                             key={i}
-                        >{i + props.currentPage}</span>
+                        >{currentPage + i}</span>
                     : (
                         <Link 
                             to={{
                                 //pathname: nextLink,
                                 state: { 
                                     catId: props.catId,
-                                    page: props.currentPage + i,
+                                    page: currentPage + i,
                                     catTitle: catTitle
                                 }
                             }}
-                            key={i + props.currentPage}
+                            key={currentPage + i}
                             className='page-numbers'
-                        >{props.currentPage + i}</Link>
+                        >{currentPage + i}</Link>
                     )
-                
                 )
             }
 
             {
-                ( 3 + props.currentPage < props.pages ) && (
+                ( currentPage < props.pages - 3 ) && (
                     <span className='page-numbers'>...</span>
                 )
             }
 
             {
-                ( props.currentPage < props.pages ) && (
+                ( currentPage < props.pages - 2 ) && (
                     <Link to={{
-                        //pathname: lastPage,
-                        state: {
+                        state: { 
                             catId: props.catId,
                             page: props.pages,
                             catTitle: catTitle
@@ -130,15 +127,37 @@ const Pagination = (props) => {
                     className='page-numbers'
                     >{props.pages}</Link>
                 )
+            }   
+
+
+            {
+                ( currentPage == props.pages ) && (
+                    <Fragment>
+                        <Link 
+                            to={{
+                                state: { 
+                                    catId: props.catId,
+                                    page: props.pages - 1,
+                                    catTitle: catTitle
+                                }
+                            }}
+                            key={ props.currentPage + 1 }
+                            className='page-numbers'
+                        >{ props.pages - 1 }</Link>
+                        <span className='page-numbers current-page'>
+                            {props.pages}
+                        </span>
+                    </Fragment>
+                )
             }
 
 
             {
-                ( props.currentPage !== props.pages ) && (
+                ( currentPage < props.pages ) && (
                     <Link to={{
                         state: { 
                             catId: props.catId,
-                            page: 1 + props.currentPage,
+                            page: currentPage + 1,
                             catTitle: catTitle
                         }
                     }}
