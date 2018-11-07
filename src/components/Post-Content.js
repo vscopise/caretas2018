@@ -1,8 +1,6 @@
 import React from 'react'
 import { TinyButton as ScrollUpButton} from 'react-scroll-up-button'
-import { 
-    withStyles
-} from '@material-ui/core'
+import { withStyles } from '@material-ui/core'
 
 import Comments from './Comments'
 
@@ -29,7 +27,13 @@ const PostContent = (props) => (
             />
         </div>
         <div className='entry-meta'>
-            {props.date}
+            {
+                new Date(props.post.date).toLocaleDateString('es-ES', {
+                    year: "numeric", 
+                    month: "long", 
+                    day: "numeric"
+                })
+            }
         </div>
         <div 
             className='entry-content'

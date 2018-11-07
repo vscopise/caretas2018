@@ -77,7 +77,6 @@ const sections = [
     },
 ]
 
-
 const styles = {
     Navbar: {
         background: '#dd0008',
@@ -123,11 +122,12 @@ const styles = {
     },
 }
 
+
 class Navbar extends Component {
 
     render() {
         return (
-            <div className={this.props.classes.Navbar}>
+            <div className={this.props.classes.Navbar} >
                 <ResponsiveMenu 
                     menuOpenButton={<div className='menu_button'><Menu/></div>}
                     menuCloseButton={<div className='menu_button'><Menu/></div>}
