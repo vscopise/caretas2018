@@ -50,10 +50,9 @@ class App extends Component {
           <Header date={this.state.date}/>
           <Navbar/>
           <Switch>
-            <Route exact path={process.env.PUBLIC_URL + '/'} component={Home}/>
+            <Route exact path={process.env.PUBLIC_URL + '/'} component={Home} />
             <Route 
               path={process.env.PUBLIC_URL + '/categoria'} 
-              //component={Categoria}
               render={(props) => <Categoria {...props} categories={this.state.categories} />}
             />
             <Route path={"/:slug"} component={Post} />

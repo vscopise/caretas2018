@@ -20,6 +20,7 @@ class Post extends Component {
             isLoading: false,
             post: this.props.location.state.post, 
         })
+        window.scrollTo(0,0)
     }
     
     render() {
