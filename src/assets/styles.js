@@ -76,9 +76,46 @@ const styles = theme => ({
         },
     },
     Home: {
-        '& .cabezal': {
+        
+    },
+    PostCabezal: {
+        '& a': {
+            textDecoration: 'none',
+        },
+        '& .content': {
+            position: 'absolute',
+            bottom: 0,
+        },
+        '& .size-a': {
             height: 462,
-            
+            position: 'relative',
+            '& .content': {
+               width: '85%',
+               padding:'0 0 15px 20px'
+            },
+            '& h2': {
+                fontSize: '2.5rem',
+                fontWeight: '500',
+                lineHeight: '1.3'
+            }
+        },
+        '& .size-b': {
+            height: 261,
+            position: 'relative',
+            '& h2': {
+                fontSize: '1.5rem',
+                fontWeight: '500',
+                lineHeight: '1.3'
+            }
+        },
+        '& .size-c': {
+            height: 201,
+            position: 'relative',
+            '& h2': {
+                fontSize: '1rem',
+                fontWeight: '500',
+                lineHeight: '1.3'
+            }
         },
     },
     Categoria: {
