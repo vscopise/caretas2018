@@ -16,17 +16,22 @@ const PostCabezal = ( props ) => {
                 }
             >
                 <div className={props.size}>
-                    <div className='image' />
-                    <div className='content'>
-                        <h2
-                            dangerouslySetInnerHTML={{__html: props.post.title.rendered}} 
-                        />
-                        {
-                            (props.size==='size-a') &&
-                            <p 
-                                dangerouslySetInnerHTML={{__html: props.post.excerpt.rendered}} 
-                            /> 
-                        }
+                    <div 
+                        className='image' 
+                        style={{backgroundImage: `url(${props.post.image_url[2]})`}}
+                    />
+                    <div className='meta'>
+                        <div className='content'>
+                            <h2
+                                dangerouslySetInnerHTML={{__html: props.post.title.rendered}} 
+                            />
+                            {
+                                (props.size==='size-a') &&
+                                <p 
+                                    dangerouslySetInnerHTML={{__html: props.post.excerpt.rendered}} 
+                                /> 
+                            }
+                        </div>
                     </div>
                 </div>
             </Link>

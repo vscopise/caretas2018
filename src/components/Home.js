@@ -43,7 +43,6 @@ class Home extends Component {
 
     render() {
         if ( !this.state.isLoading ) {
-            //alert(this.state.homePosts.cabezal)
             return(
                 <div className={this.props.classes.Home}>
                     <Grid container className='cabezal' spacing={0}>
@@ -61,6 +60,11 @@ class Home extends Component {
                                 </Grid>
                             </Grid>
                         </Grid>
+                    </Grid>
+                    <Grid container className='cabezal' spacing={0}>
+                        <Grid item xs={8}>left</Grid>
+                        <Grid item xs={4}>right</Grid>
+                        
                     </Grid>
                     <h2>home</h2>
                     <p>texto</p>

@@ -76,44 +76,79 @@ const styles = theme => ({
         },
     },
     Home: {
+        '& .cabezal': {
+            marginBottom: 20
+        }
         
     },
     PostCabezal: {
         '& a': {
             textDecoration: 'none',
         },
-        '& .content': {
+        '& .meta': {
             position: 'absolute',
             bottom: 0,
+            paddingTop: 50,
+            width: '100%',
+            background: 'linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,.65) 50%)',
+            zIndex: 2,
+        },
+        '& .image': {
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            backgroundRepeat: 'no-repeat',
+            transition: 'all .5s',
+            backgroundPosition: 'center',
+            zIndex: '1',
+            backgroundSize: 'cover',
+        },
+        '& .image:hover': {
+            transform: 'scale(1.1)',
         },
         '& .size-a': {
             height: 462,
             position: 'relative',
+            overflow: 'hidden',                                                                                                                                                         
             '& .content': {
-               width: '85%',
-               padding:'0 0 15px 20px'
+                width: '85%',
+                margin:'0 0 15px 20px'
             },
             '& h2': {
-                fontSize: '2.5rem',
-                fontWeight: '500',
-                lineHeight: '1.3'
-            }
+                color: '#fff',
+                fontSize: '2.7rem',
+                lineHeight: '1.3',
+                marginBottom: 0,
+            },
+            '& p': {
+                color: '#fff',
+            },
         },
         '& .size-b': {
             height: 261,
             position: 'relative',
+            overflow: 'hidden',                                                                                                                                                         
+            '& .content': {
+                width: '85%',
+                margin:'0 0 15px 11px'
+            },
             '& h2': {
-                fontSize: '1.5rem',
-                fontWeight: '500',
+                color: '#fff',
+                fontSize: '1.6rem',
                 lineHeight: '1.3'
             }
         },
         '& .size-c': {
             height: 201,
             position: 'relative',
+            overflow: 'hidden',                                                                                                                                                         
+            '& .content': {
+                width: '85%',
+                margin:'0 0 15px 11px'
+            },
             '& h2': {
-                fontSize: '1rem',
-                fontWeight: '500',
+                color: '#fff',
+                fontSize: '1.2rem',
                 lineHeight: '1.3'
             }
         },
