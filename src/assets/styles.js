@@ -81,6 +81,7 @@ const styles = theme => ({
         }
         
     },
+    CabezalHome: {},
     PostCabezal: {
         '& a': {
             textDecoration: 'none',
