@@ -76,17 +76,49 @@ const styles = theme => ({
         },
     },
     Home: {
-        '& .cabezal': {
-        }
-        
+        '& h4.widget-title': {
+            fontSize: '.875rem',
+            color: '#fff',
+            marginBottom: 20,
+            textTransform: 'uppercase',
+            overflow: 'hidden',
+            borderBottom: '2px solid #d00',
+            '& span': {
+                display: 'inline-block',
+                padding: '9px 12px 5px',
+                background: '#d00',
+            }
+        },
+        '& a': {
+            textDecoration: 'none',
+        },
+        '& a:hover': {
+            color: '#d00',
+        },
+        '& a:hover h3': {
+            color: '#d00',
+        },
+        '& a:hover h4': {
+            color: '#d00',
+        },
+        '& a:hover p': {
+            color: '#d00',
+        },
+        '& h2': {
+            lineHeight: '1.3',
+        },
+        '& h3': {
+            lineHeight: '1.3',
+        },
+        '& h4': {
+            lineHeight: '1.3',
+        },
     },
     CabezalHome: {
         marginBottom: 48,
     },
     PostCabezal: {
-        '& a': {
-            textDecoration: 'none',
-        },
+        
         '& .meta': {
             position: 'absolute',
             bottom: 0,
@@ -119,7 +151,6 @@ const styles = theme => ({
             '& h2': {
                 color: '#fff',
                 fontSize: '2.7rem',
-                lineHeight: '1.3',
                 marginBottom: 0,
             },
             '& p': {
@@ -137,7 +168,6 @@ const styles = theme => ({
             '& h2': {
                 color: '#fff',
                 fontSize: '1.8rem',
-                lineHeight: '1.3'
             }
         },
         '& .size-c': {
@@ -151,8 +181,36 @@ const styles = theme => ({
             '& h2': {
                 color: '#fff',
                 fontSize: '1.2rem',
-                lineHeight: '1.3'
             }
+        },
+    },
+    ItemDestacadas: {
+        marginBottom: 20,
+        '& .image': {
+            width: '100%',
+            height: 100,
+            backgroundSize: 'cover',
+            marginBottom: 5
+        },
+        '& h4': {
+            margin: 0,
+        }
+    },
+    Editorial: {
+        padding: 10,
+        background: '#f2f0eb',
+        '& img': {
+            width: '100%',
+            height: 'auto',
+            marginBottom: 5
+        },
+        '& h3': {
+            fontSize: '1.5rem',
+            margin: 0,
+        },
+        '& p': {
+            margin: 0,
+            color: '#1f1e1e',
         },
     },
     Categoria: {

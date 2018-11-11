@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
 import { 
     Grid,
     withStyles
 } from '@material-ui/core'
-
 import Loading from './Loading'
-import PostCabezal from './Post-Cabezal'
-
-import styles from '../assets/styles'
 import CabezalHome from './Cabezal-Home'
 import DestacadasEditorial from './Destacadas-Editorial'
+import styles from '../assets/styles'
 
+//const urlCaretas = 'http://localhost/caretas/wp-json/'
 const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
 class Home extends Component {
@@ -20,19 +17,17 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            cabezalHomePosts: {},
             homePosts: {},
             isLoading: true
         }
     }
 
-    fetch_cabezal_posts = () => {
-        var cabezal_zone_id = this.props.cabezal_home.term_id
+    fetch_home_posts = () => {
         axios
-            .get( urlCaretas + 'zoninator/v1/zones/' + cabezal_zone_id + '/posts')
+            .get( urlCaretas + 'wp/v2/home/' )
             .then(res => {
             this.setState({ 
-                cabezalHomePosts: res.data,
+                homePosts: res.data,
                 isLoading: false 
             })
         })
@@ -40,7 +35,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.fetch_cabezal_posts()
+        this.fetch_home_posts()
     }
 
     render() {
@@ -48,10 +43,14 @@ class Home extends Component {
             return(
                 <div className={this.props.classes.Home}>
                     
-                    <CabezalHome posts={this.state.cabezalHomePosts}/>
+                    <CabezalHome 
+                        posts={this.state.homePosts.cabezal}
+                    />
 
-                    <DestacadasEditorial/>
-                   
+                    <DestacadasEditorial
+                        destacadas={this.state.homePosts.destacadas}
+                        editorial={this.state.homePosts.editorial}
+                    />
                     
                     <h2>home</h2>
                     <p>texto</p>

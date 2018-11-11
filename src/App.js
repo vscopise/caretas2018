@@ -29,28 +29,25 @@ class App extends Component {
     this.state = {
       date: new Date(),
       categories: [],
-      zones: [],
-      settings: [],
       isLoading: true
     }
   }
 
   componentDidMount() {
-    axios.all([
-      axios .get( urlCaretas + 'zoninator/v1/zones' ),
-      axios .get( urlCaretas + 'wp/v2/categories?per_page=99' ),
-      axios .get( urlCaretas + 'wp/v2/cyc-settings' )
-    ])
-    .then(axios.spread((zones, categories, settings) => {
-      this.setState({
-        zones: zones.data,
-        categories: categories.data,
-        settings: settings.data,
-        isLoading: false
-      })
-    }))
-    .catch(error => console.log(error));
+    this.fetch_categorias()
   }
+
+  fetch_categorias = () => {
+    axios
+        .get( urlCaretas + 'wp/v2/categories?per_page=99' )
+        .then(res => {
+        this.setState({ 
+          categories: res.data,
+            isLoading: false 
+        })
+    })
+    .catch(error => console.log(error))
+}
 
   render() {
     const {classes} = this.props
@@ -64,17 +61,15 @@ class App extends Component {
             <Navbar/>
             <Switch>
               <Route 
-                exact path={process.env.PUBLIC_URL + '/'} 
-                render={(props) => <Home 
-                    cabezal_home={this.state.zones.find(zone => zone.name===this.state.settings.cabezal_home)}
-                    cabezal_grid={this.state.zones.find(zone => zone.name===this.state.settings.cabezal_grid)}
-                  />}
+                exact path={process.env.PUBLIC_URL + '/'} component={Home}
               />
               <Route 
                 path={process.env.PUBLIC_URL + '/categoria'} 
                 render={(props) => <Categoria {...props} categories={this.state.categories} />}
               />
-              <Route path={"/:slug"} component={Post} />
+              <Route 
+                path={"/:slug"} component={Post} 
+              />
             </Switch>
           </div>
           <Footer date={this.state.date}/>
