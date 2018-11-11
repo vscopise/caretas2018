@@ -10,7 +10,8 @@ import Loading from './Loading'
 import PostCabezal from './Post-Cabezal'
 
 import styles from '../assets/styles'
-import CabezalHome from './Cabezal-Home';
+import CabezalHome from './Cabezal-Home'
+import DestacadasEditorial from './Destacadas-Editorial'
 
 const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
@@ -25,26 +26,10 @@ class Home extends Component {
         }
     }
 
-    fetch_home_posts = () => {
-        /*const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
-        this.setState({ 
-            isLoading: true 
-        })
+    fetch_cabezal_posts = () => {
+        var cabezal_zone_id = this.props.cabezal_home.term_id
         axios
-            .get( url + 'home' )
-            .then(res => {
-            this.setState({ 
-                homePosts: res.data,
-                isLoading: false 
-            })
-        })
-        .catch(error => console.log(error))*/
-        var zone_id = this.props.cabezal_home.term_id
-        /*this.setState({ 
-            isLoading: true 
-        })*/
-        axios
-            .get( urlCaretas + 'zoninator/v1/zones/' + zone_id + '/posts')
+            .get( urlCaretas + 'zoninator/v1/zones/' + cabezal_zone_id + '/posts')
             .then(res => {
             this.setState({ 
                 cabezalHomePosts: res.data,
@@ -55,8 +40,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-       
-        this.fetch_home_posts()
+        this.fetch_cabezal_posts()
     }
 
     render() {
@@ -64,12 +48,11 @@ class Home extends Component {
             return(
                 <div className={this.props.classes.Home}>
                     
-                    
+                    <CabezalHome posts={this.state.cabezalHomePosts}/>
+
+                    <DestacadasEditorial/>
                    
-                    <Grid container className='cabezal' spacing={0}>
-                        <Grid item xs={8}>left</Grid>
-                        <Grid item xs={4}>right</Grid>
-                    </Grid>
+                    
                     <h2>home</h2>
                     <p>texto</p>
                 </div>

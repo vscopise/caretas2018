@@ -77,11 +77,12 @@ const styles = theme => ({
     },
     Home: {
         '& .cabezal': {
-            marginBottom: 20
         }
         
     },
-    CabezalHome: {},
+    CabezalHome: {
+        marginBottom: 48,
+    },
     PostCabezal: {
         '& a': {
             textDecoration: 'none',
@@ -135,7 +136,7 @@ const styles = theme => ({
             },
             '& h2': {
                 color: '#fff',
-                fontSize: '1.6rem',
+                fontSize: '1.8rem',
                 lineHeight: '1.3'
             }
         },

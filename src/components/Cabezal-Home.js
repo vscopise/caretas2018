@@ -28,12 +28,12 @@ class CabezalHome extends Component {
     }
 
     fetch_cabezal_home_posts = () => {
-        var zone_id = this.props.zone.term_id
-        this.setState({ 
-            isLoading: true 
-        })
+        let ids = ''
+        
+        this.props.posts.forEach(post => ids += 'include[]=' + post.ID + '&' )
+        var postIds = ids.slice(0, -1)
         axios
-            .get( urlCaretas + 'zoninator/v1/zones/' + zone_id + '/posts')
+            .get( urlCaretas + 'wp/v2/posts?' + postIds )
             .then(res => {
             this.setState({ 
                 cabezalHomePosts: res.data,
@@ -45,8 +45,36 @@ class CabezalHome extends Component {
 
     render() {
         if ( ! this.state.isLoading ) {
-           return <PostCabezal/>
-           //return <h2>dd</h2>
+           return (
+            <Grid container className={this.props.classes.CabezalHome}>
+                <Grid item xs={6}>
+                    <PostCabezal 
+                        post={this.state.cabezalHomePosts[0]}
+                        size='size-a'
+                    />
+                </Grid>
+                <Grid item xs={6}>
+                    <PostCabezal 
+                        post={this.state.cabezalHomePosts[1]}
+                        size='size-b'
+                    />
+                    <Grid container>
+                        <Grid item xs={6}>
+                            <PostCabezal 
+                                post={this.state.cabezalHomePosts[2]}
+                                size='size-c'
+                            />  
+                        </Grid>
+                        <Grid item xs={6}>
+                            <PostCabezal 
+                                post={this.state.cabezalHomePosts[3]}
+                                size='size-c'
+                            />  
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+           )
         } else {
             return <Loading/>
         }
