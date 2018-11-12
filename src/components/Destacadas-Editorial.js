@@ -7,7 +7,7 @@ import Editorial from './Editorial'
 import styles from '../assets/styles'
 
 const DestacadasEditorial = ( props ) => (
-    <Grid container className={props.classes.DestacadasEditorial}>
+    <Grid container className={props.classes.DestacadasEditorial} spacing={24}>
         <Grid item xs={8}>
             <Destacadas posts={props.destacadas}/>
         </Grid>

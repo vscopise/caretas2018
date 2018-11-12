@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import { 
     withStyles
@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import ResponsiveMenu from 'react-responsive-navbar'
 
 import { Menu } from '@material-ui/icons'
+import styles from '../assets/styles'
 
 const sections = [
     {
@@ -77,85 +78,33 @@ const sections = [
     },
 ]
 
-const styles = {
-    Navbar: {
-        background: '#dd0008',
-        padding: '0',
-        minHeight: 'auto',
-        marginBottom: 30,
-        '& a': {
-            fontFamily: 'Oswald',
-            color: '#fff',
-            textDecoration: 'none',
-            padding: '.625rem .5rem',
-        },
-        '& .large_menu': {
-            textAlign: 'left',
-            '& a': {
-                display: 'inline-block',
-                borderLeft: '1px solid #424242',
-                textTransform: 'uppercase',
-            },
-            '& a:first-child': {
-                borderLeftColor: '#dd0008'
+const Navbar = ( props ) => (
+    <div className={props.classes.Navbar} >
+        <ResponsiveMenu 
+            menuOpenButton={<div className='menu_button'><Menu/></div>}
+            menuCloseButton={<div className='menu_button'><Menu/></div>}
+            changeMenuOn="1200px"
+            largeMenuClassName="large_menu"
+            smallMenuClassName="small_menu"
+            menu = {
+                sections.map((section) => (
+                    <Link 
+                        key={section.id} 
+                        to={{
+                            pathname: section.link,
+                            state: { 
+                                catId: section.catId,
+                                page: 1,
+                                catTitle: section.label 
+                            }
+                        }}
+                    >
+                        {section.label}
+                    </Link>
+                ))
             }
-        },
-        '& .small_menu': {
-            textAlign: 'right',
-            height: 42,
-            '& a': {
-                display: 'block',
-                background: '#dd0008',
-                textAlign: 'left',
-                float: 'left',
-                width: '100%'
-            },
-            '& .menu_button': {
-                padding: '.1rem 1.25rem 0',
-                color: '#fff',
-            },
-            '& .menu_button svg': {
-                fontSize:36,
-
-            }
-        },
-    },
-}
-
-
-class Navbar extends Component {
-
-    render() {
-        return (
-            <div className={this.props.classes.Navbar} >
-                <ResponsiveMenu 
-                    menuOpenButton={<div className='menu_button'><Menu/></div>}
-                    menuCloseButton={<div className='menu_button'><Menu/></div>}
-                    changeMenuOn="1200px"
-                    largeMenuClassName="large_menu"
-                    smallMenuClassName="small_menu"
-                    menu = {
-                        sections.map((section) => (
-                            <Link 
-                                key={section.id} 
-                                to={{
-                                    pathname: section.link,
-                                    state: { 
-                                        catId: section.catId,
-                                        page: 1,
-                                        catTitle: section.label 
-                                    }
-                                }}
-                            >
-                                {section.label}
-                            </Link>
-                        ))
-                    }
-                />
-            </div>
-        )
-    }
-
-}
+        />
+    </div>
+)
 
 export default withStyles(styles)(Navbar)

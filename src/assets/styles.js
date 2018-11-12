@@ -75,6 +75,7 @@ const styles = theme => ({
           marginBottom: 0,
         },
     },
+
     Home: {
         '& h4.widget-title': {
             fontSize: '.875rem',
@@ -92,9 +93,6 @@ const styles = theme => ({
         '& a': {
             textDecoration: 'none',
         },
-        '& a:hover': {
-            color: '#d00',
-        },
         '& a:hover h3': {
             color: '#d00',
         },
@@ -102,7 +100,7 @@ const styles = theme => ({
             color: '#d00',
         },
         '& a:hover p': {
-            color: '#d00',
+           // color: '#d00',
         },
         '& h2': {
             lineHeight: '1.3',
@@ -114,11 +112,73 @@ const styles = theme => ({
             lineHeight: '1.3',
         },
     },
+    Navbar: {
+        background: '#dd0008',
+        padding: '0',
+        minHeight: 'auto',
+        '& a': {
+            fontFamily: 'Oswald',
+            color: '#fff',
+            textDecoration: 'none',
+            padding: '.625rem .5rem',
+        },
+        '& .large_menu': {
+            textAlign: 'left',
+            '& a': {
+                display: 'inline-block',
+                borderLeft: '1px solid #424242',
+                textTransform: 'uppercase',
+            },
+            '& a:first-child': {
+                borderLeftColor: '#dd0008'
+            }
+        },
+        '& .small_menu': {
+            textAlign: 'right',
+            height: 42,
+            '& a': {
+                display: 'block',
+                background: '#dd0008',
+                textAlign: 'left',
+                float: 'left',
+                width: '100%'
+            },
+            '& .menu_button': {
+                padding: '.1rem 1.25rem 0',
+                color: '#fff',
+            },
+            '& .menu_button svg': {
+                fontSize:36,
+
+            }
+        },
+    },
+    LastPosts: {
+        background: '#efefef',
+        marginBottom: 30,
+        padding: 10,
+        textTransform: 'uppercase',
+        fontFamily: 'Oswald',
+        '& span.ticker-title': {
+            background: '#d00',
+            color: '#fff',
+            padding: '0 10px',
+            float: 'left',
+            marginRight: 10,
+        },
+        '& section': {
+            background: '#ccc',
+            display: 'inline',
+        }
+    },
     CabezalHome: {
         marginBottom: 48,
+        '& a:hover p': {
+            color: '#fff',
+            //textDecoration: 'underline',
+        },    
     },
     PostCabezal: {
-        
         '& .meta': {
             position: 'absolute',
             bottom: 0,
@@ -184,13 +244,19 @@ const styles = theme => ({
             }
         },
     },
+    DestacadasEditorial: {
+        '& a:hover p': {
+            color: '#d00',
+        },
+    },
     ItemDestacadas: {
         marginBottom: 20,
         '& .image': {
             width: '100%',
             height: 100,
             backgroundSize: 'cover',
-            marginBottom: 5
+            marginBottom: 5,
+            backgroundPosition: 'center',
         },
         '& h4': {
             margin: 0,

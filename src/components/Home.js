@@ -7,6 +7,7 @@ import {
 import Loading from './Loading'
 import CabezalHome from './Cabezal-Home'
 import DestacadasEditorial from './Destacadas-Editorial'
+import LastPosts from './Last-Posts'
 import styles from '../assets/styles'
 
 //const urlCaretas = 'http://localhost/caretas/wp-json/'
@@ -42,6 +43,10 @@ class Home extends Component {
         if ( !this.state.isLoading ) {
             return(
                 <div className={this.props.classes.Home}>
+
+                    <LastPosts
+                        posts={this.state.homePosts.ultimos}
+                    />
                     
                     <CabezalHome 
                         posts={this.state.homePosts.cabezal}

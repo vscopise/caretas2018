@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { 
     withStyles
 } from '@material-ui/core'
@@ -9,9 +10,9 @@ import styles from '../assets/styles'
 
 const HeaderLogo = (props) => (
     <div className={props.classes.HeaderLogo}>
-        <a href='/' >
+        <Link to={{pathname: '/'}}>
             <img src={logoMain} alt='Caras y Caretas' />
-        </a>
+        </Link>
         <p>Montevideo, {props.date}</p>
     </div>
 )
