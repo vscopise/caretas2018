@@ -27,7 +27,7 @@ const PreviewPost = ( props ) => {
                             props.post.categories.map(cat => (
                                 <span className='entry-meta-cats' key={cat}>
                                     {props.categories.find (
-                                        category => category.id === cat
+                                        category => category.term_id === cat
                                     ).name}
                                 </span>
                             ))
@@ -76,7 +76,7 @@ const PreviewPost = ( props ) => {
                                     props.post.categories.map(cat => (
                                         <span className='entry-meta-cats' key={cat}>
                                             {props.categories.find (
-                                                category => category.id === cat
+                                                category => category.term_id === cat
                                             ).name}
                                         </span>
                                     ))
@@ -100,7 +100,6 @@ const PreviewPost = ( props ) => {
                     </Grid>
                 </Link>
             </div>
-            
         )
     }        
 }

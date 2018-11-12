@@ -153,29 +153,18 @@ const styles = theme => ({
             }
         },
     },
-    LastPosts: {
+    SubNav: {
         background: '#efefef',
         marginBottom: 30,
         padding: 10,
         textTransform: 'uppercase',
         fontFamily: 'Oswald',
-        '& span.ticker-title': {
-            background: '#d00',
-            color: '#fff',
-            padding: '0 10px',
-            float: 'left',
-            marginRight: 10,
-        },
-        '& section': {
-            background: '#ccc',
-            display: 'inline',
-        }
+        fontSize: 12,
     },
     CabezalHome: {
         marginBottom: 48,
         '& a:hover p': {
             color: '#fff',
-            //textDecoration: 'underline',
         },    
     },
     PostCabezal: {
@@ -332,6 +321,9 @@ const styles = theme => ({
         '& .entry-content p': {
             margin: '0 0 1.25rem',
             fontSize: '107%',
+            '& br': {
+                marginBottom: 20,
+            },
         },
     },
     Comments: {

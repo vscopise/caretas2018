@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 import Loading from './Loading'
 import PostContent from './Post-Content'
 import Sidebar from './Sidebar'
 
 import { Grid } from '@material-ui/core'
+
+const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
 class Post extends Component {
     constructor(props) {
@@ -22,7 +25,16 @@ class Post extends Component {
         })
         window.scrollTo(0,0)
     }
-    
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.location !== this.props.location) {
+            this.setState({post: nextProps.location.state.post})
+            //const { catId, page } = nextProps.location.state
+            //this.fetch_posts(catId, page)
+        }
+    }
+
+
     render() {
         if (!this.state.isLoading) {
             return (

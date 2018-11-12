@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Newsticker from 'react-newsticker'
 
-import styles from '../assets/styles'
+//import styles from '../assets/styles'
+
+import '../assets/ticker-styles.css'
 
 
 import { 
@@ -10,25 +11,30 @@ import {
     withStyles
 } from '@material-ui/core'
 
-const news = [
-    'Hello World!',
-    //'Nice to meet you.',
-    //'Happy hour :)'
-  ];
   
 
 const LastPosts = ( props ) => (
-    <div className={props.classes.LastPosts}>
-        <Grid container>
-            <Grid item xs={8}>
-                <span className='ticker-title'>Ultimas Noticias</span>
-                <Newsticker news={news} />
-            </Grid>
-            <Grid item xs={4}>Social</Grid>
-        </Grid>
-
+    <div className='last-posts'>
+        <span className='ticker-title'>Ultimas Noticias</span>
+        <div className='tickerv-wrap'>
+            <ul>
+                {
+                    props.posts.map(post =>(
+                        <li key={post.id}>
+                            <Link 
+                                to={{
+                                    pathname: '/' + post.slug, 
+                                    state: {postId: post.id, post: post}}}
+                            >
+                                {post.title.rendered}
+                            </Link>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
     </div>
     
 )
 
-export default withStyles(styles)(LastPosts)
+export default LastPosts

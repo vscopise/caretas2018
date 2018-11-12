@@ -16,6 +16,7 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Categoria from './components/Categoria'
 import Loading from './components/Loading'
+import SubNav from './components/Sub-Nav'
 
 import Footer from './components/Footer'
 
@@ -39,10 +40,15 @@ class App extends Component {
 
   fetch_categorias = () => {
     axios
-        .get( urlCaretas + 'wp/v2/categories?per_page=99' )
+        .get( urlCaretas + 'wp/v2/home/' )
+
         .then(res => {
         this.setState({ 
-          categories: res.data,
+            categories: res.data.categorias,
+            ultimos: res.data.ultimos,
+            cabezal: res.data.cabezal,
+            destacadas: res.data.destacadas,
+            editorial: res.data.editorial,
             isLoading: false 
         })
     })
@@ -51,17 +57,23 @@ class App extends Component {
 
   render() {
     const {classes} = this.props
-    if ( !this.state.isLoading ) {
+    if ( ! this.state.isLoading ) {
       return (
-        
         <Fragment>
           <CssBaseline />
           <div className={classes.layout}>
             <Header date={this.state.date}/>
             <Navbar/>
+            <SubNav lastPost={this.state.ultimos}/>
             <Switch>
               <Route 
-                exact path={process.env.PUBLIC_URL + '/'} component={Home}
+                exact path={process.env.PUBLIC_URL + '/'}
+                render={(props) => <Home {...props} 
+                  ultimos={this.state.ultimos} 
+                  cabezal={this.state.cabezal} 
+                  destacadas={this.state.destacadas} 
+                  editorial={this.state.editorial} 
+                />}
               />
               <Route 
                 path={process.env.PUBLIC_URL + '/categoria'} 
@@ -69,6 +81,9 @@ class App extends Component {
               />
               <Route 
                 path={"/:slug"} component={Post} 
+              />
+              <Route 
+                path={"/slug"} component={Post} 
               />
             </Switch>
           </div>

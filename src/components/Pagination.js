@@ -7,7 +7,7 @@ const Pagination = (props) => {
     var items = [-1, 0, 1]
 
     var catTitle = props.categories.find(
-        category => category.id === props.catId
+        category => category.term_id === props.catId
     ).name
 
     const currentPage = props.currentPage

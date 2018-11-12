@@ -1,0 +1,50 @@
+.last-posts {
+    height: 33px;
+    line-height: 33px;
+}
+@keyframes tickerv {
+    0% {margin-top: 0;}
+    25% {margin-top: -33px;}
+    50% {margin-top: -66px;}
+    75% {margin-top: -99px;}
+    100% {margin-top: 0;}
+  }
+  span.ticker-title{
+      background: #d00;
+      color: #fff;
+      margin-right: 10px;
+      padding: 0 10px;
+      line-height: 33px;
+      height: 33px;
+      float: left;
+
+  }
+  .tickerv-wrap {
+    background: #eee;
+    box-sizing: content-box;
+    overflow: hidden;
+    height: 33px;
+  } 
+  .tickerv-wrap ul {
+    padding:0;
+    margin:0;
+    list-style-type: none;
+    animation-name: tickerv;
+    animation-duration:10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1, 0, .5, 0);
+  }
+  .tickerv-wrap ul:hover {
+    animation-play-state: paused;
+  }
+  .tickerv-wrap ul li {
+    font-size: 12px;
+    line-height: 33px
+  }
+  .tickerv-wrap ul li a {
+      text-decoration: none;
+      color: #1f1e1e;
+  }
+  .tickerv-wrap ul li a:hover {
+    color: #d00;
+}
