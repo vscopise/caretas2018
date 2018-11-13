@@ -5,8 +5,6 @@ import {
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import ResponsiveMenu from 'react-responsive-navbar'
-import ReactMegaMenu from 'react-mega-menu'
-
 
 import { Menu } from '@material-ui/icons'
 import styles from '../assets/styles'
@@ -106,7 +104,8 @@ const Navbar = ( props ) => (
                 ))
             }
         />
+        <div className='megamenu'><h2>Megamenu</h2></div>
     </div>
 )
 
-export default withStyles(styles)(Navbar2)
+export default withStyles(styles)(Navbar)

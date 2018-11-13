@@ -1,12 +1,9 @@
-import React from 'react'
-
+import React, { Component} from 'react'
 import { 
     withStyles
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import ResponsiveMenu from 'react-responsive-navbar'
-import ReactMegaMenu from 'react-mega-menu'
-
 
 import { Menu } from '@material-ui/icons'
 import styles from '../assets/styles'
@@ -80,22 +77,48 @@ const sections = [
     },
 ]
 
-const Navbar = ( props ) => (
-    <div className={props.classes.Navbar} >
-        <ReactMegaMenu
-            data={[
-                {
-                    label: 'menu',
-                    key: 1,
-                    items: Item
-                }
-            ]} 
-        />
-    </div>
-)
+class Navbar extends Component {
+
+    constructor(props) {
+        super(props)
+    }
+
+    handleMenu = () => {
+        alert('enter menu')
+    }
+    render() {
+        return(
+            <div className={this.props.classes.Navbar} >
+                <ResponsiveMenu 
+                    menuOpenButton={<div className='menu_button'><Menu/></div>}
+                    menuCloseButton={<div className='menu_button'><Menu/></div>}
+                    changeMenuOn="1200px"
+                    largeMenuClassName="large_menu"
+                    smallMenuClassName="small_menu"
+                    menu = {
+                        sections.map((section) => (
+                            <Link 
+                                key={section.id} 
+                                to={{
+                                    pathname: section.link,
+                                    state: { 
+                                        catId: section.catId,
+                                        page: 1,
+                                        catTitle: section.label 
+                                    }
+                                }}
+                                onMouseOver={this.handleMenu}
+                            >
+                                {section.label}
+                            </Link>
+                        ))
+                    }
+                />
+                <div className='megamenu'><h2>Megamenu</h2></div>
+            </div>
+
+        )
+    }
+}
 
 export default withStyles(styles)(Navbar)
-
-const Item = () => (
-    <div>item</div>
-)
