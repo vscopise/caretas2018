@@ -161,6 +161,19 @@ const styles = theme => ({
         fontFamily: 'Oswald',
         fontSize: 12,
     },
+    SocialBar: {
+        float: 'right',
+        '& .icon': {
+            fontSize: 30,
+            marginLeft: 10,
+        },
+        '& a': {
+            color: '#1f1e1e',
+        },
+        '& a:hover': {
+            color: '#d00',
+        },
+    },
     CabezalHome: {
         marginBottom: 48,
         '& a:hover p': {

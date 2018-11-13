@@ -82,20 +82,31 @@ const sections = [
 
 const Navbar = ( props ) => (
     <div className={props.classes.Navbar} >
-        <ReactMegaMenu
-            data={[
-                {
-                    label: 'menu',
-                    key: 1,
-                    items: Item
-                }
-            ]} 
+        <ResponsiveMenu 
+            menuOpenButton={<div className='menu_button'><Menu/></div>}
+            menuCloseButton={<div className='menu_button'><Menu/></div>}
+            changeMenuOn="1200px"
+            largeMenuClassName="large_menu"
+            smallMenuClassName="small_menu"
+            menu = {
+                sections.map((section) => (
+                    <Link 
+                        key={section.id} 
+                        to={{
+                            pathname: section.link,
+                            state: { 
+                                catId: section.catId,
+                                page: 1,
+                                catTitle: section.label 
+                            }
+                        }}
+                    >
+                        {section.label}
+                    </Link>
+                ))
+            }
         />
     </div>
 )
 
-export default withStyles(styles)(Navbar)
-
-const Item = () => (
-    <div>item</div>
-)
+export default withStyles(styles)(Navbar2)

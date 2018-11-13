@@ -11,6 +11,8 @@
     "react": "^16.6.0",
     "react-announcement-ticker": "^1.0.1",
     "react-dom": "^16.6.0",
+    "react-icons": "^3.2.2",
+    "react-mega-menu": "^1.0.1",
     "react-moment": "^0.8.2",
     "react-newsticker": "^1.0.3",
     "react-responsive-navbar": "^1.0.11",
