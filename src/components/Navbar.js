@@ -81,19 +81,43 @@ class Navbar extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            menuOpen: false
+          }
+    }
+
+    handleMenuOpen = () => {
+        this.setState({
+            menuOpen: !this.state.menuOpen
+        })
     }
 
     render() {
         return(
             <div className={this.props.classes.Navbar} >
                 <nav className='mobile-menu'>
-                    <div className='lines'/>
-                    <ul>
-                        <li><a href=''>Home</a></li>
-                        <li><a href=''>About</a></li>
-                        <li><a href=''>Portfolio</a></li>
-                        <li><a href=''>News</a></li>
-                        <li><a href=''>Contact</a></li>
+                    <Menu className='show-menu' onClick={this.handleMenuOpen}/>
+                    <ul className={this.state.menuOpen ? 'active' : null}>
+                        {
+                            sections.map((section) => (
+                                <li key={section.id}>
+                                    <Link 
+                                        key={section.id} 
+                                        to={{
+                                            pathname: section.link,
+                                            state: { 
+                                                catId: section.catId,
+                                                page: 1,
+                                                catTitle: section.label 
+                                            }
+                                        }}
+                                        onClick={this.handleMenuOpen}
+                                    >
+                                    {section.label}
+                                </Link>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </nav>
             </div>

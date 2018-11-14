@@ -115,10 +115,11 @@ const styles = theme => ({
     Navbar: {
         position: 'relative',
         textTransform: 'uppercase',
-        background: '#dd0008',
-        width: '100%',
-
+        
         '& .mobile-menu': {
+            float: 'left',
+            background: '#dd0008',
+            width: '100%',
             '& ul': {
                 margin: 0,
                 padding: 0,
@@ -126,26 +127,38 @@ const styles = theme => ({
                 '& li': {
                     display: 'inline-block',
                     margin: 0,
-                    //padding: 0,
+                    [theme.breakpoints.down(900)]: {
+                        
+                    },
                     '& a': {
                         float: 'left',
                         padding: '.625rem .5rem',
-                        [theme.breakpoints.down(800)]: {
+                        [theme.breakpoints.down(900)]: {
                             width: '100%',
                         }
                     },
-                    [theme.breakpoints.down(800)]: {
+                    [theme.breakpoints.down(900)]: {
                         marginBottom: 1,
+                        width: '100%',
                     },
                 },
-                [theme.breakpoints.down(800)]: {
+                [theme.breakpoints.down(900)]: {
                     position: 'static',
                     display: 'none',
                 }
             },
+            '& ul.active': {
+                [theme.breakpoints.down(900)]: {
+                    display: 'block',
+                }
+            },
+
             '& .show-menu': {
+                color: '#fff',
+                float: 'right',
+                margin: '.625rem 1.25rem',
                 display: 'none',
-                [theme.breakpoints.down(800)]: {
+                [theme.breakpoints.down(900)]: {
                     display: 'block',
                 },
             },
@@ -158,26 +171,18 @@ const styles = theme => ({
             textDecoration: 'none',
             padding: '.625rem .5rem',
         },
-        '& .lines': {
-            [theme.breakpoints.down(800)]: {
-                borderBottom: '15px double #f8f8f8',
-                borderTop: '5px solid #f8f8f8', 
-                content: '',
-                height: 5, 
-                width: 20,
-                paddingRight: 15,
-                float: 'right',
-            },
-
-        },
     },
     SubNav: {
+        float: 'left',
+        width: '100%',
         background: '#efefef',
-        marginBottom: 30,
         padding: 10,
         textTransform: 'uppercase',
         fontFamily: 'Oswald',
         fontSize: 12,
+        [theme.breakpoints.down(800)]: {
+            display: 'none',
+        },
     },
     SocialBar: {
         float: 'right',
@@ -193,7 +198,9 @@ const styles = theme => ({
         },
     },
     CabezalHome: {
+        marginTop: 30,
         marginBottom: 48,
+        float: 'left',
         '& a:hover p': {
             color: '#fff',
         },    
