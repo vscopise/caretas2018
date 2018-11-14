@@ -83,40 +83,20 @@ class Navbar extends Component {
         super(props)
     }
 
-    handleMenu = () => {
-        alert('enter menu')
-    }
     render() {
         return(
             <div className={this.props.classes.Navbar} >
-                <ResponsiveMenu 
-                    menuOpenButton={<div className='menu_button'><Menu/></div>}
-                    menuCloseButton={<div className='menu_button'><Menu/></div>}
-                    changeMenuOn="1200px"
-                    largeMenuClassName="large_menu"
-                    smallMenuClassName="small_menu"
-                    menu = {
-                        sections.map((section) => (
-                            <Link 
-                                key={section.id} 
-                                to={{
-                                    pathname: section.link,
-                                    state: { 
-                                        catId: section.catId,
-                                        page: 1,
-                                        catTitle: section.label 
-                                    }
-                                }}
-                                onMouseOver={this.handleMenu}
-                            >
-                                {section.label}
-                            </Link>
-                        ))
-                    }
-                />
-                <div className='megamenu'><h2>Megamenu</h2></div>
+                <nav className='mobile-menu'>
+                    <div className='lines'/>
+                    <ul>
+                        <li><a href=''>Home</a></li>
+                        <li><a href=''>About</a></li>
+                        <li><a href=''>Portfolio</a></li>
+                        <li><a href=''>News</a></li>
+                        <li><a href=''>Contact</a></li>
+                    </ul>
+                </nav>
             </div>
-
         )
     }
 }

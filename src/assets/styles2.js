@@ -113,43 +113,7 @@ const styles = theme => ({
         },
     },
     Navbar: {
-        position: 'relative',
-        textTransform: 'uppercase',
         background: '#dd0008',
-        width: '100%',
-
-        '& .mobile-menu': {
-            '& ul': {
-                margin: 0,
-                padding: 0,
-                listStyleType: 'none',
-                '& li': {
-                    display: 'inline-block',
-                    margin: 0,
-                    //padding: 0,
-                    '& a': {
-                        float: 'left',
-                        padding: '.625rem .5rem',
-                        [theme.breakpoints.down(800)]: {
-                            width: '100%',
-                        }
-                    },
-                    [theme.breakpoints.down(800)]: {
-                        marginBottom: 1,
-                    },
-                },
-                [theme.breakpoints.down(800)]: {
-                    position: 'static',
-                    display: 'none',
-                }
-            },
-            '& .show-menu': {
-                display: 'none',
-                [theme.breakpoints.down(800)]: {
-                    display: 'block',
-                },
-            },
-        },
         padding: '0',
         minHeight: 'auto',
         '& a': {
@@ -158,17 +122,35 @@ const styles = theme => ({
             textDecoration: 'none',
             padding: '.625rem .5rem',
         },
-        '& .lines': {
-            [theme.breakpoints.down(800)]: {
-                borderBottom: '15px double #f8f8f8',
-                borderTop: '5px solid #f8f8f8', 
-                content: '',
-                height: 5, 
-                width: 20,
-                paddingRight: 15,
-                float: 'right',
+        '& .large_menu': {
+            textAlign: 'left',
+            '& a': {
+                display: 'inline-block',
+                borderLeft: '1px solid #424242',
+                textTransform: 'uppercase',
             },
+            '& a:first-child': {
+                borderLeftColor: '#dd0008'
+            }
+        },
+        '& .small_menu': {
+            textAlign: 'right',
+            height: 42,
+            '& a': {
+                display: 'block',
+                background: '#dd0008',
+                textAlign: 'left',
+                float: 'left',
+                width: '100%'
+            },
+            '& .menu_button': {
+                padding: '.1rem 1.25rem 0',
+                color: '#fff',
+            },
+            '& .menu_button svg': {
+                fontSize:36,
 
+            }
         },
     },
     SubNav: {

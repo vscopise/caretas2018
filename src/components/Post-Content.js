@@ -9,16 +9,16 @@ import styles from '../assets/styles'
 const PostContent = (props) => (
     <div className={props.classes.PostContent}>
         <ScrollUpButton />
-        <p className='colgado'>
+        {props.post.colgado && (<p className='colgado'>
             {props.post.colgado}
-        </p>
+        </p>)}
         <h1 className='entry-title'
             dangerouslySetInnerHTML={{__html: props.post.title.rendered}} 
         />
-        <div 
+        {props.post.excerpt.rendered && (<div 
             className='entry-excerpt'
             dangerouslySetInnerHTML={{__html: props.post.excerpt.rendered}} 
-        />
+        />)}
         <div className=''>
             <img 
                 className='content-list-thumb' 
