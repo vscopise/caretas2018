@@ -124,6 +124,7 @@ const styles = theme => ({
                 margin: 0,
                 padding: 0,
                 listStyleType: 'none',
+                position: 'relative',
                 '& li': {
                     display: 'inline-block',
                     margin: 0,
@@ -141,11 +142,24 @@ const styles = theme => ({
                         marginBottom: 1,
                         width: '100%',
                     },
+                    
                 },
                 [theme.breakpoints.down(900)]: {
                     position: 'static',
                     display: 'none',
                 }
+            },
+            '& .submenu': {
+                position: 'absolute',
+                top: 44,
+                left: 0,
+                width: '100%',
+                display: 'none',
+                background: '#222',
+                color: '#fff',
+            },
+            '& .submenu-active': {
+                display: 'block',
             },
             '& ul.active': {
                 [theme.breakpoints.down(900)]: {
@@ -230,7 +244,10 @@ const styles = theme => ({
         '& .size-a': {
             height: 462,
             position: 'relative',
-            overflow: 'hidden',                                                                                                                                                         
+            overflow: 'hidden', 
+            [theme.breakpoints.down(800)]: {
+                height: 300,
+            },                                                                                                                                                    
             '& .content': {
                 width: '85%',
                 margin:'0 0 15px 20px'
@@ -239,15 +256,24 @@ const styles = theme => ({
                 color: '#fff',
                 fontSize: '2.7rem',
                 marginBottom: 0,
+                [theme.breakpoints.down(800)]: {
+                    fontSize: '2rem',
+                },
             },
             '& p': {
                 color: '#fff',
+                [theme.breakpoints.down(800)]: {
+                    display: 'none',
+                },
             },
         },
         '& .size-b': {
             height: 261,
             position: 'relative',
-            overflow: 'hidden',                                                                                                                                                         
+            overflow: 'hidden', 
+            [theme.breakpoints.down(800)]: {
+                height: 300,
+            },                                                                                                                                                      
             '& .content': {
                 width: '85%',
                 margin:'0 0 15px 11px'
@@ -255,6 +281,9 @@ const styles = theme => ({
             '& h2': {
                 color: '#fff',
                 fontSize: '1.8rem',
+                [theme.breakpoints.down(800)]: {
+                    fontSize: '2rem',
+                },
             }
         },
         '& .size-c': {
@@ -268,6 +297,9 @@ const styles = theme => ({
             '& h2': {
                 color: '#fff',
                 fontSize: '1.2rem',
+                [theme.breakpoints.down(800)]: {
+                    fontSize: '2rem',
+                },
             }
         },
     },

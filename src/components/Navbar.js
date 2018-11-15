@@ -82,13 +82,30 @@ class Navbar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            menuOpen: false
+            menuOpen: false,
+            subMenu: '',
           }
     }
 
     handleMenuOpen = () => {
         this.setState({
             menuOpen: !this.state.menuOpen
+        })
+    }
+
+    handleShowMenu = () => {
+//        alert('id')
+        this.setState({
+            showSubmenu: !this.state.showSubmenu,
+          //  subMenu: 'id'
+        })
+
+    }
+
+    handleHideMenu = () => {
+        //alert('leave')
+        this.setState({
+            showSubmenu: !this.state.showSubmenu,
         })
     }
 
@@ -100,7 +117,11 @@ class Navbar extends Component {
                     <ul className={this.state.menuOpen ? 'active' : null}>
                         {
                             sections.map((section) => (
-                                <li key={section.id}>
+                                <li 
+                                    key={section.id} 
+                                    onMouseLeave={this.handleHideMenu}
+                                    onMouseEnter={this.handleShowMenu}
+                                >
                                     <Link 
                                         key={section.id} 
                                         to={{
@@ -119,6 +140,9 @@ class Navbar extends Component {
                             ))
                         }
                     </ul>
+                    <div className={ !this.state.showSubmenu ? 'submenu' : 'submenu submenu-active' }> 
+                        subnav {this.state.submenu}
+                    </div>
                 </nav>
             </div>
         )
