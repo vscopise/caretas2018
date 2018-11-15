@@ -150,13 +150,7 @@ const styles = theme => ({
                 }
             },
             '& .submenu': {
-                position: 'absolute',
-                top: 44,
-                left: 0,
-                width: '100%',
-                display: 'none',
-                background: '#222',
-                color: '#fff',
+                
             },
             '& .submenu-active': {
                 display: 'block',
@@ -197,6 +191,15 @@ const styles = theme => ({
         [theme.breakpoints.down(800)]: {
             display: 'none',
         },
+    },
+    SubCategory: {
+        position: 'absolute',
+        top: 44,
+        left: 0,
+        width: '100%',
+        //display: 'none',
+        background: '#222',
+        color: '#fff',
     },
     SocialBar: {
         float: 'right',

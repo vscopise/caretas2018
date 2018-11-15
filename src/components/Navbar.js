@@ -1,4 +1,5 @@
 import React, { Component} from 'react'
+import axios from 'axios'
 import { 
     withStyles
 } from '@material-ui/core'
@@ -7,6 +8,9 @@ import ResponsiveMenu from 'react-responsive-navbar'
 
 import { Menu } from '@material-ui/icons'
 import styles from '../assets/styles'
+import SubCategory from './Sub-Category';
+
+const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
 const sections = [
     {
@@ -83,7 +87,9 @@ class Navbar extends Component {
         super(props)
         this.state = {
             menuOpen: false,
+            showSubmenu: false,
             subMenu: '',
+            categoryPosts: []
           }
     }
 
@@ -93,19 +99,37 @@ class Navbar extends Component {
         })
     }
 
-    handleShowMenu = () => {
-//        alert('id')
+    handleShowMenu = (catId) => {
         this.setState({
-            showSubmenu: !this.state.showSubmenu,
-          //  subMenu: 'id'
+            showSubmenu: true,
+            catId: catId
         })
+        if (this.state.categoryPosts.length===0 || 
+            undefined !== this.state.categoryPosts.find(
+                category => category.catId !== catId
+            )) {
+            this.getLastCategoryPosts(catId)
+        }
+    }
 
+    getLastCategoryPosts = (catId) => {
+        let categoryPosts = this.state.categoryPosts
+        axios
+        .get( urlCaretas + 'wp/v2/posts?per_page=4&categories' + catId )
+
+        .then(res => {
+            this.setState({ 
+                categoryPosts: [...categoryPosts, {catId: catId, data:res.data}],
+                isLoading: false 
+            })
+        })
+        .catch(error => console.log(error))
     }
 
     handleHideMenu = () => {
         //alert('leave')
         this.setState({
-            showSubmenu: !this.state.showSubmenu,
+            showSubmenu: false,
         })
     }
 
@@ -120,7 +144,7 @@ class Navbar extends Component {
                                 <li 
                                     key={section.id} 
                                     onMouseLeave={this.handleHideMenu}
-                                    onMouseEnter={this.handleShowMenu}
+                                    onMouseEnter={() => this.handleShowMenu(section.catId)}
                                 >
                                     <Link 
                                         key={section.id} 
@@ -140,9 +164,14 @@ class Navbar extends Component {
                             ))
                         }
                     </ul>
-                    <div className={ !this.state.showSubmenu ? 'submenu' : 'submenu submenu-active' }> 
-                        subnav {this.state.submenu}
-                    </div>
+                    {
+                        this.state.showSubmenu && 
+                        <SubCategory 
+                            posts={this.state.categoryPosts.find(
+                                category => category.catId !== this.state.catId
+                            )}
+                        />
+                    }
                 </nav>
             </div>
         )
