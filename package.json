@@ -10,6 +10,7 @@
     "moment-timezone": "^0.5.23",
     "react": "^16.6.0",
     "react-announcement-ticker": "^1.0.1",
+    "react-content-loader": "^3.2.0",
     "react-dom": "^16.6.0",
     "react-icons": "^3.2.2",
     "react-mega-menu": "^1.0.1",

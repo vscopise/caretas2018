@@ -179,6 +179,16 @@ const styles = theme => ({
             textDecoration: 'none',
             padding: '.625rem .5rem',
         },
+        '& .sub-navbar': {
+            background: '#222',
+            color: '#fff',
+            position: 'absolute',
+            top: 44,
+            left: 0,
+            width: '100%',
+            padding: 10,
+            zIndex: 99,
+        },
     },
     SubNav: {
         float: 'left',
@@ -193,13 +203,25 @@ const styles = theme => ({
         },
     },
     SubCategory: {
-        position: 'absolute',
-        top: 44,
-        left: 0,
-        width: '100%',
+        //position: 'absolute',
+        //top: 44,
+        //left: 0,
+        //width: '100%',
         //display: 'none',
-        background: '#222',
-        color: '#fff',
+        //background: '#222',
+        //color: '#fff',
+        '& h3.cat-title': {
+            color: '#fff',
+            textTransform: 'none',
+            size: '1rem'
+        },
+        '& .image': {
+            width: '100%',
+            height: 150,
+            backgroundSize: 'cover',
+            marginBottom: 5,
+            backgroundPosition: 'center',
+        }
     },
     SocialBar: {
         float: 'right',
