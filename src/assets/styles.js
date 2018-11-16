@@ -133,16 +133,26 @@ const styles = theme => ({
                     },
                     '& a': {
                         float: 'left',
+                        width: '100%',
                         padding: '.625rem .5rem',
-                        [theme.breakpoints.down(900)]: {
-                            width: '100%',
-                        }
+                      //  [theme.breakpoints.down(900)]: {
+                      //      width: '100%',
+                      //  }
                     },
                     [theme.breakpoints.down(900)]: {
                         marginBottom: 1,
                         width: '100%',
                     },
                     
+                },
+                '& li .sub-navbar': {
+                    display: 'none',
+                },
+                '& li:hover .sub-navbar':{
+                    display: 'block',
+                    [theme.breakpoints.down(800)]: {
+                        display: 'none',
+                    },
                 },
                 [theme.breakpoints.down(900)]: {
                     position: 'static',
@@ -188,6 +198,9 @@ const styles = theme => ({
             width: '100%',
             padding: 10,
             zIndex: 99,
+            [theme.breakpoints.down(800)]: {
+                display: 'none',
+            },
         },
     },
     SubNav: {
@@ -206,7 +219,7 @@ const styles = theme => ({
         //position: 'absolute',
         //top: 44,
         //left: 0,
-        //width: '100%',
+//        width: '100%',
         //display: 'none',
         //background: '#222',
         //color: '#fff',
@@ -221,7 +234,15 @@ const styles = theme => ({
             backgroundSize: 'cover',
             marginBottom: 5,
             backgroundPosition: 'center',
-        }
+        },
+        [theme.breakpoints.down(800)]: {
+            display: 'none',
+        },
+    },
+    LoadingPostCategories: {
+        [theme.breakpoints.down(800)]: {
+            display: 'none',
+        },
     },
     SocialBar: {
         float: 'right',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+//import axios from 'axios'
 
 import Loading from './Loading'
 import PostContent from './Post-Content'
@@ -7,7 +7,7 @@ import Sidebar from './Sidebar'
 
 import { Grid } from '@material-ui/core'
 
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
+//const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
 class Post extends Component {
     constructor(props) {

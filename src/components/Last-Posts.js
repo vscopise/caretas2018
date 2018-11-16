@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import '../assets/ticker-styles.css'
 
 
-import { 
+/*import { 
     Grid,
     withStyles
-} from '@material-ui/core'
+} from '@material-ui/core'*/
 
   
 

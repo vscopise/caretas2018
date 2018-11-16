@@ -16,7 +16,7 @@ const Editorial = ( props ) => (
                 state: {postId: props.posts[0].id, post: props.posts[0]}}
             }
         >
-            <img src={props.posts[0].image_url[2]} />
+            <img src={props.posts[0].image_url[2]} alt={props.posts[0].title.rendered} />
             <h3
                 dangerouslySetInnerHTML={{__html: props.posts[0].title.rendered}} 
             />

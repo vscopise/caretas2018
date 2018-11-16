@@ -4,7 +4,7 @@ import {
     withStyles
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-import ResponsiveMenu from 'react-responsive-navbar'
+//import ResponsiveMenu from 'react-responsive-navbar'
 
 
 import { Menu } from '@material-ui/icons'
@@ -12,15 +12,8 @@ import styles from '../assets/styles'
 import SubCategory from './Sub-Category'
 import LoadingPostCategories from './Loading-Post-Categories'
 
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
 const sections = [
-    {
-        id: 1,
-        catId: null,
-        link: '/',
-        label: 'Inicio'
-    },
     {
         id: 2,
         catId: 7,
@@ -69,19 +62,9 @@ const sections = [
         link: '/categoria/empresariales',
         label: 'Empresariales'
     },
-    {
-        id: 10,
-        catId: null,
-        link: '/suscripciones',
-        label: 'Suscripciones'
-    },
-    {
-        id: 11,
-        catId: null,
-        link: '/contacto',
-        label: 'Contacto'
-    },
 ]
+
+const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
 class Navbar extends Component {
 
@@ -89,10 +72,10 @@ class Navbar extends Component {
         super(props)
         this.state = {
             menuOpen: false,
-            showSubmenu: false,
-            subMenu: '',
+            //showSubmenu: false,
+            //subMenu: '',
             categoryPosts: [],
-            isLoading: false
+            //isLoading: false
           }
     }
 
@@ -102,9 +85,8 @@ class Navbar extends Component {
         })
     }
 
-    handleShowMenu = (catId) => {
+    handleShowSubMenu = (catId) => {
         this.setState({
-            showSubmenu: true,
             catId: catId
         })
         if ( !this.state.categoryPosts.find (
@@ -115,23 +97,15 @@ class Navbar extends Component {
 
     getLastCategoryPosts = (catId) => {
         let categoryPosts = this.state.categoryPosts
-        this.setState({isLoading: true})
+        //this.setState({isLoading: true})
         axios
         .get( urlCaretas + 'wp/v2/posts?per_page=4&categories=' + catId )
-
         .then(res => {
             this.setState({ 
                 categoryPosts: [...categoryPosts, {catId: catId, data:res.data}],
-                isLoading: false 
             })
         })
         .catch(error => console.log(error))
-    }
-
-    handleHideMenu = () => {
-        this.setState({
-            showSubmenu: false,
-        })
     }
 
     render() {
@@ -140,13 +114,16 @@ class Navbar extends Component {
                 <nav className='mobile-menu'>
                     <Menu className='show-menu' onClick={this.handleMenuOpen}/>
                     <ul className={this.state.menuOpen ? 'active' : null}>
+                        <li>
+                            <Link to={{
+                                pathname: '/',
+                            }}>
+                                Inicio
+                            </Link>
+                        </li>
                         {
                             sections.map((section) => (
-                                <li 
-                                    key={section.id} 
-                                    onMouseLeave={this.handleHideMenu}
-                                    onMouseEnter={() => this.handleShowMenu(section.catId)}
-                                >
+                                <li key={section.id} >
                                     <Link 
                                         key={section.id} 
                                         to={{
@@ -158,34 +135,42 @@ class Navbar extends Component {
                                             }
                                         }}
                                         onClick={this.handleMenuOpen}
+                                        onMouseEnter={() => this.handleShowSubMenu(section.catId)}
                                     >
-                                    {section.label}
-                                </Link>
+                                        {section.label}
+                                    </Link>
+                                    <div className='sub-navbar'>
+                                        {
+                                            ( !this.state.categoryPosts.find (
+                                                    category => category.catId === section.catId )
+                                            ) ?
+                                            <LoadingPostCategories/> :
+                                            <SubCategory 
+                                                posts = { this.state.categoryPosts.find(
+                                                    category => category.catId === section.catId
+                                                ).data }
+                                                catId = {section.id}
+                                            />
+                                        }
+                                    </div> 
                                 </li>
                             ))
                         }
+                        <li>
+                            <Link to={{
+                                pathname: '/',
+                            }}>
+                                Suscripciones
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={{
+                                pathname: '/',
+                            }}>
+                                Contacto
+                            </Link>
+                        </li>
                     </ul>
-                    {
-                        this.state.showSubmenu &&
-                        <div className='sub-navbar'>
-                            {
-                                !this.state.isLoading &&
-                                <SubCategory 
-                                    posts={
-                                        this.state.categoryPosts.find(
-                                            category => category.catId === this.state.catId
-                                        ).data
-                                    }
-                                    catId = {this.state.catId}
-                                />
-
-                            }
-                            {
-                                this.state.isLoading &&
-                                <LoadingPostCategories/>
-                            }
-                        </div> 
-                    }
                 </nav>
             </div>
         )

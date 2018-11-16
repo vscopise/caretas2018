@@ -11,7 +11,10 @@ const PreviewPost = ( props ) => {
         return  (
             <div className={props.classes.PreviewPost}>
                 <Link 
-                    to={{pathname: '/' + props.post.slug, state: {postId: props.post.id, post: props.post}}}
+                    to={{
+                        pathname: '/' + props.post.slug, 
+                        state: {postId: props.post.id, post: props.post}
+                    }}
                 >
                 {
                     (props.post.image_url) &&
@@ -54,7 +57,9 @@ const PreviewPost = ( props ) => {
         return (
             <div className={props.classes.PreviewPost}>
                 <Link 
-                    to={{pathname: '/' + props.post.slug, state: {postId: props.post.id, post: props.post}}}
+                    to={{
+                        pathname: '/' + props.post.slug, 
+                        state: {postId: props.post.id, post: props.post}}}
                 >
                     <Grid 
                         container spacing={24} 
