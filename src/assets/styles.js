@@ -545,6 +545,13 @@ const styles = theme => ({
             }
         }
     },
+    SearchPosts: {
+        background: '#efefef',
+        padding: '5%',
+        '& .search': {
+            background: '#fff',
+        }
+    },
 })
 
 export default styles
