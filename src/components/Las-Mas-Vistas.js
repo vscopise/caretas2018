@@ -7,69 +7,51 @@ import Sidebar from './Sidebar'
 
 import { Link } from 'react-router-dom'
 
-//const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
 import { 
+    Grid,
     TextField,
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'
-const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
+const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
 
 
-class SearchPosts extends Component {
+class LasMasVistas extends Component {
     constructor(props) {
         super(props)
         this.state = {
             results: {},
-            isLoading: false,
-            hasResults: false,
+            categories: {},
+            isLoading: true,
         }
     }
 
     componentDidMount() {
         
-    }
-
-    handleChange = (e) => {
-        e.preventDefault()
-        let val = e.target.value
-        if ( e.target.value.length > 4 ){
-            this.setState({
-                isLoading: true,
-                hasResults: false
-            })
-
-            axios
-            .get( url + 'posts/?search=' + e.target.value )
-            .then(res => {
+        axios
+        .get( urlCaretas + 'posts/?views=' )
+        .then(res => {
             this.setState({ 
                 results: res.data,
                 isLoading: false,
-                hasResults: true, 
             })
         })
-
-        }
     }
+
+    
 
     render() {
         return (
-            <div className={this.props.classes.SearchPosts}>
-                <TextField 
-                    name='search'
-                    label='Buscar'
-                    className='search'
-                    fullWidth
-                    onChange={this.handleChange}
-
-                    variant='outlined'
-                />
+            <div className={this.props.classes.LasMasVistas}>
+                <h4 className='widget-title'>
+                    <span>Las más vistas</span>
+                </h4>
                 {
-                    this.state.hasResults &&
-                    <div className='result-items'>
+                    !this.state.isLoading &&
+                    <div className='result'>
                     {
-                        this.state.results.map(post => (
+                        this.state.results.map((post, index) => (
                             <div className='result-item' key={post.id}>
                                 <h4>
                                     <Link 
@@ -78,12 +60,13 @@ class SearchPosts extends Component {
                                             state: {postId: post.id, post: post}
                                         }}
                                     >
-                                        {post.title.rendered}
+                                        {++index}. {post.title.rendered}
                                     </Link>
                                 </h4>
                             </div>
                         ))
                     }
+
                     </div>
                 }
                 {
@@ -97,4 +80,4 @@ class SearchPosts extends Component {
     }
 }
 
-export default withStyles(styles)(SearchPosts)
+export default withStyles(styles)(LasMasVistas)

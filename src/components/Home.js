@@ -25,7 +25,10 @@ const Home = ( props ) => (
                 <h2>izquierda</h2>
             </Grid>
             <Grid item lg={4} sm={12}>
-                <SidebarHome/>
+                <SidebarHome 
+                    categorias={props.categorias}
+                    users={props.users}
+                />
             </Grid>
         </Grid>
         <h2>home</h2>

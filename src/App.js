@@ -30,15 +30,17 @@ class App extends Component {
     this.state = {
       date: new Date(),
       categories: [],
+      users: [],
       isLoading: true
     }
-  }
+}
 
-  componentDidMount() {
+componentDidMount() {
     this.fetch_categorias()
-  }
+    this.fetch_users()
+}
 
-  fetch_categorias = () => {
+fetch_categorias = () => {
     axios
         .get( urlCaretas + 'wp/v2/home/' )
 
@@ -50,6 +52,17 @@ class App extends Component {
             destacadas: res.data.destacadas,
             editorial: res.data.editorial,
             isLoading: false 
+        })
+    })
+    .catch(error => console.log(error))
+}
+
+fetch_users = () => {
+    axios
+        .get( urlCaretas + 'wp/v2/users?per_page=99' )
+        .then(res => {
+        this.setState({ 
+            users: res.data,
         })
     })
     .catch(error => console.log(error))
@@ -73,6 +86,8 @@ class App extends Component {
                   cabezal={this.state.cabezal} 
                   destacadas={this.state.destacadas} 
                   editorial={this.state.editorial} 
+                  categorias={this.state.categories}
+                  users={this.state.users}
                 />}
               />
               <Route 

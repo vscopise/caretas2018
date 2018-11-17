@@ -60,7 +60,22 @@ const styles = theme => ({
             fontSize: '.75rem',
             fontWeight: '700',
             textTransform: 'uppercase',
-        }
+        },
+        '& a': {
+            color: '#1f1e1e',
+        },
+        '& a:hover': {
+            color: '#d00',
+        },
+        '& .image img': {
+            maxWidth: '100%',
+        },
+        '& .result-item': {
+                marginBottom: 10,
+                paddingBottom: 10,
+                borderBottom: '1px dotted #cdcdcd',
+        },
+        
     },
     HeaderLogo: {
         padding: '20px 0',
@@ -135,6 +150,7 @@ const styles = theme => ({
                         float: 'left',
                         width: '100%',
                         padding: '.625rem .5rem',
+                        color: '#fff',
                       //  [theme.breakpoints.down(900)]: {
                       //      width: '100%',
                       //  }
@@ -303,7 +319,7 @@ const styles = theme => ({
                 fontSize: '2.7rem',
                 marginBottom: 0,
                 [theme.breakpoints.down(800)]: {
-                    fontSize: '2rem',
+                    fontSize: '1.5rem',
                 },
             },
             '& p': {
@@ -328,7 +344,7 @@ const styles = theme => ({
                 color: '#fff',
                 fontSize: '1.8rem',
                 [theme.breakpoints.down(800)]: {
-                    fontSize: '2rem',
+                    fontSize: '1.5rem',
                 },
             }
         },
@@ -344,7 +360,7 @@ const styles = theme => ({
                 color: '#fff',
                 fontSize: '1.2rem',
                 [theme.breakpoints.down(800)]: {
-                    fontSize: '2rem',
+                    fontSize: '1.5rem',
                 },
             }
         },
@@ -546,12 +562,34 @@ const styles = theme => ({
         }
     },
     SearchPosts: {
+        marginBottom: '1.875rem',
         background: '#efefef',
         padding: '5%',
+        '& .result-items': {
+            paddingTop: 10,
+        },
         '& .search': {
             background: '#fff',
+        },
+        '& h4': {
+            margin: 0,
         }
+        
     },
+    ColumnasDestacadas: {
+        marginBottom: '1.875rem',
+        '& h4': {
+            margin: 0
+        },
+        '& p': {
+            margin: 0
+        },
+    },
+    LasMasVistas: {
+        '& h4': {
+            margin: 0,
+        },
+    }
 })
 
 export default styles
