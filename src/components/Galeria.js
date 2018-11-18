@@ -4,6 +4,11 @@ import axios from 'axios'
 import Loading from './Loading'
 import PostContent from './Post-Content'
 import Sidebar from './Sidebar'
+import {Carousel} from 'react-responsive-carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+import ReactDOM from 'react-dom'
+
 
 import { Link } from 'react-router-dom'
 
@@ -17,7 +22,7 @@ import styles from '../assets/styles'
 const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
 
 
-class LasMasVistas extends Component {
+class Galeria extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -28,58 +33,66 @@ class LasMasVistas extends Component {
     }
 
     componentDidMount() {
+        let catId = this.props.categorias.find(
+            category => category.name === this.props.category
+        ).term_id
         
         axios
-        .get( urlCaretas + 'posts/?views=' )
+        .get( urlCaretas + 'posts/?categories=' + catId )
         .then(res => {
             this.setState({ 
-                results: res.data,
+                posts: res.data,
                 isLoading: false,
             })
         })
     }
 
-    
+    onChange = () => {}
+    onClickItem = () => {}
+    onClickThumb = () => {}
+
 
     render() {
         return (
-            <div className={this.props.classes.LasMasVistas}>
+            <div className={this.props.classes.Galeria}>
                 <h4 className='widget-title'>
-                    <span>Las más vistas</span>
+                    <span>{this.props.category}</span>
                 </h4>
                 {
                     !this.state.isLoading &&
-                    <div className='result'>
+                    <Carousel
+                        showThumbs={false}
+                        autoPlay={true}
+                        infiniteLoop={true}
+                        transitionTime={1500}
+                    >
                     {
-                        this.state.results.map((post, index) => (
-                            <div className='result-item' key={post.id}>
+                        this.state.posts.map(post => (
+                            <div className='gallery-item' key={post.id}>
                                 <Link 
                                     to={{
                                         pathname: '/' + post.slug, 
                                         state: {postId: post.id, post: post}
                                     }}
                                 >
-                                    <h4
+                                    <img src={post.image_url[2]} alt='' />
+                                    <h2
                                         dangerouslySetInnerHTML={{
-                                            __html: ++index + '. ' + post.title.rendered
+                                            __html: post.title.rendered
                                         }} 
                                     />
                                 </Link>
                             </div>
                         ))
-                    }
-
-                    </div>
+                    }    
+                    </Carousel>
                 }
                 {
-                    this.state.isLoading &&
-                    <div className='result'>
-                        <Loading/>
-                    </div>
+                    this.state.isLoading && <Loading/>
                 }
             </div>
         )
     }
 }
 
-export default withStyles(styles)(LasMasVistas)
+export default withStyles(styles)(Galeria)

@@ -43,7 +43,6 @@ componentDidMount() {
 fetch_categorias = () => {
     axios
         .get( urlCaretas + 'wp/v2/home/' )
-
         .then(res => {
         this.setState({ 
             categories: res.data.categorias,

@@ -589,7 +589,66 @@ const styles = theme => ({
         '& h4': {
             margin: 0,
         },
-    }
+    },
+
+    GridPosts: {
+        '& h2': {
+            margin: 0,
+        },
+        '& .image-container': {
+            position: 'relative',
+            overflow: 'hidden',
+            marginBottom: 10,
+            '& .image': {
+                backgroundPosition: 'center',
+                height: '100%',
+                width: '100%',
+                backgroundSize: 'cover',
+            },
+        },
+        '& a:hover h2': {
+            color: '#d00',
+        },
+        '& .size-a': {
+            '& .image-container': {
+                height: 200,
+            },
+            '& h2': {
+                fontSize: '2rem',
+            },
+        },
+        '& .size-b': {
+            '& .image-container': {
+                height: 100,
+            },
+            '& h2': {
+                fontSize: '1rem',
+            },
+        },
+        '& hr': {
+            marginBottom: 20,
+            paddingBottom: 10,
+            border: 0,
+            borderBottom: '1px dotted #cdcdcd'
+        }
+    },
+    Galeria: {
+        '& .carousel':{
+            '& .slide': {
+                background: 'transparent',
+                '& h2': {
+                    textAlign: 'left',
+                    paddingBottom: 20,
+                }
+            },
+            '& .control-dots': {
+                '& .dot': {
+                    background: '#ccc',
+                }
+    
+            },
+        },
+    },
 })
 
 export default styles
