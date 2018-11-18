@@ -20,11 +20,28 @@ const PostContent = (props) => (
             dangerouslySetInnerHTML={{__html: props.post.excerpt.rendered}} 
         />)}
         <div className=''>
-            <img 
-                className='content-list-thumb' 
-                src={props.post.image_url[2]} 
-                alt={props.post.title.rendered} 
-            />
+            {
+                null !== props.post.video && (
+                    <div>
+                        <iframe 
+                            width="777" 
+                            height="437" 
+                            src={'https://www.youtube.com/embed/'+/[^/]*$/.exec(props.post.video)[0]}
+                            frameborder="0" 
+                            allowfullscreen
+                        />
+                    </div>
+                )
+            }
+            {
+                null === props.post.video && (
+                    <img 
+                        className='content-list-thumb' 
+                        src={props.post.image_url[2]} 
+                        alt={props.post.title.rendered} 
+                    />
+                )
+            }
         </div>
         <div className='entry-meta'>
             {

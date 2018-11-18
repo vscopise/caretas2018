@@ -592,6 +592,9 @@ const styles = theme => ({
     },
 
     GridPosts: {
+        borderBottom: '1px dotted #cdcdcd',
+        marginBottom: 20,
+        paddingBottom: 20,
         '& h2': {
             margin: 0,
         },
@@ -648,6 +651,53 @@ const styles = theme => ({
     
             },
         },
+    },
+    ZonePost: {
+        borderBottom: '1px dotted #cdcdcd',
+        marginBottom: 20,
+        paddingBottom: 20,
+        '& .image': {
+            width: '100%',
+            height: 200,
+            marginBottom: 5,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        },
+        '& h2': {
+            margin: 0,
+            fontSize: '2rem',
+        }
+    },
+    VideoPost: {
+        borderBottom: '1px dotted #cdcdcd',
+        marginBottom: 20,
+        paddingBottom: 20,
+        '& .container': {
+            position: 'relative',
+            '& svg': {
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                height: 70,
+                width: 70,
+                marginLeft: '-35px',
+                marginTop: '-65px',
+                color: '#d00',
+                background: 'rgba(0,0,0,.4)',
+                borderRadius: 35,
+            }
+        },
+        '& .image': {
+            width: '100%',
+            height: 200,
+            marginBottom: 5,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        },
+        '& h2': {
+            margin: 0,
+            fontSize: '2rem',
+        }
     },
 })
 

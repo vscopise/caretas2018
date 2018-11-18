@@ -11,6 +11,7 @@ import SidebarHome from './Sidebar-Home';
 import ZonePost from './Zone-Post';
 import GridPosts from './Grid-Posts';
 import Galeria from './Galeria';
+import VideoPost from './Video-Post';
 
 //const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
@@ -27,10 +28,11 @@ const Home = ( props ) => (
             <Grid item lg={8} sm={12}>
                 <Grid container spacing={24}>
                     <Grid item lg={6} sm={12}>
-                        <h2>Columna</h2>
+                        <ZonePost post={props.zona1}/>
+                        <VideoPost post={props.video}/>
                     </Grid>
                     <Grid item lg={6} sm={12}>
-                        <h2>Columna</h2>
+                        <ZonePost post={props.zona2}/>
                     </Grid>
                 </Grid>
                 <GridPosts

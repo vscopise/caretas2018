@@ -9,16 +9,18 @@ import {
     TextField,
     withStyles 
 } from '@material-ui/core'
+import { PlayArrowRounded } from '@material-ui/icons'
+
 import styles from '../assets/styles'
 const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
 
-const ZonePost = ( props ) => (
-    <div className={props.classes.ZonePost}>
+const VideoPost = ( props ) => (
+    <div className={props.classes.VideoPost}>
         <h4 className='widget-title'>
-            <span>Noticia destacada</span>
+            <span>Videos</span>
         </h4>
-        <div>
+        <div className={'container'}>
             <Link 
                 to={{
                     pathname: '/' + props.post[0].slug, 
@@ -29,6 +31,7 @@ const ZonePost = ( props ) => (
                     className='image' 
                         style={{backgroundImage: `url(${props.post[0].image_url[1]})`}}
                 />
+                <PlayArrowRounded/>
                 <h2
                     dangerouslySetInnerHTML={{__html: props.post[0].title.rendered}} 
                 />
@@ -37,4 +40,4 @@ const ZonePost = ( props ) => (
     </div>    
 )
 
-export default withStyles(styles)(ZonePost)
+export default withStyles(styles)(VideoPost)

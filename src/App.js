@@ -50,6 +50,9 @@ fetch_categorias = () => {
             cabezal: res.data.cabezal,
             destacadas: res.data.destacadas,
             editorial: res.data.editorial,
+            zona1: res.data.zona1,
+            zona2: res.data.zona2,
+            video: res.data.video,
             isLoading: false 
         })
     })
@@ -85,6 +88,9 @@ fetch_users = () => {
                   cabezal={this.state.cabezal} 
                   destacadas={this.state.destacadas} 
                   editorial={this.state.editorial} 
+                  zona1={this.state.zona1}
+                  zona2={this.state.zona2}
+                  video={this.state.video}
                   categorias={this.state.categories}
                   users={this.state.users}
                 />}
