@@ -160,13 +160,6 @@ class Navbar extends Component {
                             <Link to={{
                                 pathname: '/',
                             }}>
-                                Suscripciones
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={{
-                                pathname: '/',
-                            }}>
                                 Contacto
                             </Link>
                         </li>

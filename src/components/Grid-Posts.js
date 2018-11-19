@@ -54,14 +54,14 @@ class GridPosts extends Component {
                     <Grid container spacing={16}>
                         {
                             this.props.left &&
-                            <Grid item sm={6} xs={12}>
+                            <Grid item md={6} xs={12}>
                                 <GridPost 
                                     post={this.state.posts[0]} 
                                     size='size-a'
                                 />
                             </Grid>
                         }
-                        <Grid item sm={6} xs={12}>
+                        <Grid item md={6} xs={12}>
                             <Grid container spacing={16}>
                                 <Grid item sm={6} xs={12}>
                                     <GridPost 

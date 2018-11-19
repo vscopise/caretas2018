@@ -307,8 +307,9 @@ const styles = theme => ({
             height: 462,
             position: 'relative',
             overflow: 'hidden', 
-            [theme.breakpoints.down(800)]: {
+            [theme.breakpoints.down(960)]: {
                 height: 300,
+                marginBottom:10
             },                                                                                                                                                    
             '& .content': {
                 width: '85%',
@@ -333,8 +334,9 @@ const styles = theme => ({
             height: 261,
             position: 'relative',
             overflow: 'hidden', 
-            [theme.breakpoints.down(800)]: {
+            [theme.breakpoints.down(960)]: {
                 height: 300,
+                marginBottom:10
             },                                                                                                                                                      
             '& .content': {
                 width: '85%',
@@ -351,7 +353,11 @@ const styles = theme => ({
         '& .size-c': {
             height: 201,
             position: 'relative',
-            overflow: 'hidden',                                                                                                                                                         
+            overflow: 'hidden', 
+            [theme.breakpoints.down(960)]: {
+                height: 300,
+                marginBottom:10
+            },                                                                                                                                                        
             '& .content': {
                 width: '85%',
                 margin:'0 0 15px 11px'
@@ -378,10 +384,17 @@ const styles = theme => ({
             backgroundSize: 'cover',
             marginBottom: 5,
             backgroundPosition: 'center',
+            [theme.breakpoints.down(960)]: {
+                height: 300,
+            },
         },
         '& h4': {
             margin: 0,
-        }
+            [theme.breakpoints.down(960)]: {
+                fontSize: '1.5rem',
+            },
+        },
+        
     },
     Editorial: {
         padding: 10,
@@ -398,6 +411,10 @@ const styles = theme => ({
         '& p': {
             margin: 0,
             color: '#1f1e1e',
+        },
+        [theme.breakpoints.down(800)]: {
+            height: 300,
+            marginBottom: 10,
         },
     },
     Categoria: {
@@ -662,6 +679,9 @@ const styles = theme => ({
             marginBottom: 5,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            [theme.breakpoints.down(960)]: {
+                height: 300,
+            },
         },
         '& h2': {
             margin: 0,
@@ -693,6 +713,9 @@ const styles = theme => ({
             marginBottom: 5,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            [theme.breakpoints.down(960)]: {
+                height: 300,
+            },
         },
         '& h2': {
             margin: 0,

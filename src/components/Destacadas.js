@@ -8,7 +8,7 @@ import styles from '../assets/styles'
 const Destacadas = ( props ) => (
     <Grid container className={props.classes.Destacadas} spacing={8}>
         {props.posts.map(post => (
-            <Grid item lg={3} xs={12} key={post.id}>
+            <Grid item md={3} xs={12} key={post.id}>
                 <ItemDestacadas post={post}/>
             </Grid>
         ))}
