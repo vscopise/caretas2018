@@ -1,5 +1,7 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
+import { DFPSlotsProvider, AdSlot } from 'react-dfp'
+
 
 import HeaderLogo from './Header-Logo'
 
@@ -20,7 +22,14 @@ const Header = (props) => (
             />
         </Grid>
         <Grid item md={9} xs={12}>
-            <h2>9</h2>
+            <DFPSlotsProvider 
+                dfpNetworkId={'90767959'} 
+                adUnit={'banner_top_home'}>
+                <AdSlot 
+                    sizes={[ [900, 90], [728, 90]]} 
+                    shouldRefresh={ ()=> true }
+                />
+            </DFPSlotsProvider>
         </Grid>
     </Grid>
 )
