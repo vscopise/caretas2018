@@ -722,6 +722,21 @@ const styles = theme => ({
             fontSize: '2rem',
         }
     },
+    Header: {
+    },
+    Banner: {
+        textAlign: 'center',
+        '&::before': {
+            content: `'PUBLICIDAD'`,
+            fontFamily: 'arial,helvetica',
+            fontSize: 10,
+            color: '#aaa',
+            display: 'inherit',
+            lineHeight: '10px',
+            letterSpacing: 5,
+            marginBottom: 5,
+        },
+    }
 })
 
 export default styles

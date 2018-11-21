@@ -1,12 +1,13 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
-import { DFPSlotsProvider, AdSlot } from 'react-dfp'
-
-
+import { 
+    Grid, withStyles
+} from '@material-ui/core'
 import HeaderLogo from './Header-Logo'
+import Banner from './Banner'
+import styles from '../assets/styles'
 
-const Header = (props) => (
-    <Grid container spacing={24}>
+const Header = ( props ) => (
+    <Grid container spacing={24} className={props.classes.Header}>
         <Grid item md={3} xs={12}>
             <HeaderLogo 
                 date = {
@@ -22,16 +23,12 @@ const Header = (props) => (
             />
         </Grid>
         <Grid item md={9} xs={12}>
-            <DFPSlotsProvider 
+            <Banner
                 dfpNetworkId={'90767959'} 
-                adUnit={'banner_top_home'}>
-                <AdSlot 
-                    sizes={[ [900, 90], [728, 90]]} 
-                    shouldRefresh={ ()=> true }
-                />
-            </DFPSlotsProvider>
+                adUnit={'banner_top_home'}
+                sizes={[ [900, 90], [728, 90]]}
+            />
         </Grid>
     </Grid>
 )
-
-export default Header
+export default withStyles(styles)(Header)
