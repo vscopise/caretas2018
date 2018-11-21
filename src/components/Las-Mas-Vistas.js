@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import Loading from './Loading'
-import PostContent from './Post-Content'
-import Sidebar from './Sidebar'
 
 import { Link } from 'react-router-dom'
 
 
 import { 
-    Grid,
-    TextField,
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'

@@ -64,6 +64,7 @@ const Home = ( props ) => (
                 <SidebarHome 
                     categorias={props.categorias}
                     users={props.users}
+                    columnistas={props.columnistas}
                 />
             </Grid>
         </Grid>

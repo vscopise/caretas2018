@@ -29,6 +29,7 @@ const PostContent = (props) => (
                             src={'https://www.youtube.com/embed/'+/[^/]*$/.exec(props.post.video)[0]}
                             frameborder="0" 
                             allowfullscreen
+                            title={'video'}
                         />
                     </div>
                 )

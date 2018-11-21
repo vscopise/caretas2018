@@ -736,7 +736,20 @@ const styles = theme => ({
             letterSpacing: 5,
             marginBottom: 5,
         },
-    }
+    },
+    Columnistas: {
+        '& .columnista': {
+            textAlign: 'center',
+            '& .avatar': {
+                borderRadius: '50%',
+                width: '100%',
+                height: 'auto',
+            },
+            '& p': {
+                marginTop: 0,
+            }
+        },
+    },
 })
 
 export default styles

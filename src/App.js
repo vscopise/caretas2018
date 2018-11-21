@@ -15,6 +15,7 @@ import Header from './components/Header'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Categoria from './components/Categoria'
+import Author from './components/Author'
 import Loading from './components/Loading'
 import SubNav from './components/Sub-Nav'
 
@@ -36,11 +37,11 @@ class App extends Component {
 }
 
 componentDidMount() {
-    this.fetch_categorias()
+    this.fetch_home_data()
     this.fetch_users()
 }
 
-fetch_categorias = () => {
+fetch_home_data = () => {
     axios
         .get( urlCaretas + 'wp/v2/home/' )
         .then(res => {
@@ -53,6 +54,7 @@ fetch_categorias = () => {
             zona1: res.data.zona1,
             zona2: res.data.zona2,
             video: res.data.video,
+            columnistas: res.data.columnistas,
             isLoading: false 
         })
     })
@@ -93,11 +95,16 @@ fetch_users = () => {
                   video={this.state.video}
                   categorias={this.state.categories}
                   users={this.state.users}
+                  columnistas={this.state.columnistas}
                 />}
               />
               <Route 
                 path={process.env.PUBLIC_URL + '/categoria'} 
                 render={(props) => <Categoria {...props} categories={this.state.categories} />}
+              />
+              <Route 
+                path={process.env.PUBLIC_URL + '/author'} 
+                render={(props) => <Author {...props} categories={this.state.categories} />}
               />
               <Route 
                 path={"/:slug"} component={Post} 

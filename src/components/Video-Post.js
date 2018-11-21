@@ -1,19 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 
 import { Link } from 'react-router-dom'
 
 
 import { 
-    Grid,
-    TextField,
     withStyles 
 } from '@material-ui/core'
 import { PlayArrowRounded } from '@material-ui/icons'
 
 import styles from '../assets/styles'
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
-
 
 const VideoPost = ( props ) => (
     <div className={props.classes.VideoPost}>

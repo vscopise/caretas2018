@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import Loading from './Loading'
-import PostContent from './Post-Content'
-import Sidebar from './Sidebar'
 
 import { Link } from 'react-router-dom'
 
@@ -33,7 +31,6 @@ class SearchPosts extends Component {
 
     handleChange = (e) => {
         e.preventDefault()
-        let val = e.target.value
         if ( e.target.value.length > 4 ){
             this.setState({
                 isLoading: true,

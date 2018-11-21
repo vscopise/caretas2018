@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import bannerSusc from '../assets/banner-susc.jpg'
 import SearchPosts from './Search-Posts'
 import ColumnasDestacadas from './Columnas-Destacadas';
 import LasMasVistas from './Las-Mas-Vistas';
+import Columnistas from './Columnistas';
 
 class SidebarHome extends Component {
     render() {
@@ -15,6 +15,7 @@ class SidebarHome extends Component {
                     users={this.props.users}
                 />
                 <LasMasVistas/>
+                <Columnistas columnistas={this.props.columnistas}/>
             </div>
                 
         )

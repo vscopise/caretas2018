@@ -7,10 +7,6 @@ import styles from '../assets/styles'
 
 class Banner extends Component {
 
-    constructor(props){
-        super(props)
-    }
-
     componentDidMount() {
         window.setInterval(
             function refreshAds() { 
