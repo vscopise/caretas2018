@@ -13,29 +13,26 @@ import PreviewPost from './Preview-Post'
 
 import styles from '../assets/styles'
 
-class Author extends Component {
+class EdicionImpresa extends Component {
 
     constructor(props) {
         super(props)
 
         this.state = {
-            userId: null,
-            posts: [],
-            post: null,
+            revistas: [],
             isLoading: true
         } 
     }
 
-    fetch_posts = (userId, page=1) => {
+    fetch_revistas = (termId=8, page=1) => {
         const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         this.setState({ 
             isLoading: true 
         })
         axios
-            .get( url + 'posts/?author=' + userId + '&page=' + page )
+            .get( url + 'revistas/?productos=' + termId + '&page=' + page )
             .then(res => {
             this.setState({ 
-                posts: res.data,
                 headers: res.headers,
                 currentPage: page,
                 total: res.headers['x-wp-total'],
@@ -47,32 +44,29 @@ class Author extends Component {
     }
 
     componentDidMount(){
-        const { userId, userName, page } = this.props.location.state
-        this.setState({
-            userId: userId,
-            userName: userName,
-        })
-        this.fetch_posts(userId, page)
+        const { termId, page } = this.props.location.state
+        this.fetch_revistas(page)
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.location !== this.props.location) {
+            this.setState({post:null})
             const { termId, page } = nextProps.location.state
-            this.setState({
-                post:null
-            })
+            this.setState({catId: termId})
             this.fetch_posts(termId, page)
         }
     }
     
     render() {
         if ( ! this.state.isLoading ) {
-            const Title = this.state.userName
+            //const catTitle = this.props.location.state.catTitle
             return (
-                <Grid container spacing={24} className={this.props.classes.Author}>
+                <Grid container spacing={24} className={this.props.classes.EdicionImpresa}>
                     <ScrollUpButton />
                     <Grid item md={8} xs={12}>
-                        <h1 className='page-title'>Artículos de {Title}</h1>
+                        <h1 className='page-title'>
+                            {this.props.location.state.Title}
+                        </h1>
                         {
                             this.state.posts.map( (post, index) => (
                                 
@@ -85,10 +79,10 @@ class Author extends Component {
                             ))
                         }
                         {
-                            this.state.pages > 1 && 
+                            this.state.pages > 1 &&
                             <Pagination 
-                                termId={this.state.userId}
-                                title={this.state.userName}
+                                termId={this.state.catId}
+                                title={this.props.location.state.Title}
                                 total={this.state.total} 
                                 pages={this.state.pages} 
                                 currentPage={this.state.currentPage} 
@@ -103,4 +97,4 @@ class Author extends Component {
         }
     }
 }
-export default withStyles(styles)(Author)
+export default withStyles(styles)(EdicionImpresa)

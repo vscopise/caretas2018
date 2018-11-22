@@ -47,27 +47,30 @@ class Categoria extends Component {
     }
 
     componentDidMount(){
-        const { catId, page } = this.props.location.state
-        this.setState({catId: catId})
-        this.fetch_posts(catId, page)
+        const { termId, page } = this.props.location.state
+        this.setState({catId: termId})
+        this.fetch_posts(termId, page)
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.location !== this.props.location) {
             this.setState({post:null})
-            const { catId, page } = nextProps.location.state
-            this.fetch_posts(catId, page)
+            const { termId, page } = nextProps.location.state
+            this.setState({catId: termId})
+            this.fetch_posts(termId, page)
         }
     }
     
     render() {
         if ( ! this.state.isLoading ) {
-            const { catTitle } = this.props.location.state
+            //const catTitle = this.props.location.state.catTitle
             return (
                 <Grid container spacing={24} className={this.props.classes.Categoria}>
                     <ScrollUpButton />
                     <Grid item md={8} xs={12}>
-                        <h1 className='page-title'>{catTitle}</h1>
+                        <h1 className='page-title'>
+                            {this.props.location.state.Title}
+                        </h1>
                         {
                             this.state.posts.map( (post, index) => (
                                 
@@ -79,13 +82,16 @@ class Categoria extends Component {
                                 />
                             ))
                         }
-                        <Pagination 
-                            catId={this.state.catId}
-                            categories={this.props.categories}
-                            total={this.state.total} 
-                            pages={this.state.pages} 
-                            currentPage={this.state.currentPage} 
-                        />
+                        {
+                            this.state.pages > 1 &&
+                            <Pagination 
+                                termId={this.state.catId}
+                                title={this.props.location.state.Title}
+                                total={this.state.total} 
+                                pages={this.state.pages} 
+                                currentPage={this.state.currentPage} 
+                            />
+                        }
                     </Grid>
                     <Grid item md={4} xs={12}>Sidebar</Grid>
                 </Grid>

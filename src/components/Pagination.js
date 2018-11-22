@@ -6,9 +6,10 @@ import styles from '../assets/styles'
 const Pagination = (props) => {
     var items = [-1, 0, 1]
 
-    var catTitle = props.categories.find(
-        category => category.term_id === props.catId
-    ).name
+    //var Title = props.terms.find(
+    //    term => term.term_id === props.termId
+    //).name
+    var Title = props.title
 
     const currentPage = props.currentPage
 
@@ -18,9 +19,9 @@ const Pagination = (props) => {
             {( currentPage > 1 ) && (
                 <Link to={{
                     state: { 
-                        catId: props.catId,
+                        termId: props.termId,
                         page: currentPage - 1,
-                        catTitle: catTitle
+                        Title: props.title
                     }
                 }}
                 className='page-numbers'
@@ -35,9 +36,9 @@ const Pagination = (props) => {
                     <Link 
                         to={{
                             state: { 
-                                catId: props.catId,
+                                termId: props.termId,
                                 page: 2,
-                                catTitle: catTitle
+                                Title: props.title
                             }
                         }}
                         className='page-numbers'
@@ -48,9 +49,9 @@ const Pagination = (props) => {
             {( currentPage > 2 ) && (
                 <Link to={{
                     state: { 
-                        catId: props.catId,
+                        termId: props.termId,
                         page: 1,
-                        catTitle: catTitle
+                        Title: props.title
                     }
                 }}
                 className='page-numbers'
@@ -72,9 +73,9 @@ const Pagination = (props) => {
                         <Link 
                             to={{
                                 state: { 
-                                    catId: props.catId,
+                                    termId: props.termId,
                                     page: currentPage + i,
-                                    catTitle: catTitle
+                                    Title: props.title
                                 }
                             }}
                             key={currentPage + i}
@@ -90,9 +91,9 @@ const Pagination = (props) => {
             {( currentPage < props.pages - 1 ) && (
                 <Link to={{
                     state: { 
-                        catId: props.catId,
+                        termId: props.termId,
                         page: props.pages,
-                        catTitle: catTitle
+                        Title: props.title
                     }
                 }}
                 className='page-numbers'
@@ -104,9 +105,9 @@ const Pagination = (props) => {
                     <Link 
                         to={{
                             state: { 
-                                catId: props.catId,
+                                termId: props.termId,
                                 page: props.pages - 1,
-                                catTitle: catTitle
+                                Title: props.title
                             }
                         }}
                         className='page-numbers'
@@ -120,9 +121,9 @@ const Pagination = (props) => {
             {( currentPage < props.pages ) && (
                 <Link to={{
                     state: { 
-                        catId: props.catId,
+                        termId: props.termId,
                         page: currentPage + 1,
-                        catTitle: catTitle
+                        Title: props.title
                     }
                 }}
                 className='page-numbers'

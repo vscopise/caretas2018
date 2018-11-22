@@ -123,15 +123,15 @@ class Navbar extends Component {
                         </li>
                         {
                             sections.map((section) => (
-                                <li key={section.id} >
+                                <li key={section.catId} >
                                     <Link 
                                         key={section.id} 
                                         to={{
                                             pathname: section.link,
                                             state: { 
-                                                catId: section.catId,
+                                                termId: section.catId,
                                                 page: 1,
-                                                catTitle: section.label 
+                                                Title: section.label 
                                             }
                                         }}
                                         onClick={this.handleMenuOpen}

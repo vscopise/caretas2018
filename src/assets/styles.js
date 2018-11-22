@@ -418,6 +418,9 @@ const styles = theme => ({
         },
     },
     Categoria: {
+        
+    },
+    PreviewPost: {
         '& a': {
             textDecoration: 'none',
             color: '#1f1e1e',
@@ -428,9 +431,6 @@ const styles = theme => ({
         '& a:hover h3': {
             color: '#d00',
         },
-
-    },
-    PreviewPost: {
         borderBottom: '1px dotted #cdcdcd',
         marginBottom: 20,
     },
@@ -570,6 +570,9 @@ const styles = theme => ({
         '& .current-page': {
             background: '#d00',
             color: '#fff',
+        },
+        '& a': {
+            textDecoration: 'none',
         },
         '& a:hover': {
             background: '#ccdee8',
@@ -750,6 +753,11 @@ const styles = theme => ({
             }
         },
     },
+    TapaRevista: {
+        '& img': {
+            width: '100%;',
+        }
+    }
 })
 
 export default styles

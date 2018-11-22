@@ -12,11 +12,11 @@ import ZonePost from './Zone-Post';
 import GridPosts from './Grid-Posts';
 import Galeria from './Galeria';
 import VideoPost from './Video-Post';
-
-//const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
+import { TinyButton as ScrollUpButton} from 'react-scroll-up-button'
 
 const Home = ( props ) => (
     <div className={props.classes.Home}>
+        <ScrollUpButton />
         <CabezalHome 
             posts={props.cabezal}
         />
@@ -65,6 +65,7 @@ const Home = ( props ) => (
                     categorias={props.categorias}
                     users={props.users}
                     columnistas={props.columnistas}
+                    tapa={props.tapa}
                 />
             </Grid>
         </Grid>

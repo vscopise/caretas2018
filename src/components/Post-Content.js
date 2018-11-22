@@ -28,7 +28,7 @@ const PostContent = (props) => (
                             height="437" 
                             src={'https://www.youtube.com/embed/'+/[^/]*$/.exec(props.post.video)[0]}
                             frameborder="0" 
-                            allowfullscreen
+                            allowFullScreen
                             title={'video'}
                         />
                     </div>

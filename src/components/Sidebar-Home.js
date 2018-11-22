@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 
 import SearchPosts from './Search-Posts'
-import ColumnasDestacadas from './Columnas-Destacadas';
-import LasMasVistas from './Las-Mas-Vistas';
-import Columnistas from './Columnistas';
+import ColumnasDestacadas from './Columnas-Destacadas'
+import LasMasVistas from './Las-Mas-Vistas'
+import Columnistas from './Columnistas'
+import TapaRevista from './Tapa-Revista'
 
 class SidebarHome extends Component {
     render() {
@@ -16,6 +17,7 @@ class SidebarHome extends Component {
                 />
                 <LasMasVistas/>
                 <Columnistas columnistas={this.props.columnistas}/>
+                <TapaRevista tapa={this.props.tapa}/>
             </div>
                 
         )

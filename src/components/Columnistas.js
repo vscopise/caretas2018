@@ -22,7 +22,12 @@ const Columnistas = ( props ) => (
                         <Link
                             to = {
                                 {pathname: '/author/' + columnista.user_login, 
-                                state: {userId: columnista.id, userLogin: columnista.user_login}}
+                                    state: {
+                                        userId: columnista.id, 
+                                        userLogin: columnista.user_login,
+                                        userName: columnista.name,
+                                    }
+                                }
                             }  
                         >
                             <div 
