@@ -33,7 +33,7 @@ class EdicionImpresa extends Component {
             isLoading: true 
         })
         axios
-            .get( url + 'revistas/?per_pages=20&productos=' + termId + '&page=' + page )
+            .get( url + 'revistas/?per_page=20&productos=' + termId + '&page=' + page )
             .then( res => {
             this.setState({ 
                 revistas:res.data,
@@ -53,10 +53,10 @@ class EdicionImpresa extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.location !== this.props.location) {
-            this.setState({post:null})
+            //this.setState({revistas:[]})
             const { termId, page } = nextProps.location.state
             this.setState({catId: termId})
-            this.fetch_posts(termId, page)
+            this.fetch_revistas(2, page)
         }
     }
     
@@ -72,7 +72,7 @@ class EdicionImpresa extends Component {
                         <Grid container spacing={24}>
                             {
                                 this.state.revistas.map( (revista, index) => (
-                                    <Grid item md={3} xs={12}>
+                                    <Grid item md={3} xs={12} key={revista.id}>
                                         <Link 
                                             to={{
                                                 pathname: '/edicion-impresa/?ed=' + revista.id, 
