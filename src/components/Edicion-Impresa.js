@@ -1,4 +1,7 @@
 import React, { Component} from 'react'
+
+import { Link } from 'react-router-dom'
+
 import axios from 'axios'
 import { TinyButton as ScrollUpButton} from 'react-scroll-up-button'
 import Pagination from './Pagination'
@@ -24,16 +27,16 @@ class EdicionImpresa extends Component {
         } 
     }
 
-    fetch_revistas = (termId=8, page=1) => {
+    fetch_revistas = (termId=2, page=1) => {
         const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         this.setState({ 
             isLoading: true 
         })
         axios
-            .get( url + 'revistas/?productos=' + termId + '&page=' + page )
-            .then(res => {
+            .get( url + 'revistas/?per_pages=20&productos=' + termId + '&page=' + page )
+            .then( res => {
             this.setState({ 
-                headers: res.headers,
+                revistas:res.data,
                 currentPage: page,
                 total: res.headers['x-wp-total'],
                 pages: res.headers['x-wp-totalpages'],
@@ -44,8 +47,8 @@ class EdicionImpresa extends Component {
     }
 
     componentDidMount(){
-        const { termId, page } = this.props.location.state
-        this.fetch_revistas(page)
+        //const { termId, page } = this.props.location.state
+        this.fetch_revistas()
     }
 
     componentWillReceiveProps(nextProps) {
@@ -64,25 +67,33 @@ class EdicionImpresa extends Component {
                 <Grid container spacing={24} className={this.props.classes.EdicionImpresa}>
                     <ScrollUpButton />
                     <Grid item md={8} xs={12}>
-                        <h1 className='page-title'>
-                            {this.props.location.state.Title}
-                        </h1>
+                        <h1>Edición Impresa</h1>
+                        <p>Haga click en la imagen para ver la edición completa.</p>
+                        <Grid container spacing={24}>
+                            {
+                                this.state.revistas.map( (revista, index) => (
+                                    <Grid item md={3} xs={12}>
+                                        <Link 
+                                            to={{
+                                                pathname: '/edicion-impresa/?ed=' + revista.id, 
+                                            }}
+                                        >
+                                            {
+                                                null !==revista.image_url &&
+                                                <img src={revista.image_url[2]} />
+                                            }
+                                            <h3>{revista.title.rendered}</h3>                       
+                                        </Link>
+                                    </Grid>
+                                ))
+                            }
+                        </Grid>
+                            
                         {
-                            this.state.posts.map( (post, index) => (
-                                
-                                <PreviewPost 
-                                    post={post} 
-                                    key={post.id} 
-                                    categories={this.props.categories}
-                                    size={index===0 ? 'large' : 'medium'} 
-                                />
-                            ))
-                        }
-                        {
-                            this.state.pages > 1 &&
+                            this.state.pages > 1 && 
                             <Pagination 
-                                termId={this.state.catId}
-                                title={this.props.location.state.Title}
+                                termId={8}
+                                title={'Edición impresa'}
                                 total={this.state.total} 
                                 pages={this.state.pages} 
                                 currentPage={this.state.currentPage} 

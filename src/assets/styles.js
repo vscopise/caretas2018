@@ -757,6 +757,20 @@ const styles = theme => ({
         '& img': {
             width: '100%;',
         }
+    },
+    EdicionImpresa: {
+        '& img': {
+            width: '100%',
+        },
+        '& a': {
+            textDecoration: 'none',
+        },
+        '& a:hover h3': {
+            color: '#d00',
+        },
+        '& h3': {
+            marginTop: 0,
+        },
     }
 })
 
