@@ -12,8 +12,7 @@ import {
 } from '@material-ui/core'
 
 import Loading from './Loading'
-import PreviewPost from './Preview-Post'
-
+import LazyLoad from 'react-lazy-load'
 import styles from '../assets/styles'
 
 class EdicionImpresa extends Component {
@@ -80,7 +79,9 @@ class EdicionImpresa extends Component {
                                         >
                                             {
                                                 null !==revista.image_url &&
-                                                <img src={revista.image_url[2]} />
+                                                <LazyLoad>
+                                                    <img src={revista.image_url[1]} />
+                                                </LazyLoad>
                                             }
                                             <h3>{revista.title.rendered}</h3>                       
                                         </Link>
