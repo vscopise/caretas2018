@@ -22,7 +22,13 @@ const GridPost = ( props ) => (
             {
                 (props.size==='size-a') &&
                 <div 
-                    dangerouslySetInnerHTML={{__html: props.post.excerpt.rendered}} 
+                    dangerouslySetInnerHTML={
+                        {__html: `${
+                            props.post.excerpt.rendered.split(' ').length>20 ? 
+                            props.post.excerpt.rendered.replace(/(([^\s]+\s\s*){20})(.*)/,'$1…') : 
+                            props.post.excerpt.rendered
+                        }`}
+                    } 
                 /> 
             }
        </Link>
