@@ -3,7 +3,7 @@ import {
     Grid, withStyles
 } from '@material-ui/core'
 import HeaderLogo from './Header-Logo'
-import Banner from './Banner'
+import DfpBanner from './Dfp-Banner'
 import styles from '../assets/styles'
 
 const Header = ( props ) => (
@@ -23,7 +23,7 @@ const Header = ( props ) => (
             />
         </Grid>
         <Grid item md={9} xs={12}>
-            <Banner
+            <DfpBanner
                 dfpNetworkId={'90767959'} 
                 adUnit={'banner_top_home'}
                 sizes={[ [900, 90], [728, 90]]}

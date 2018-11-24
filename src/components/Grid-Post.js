@@ -21,7 +21,7 @@ const GridPost = ( props ) => (
             />
             {
                 (props.size==='size-a') &&
-                <p 
+                <div 
                     dangerouslySetInnerHTML={{__html: props.post.excerpt.rendered}} 
                 /> 
             }

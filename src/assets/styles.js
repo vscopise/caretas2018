@@ -75,23 +75,6 @@ const styles = theme => ({
                 paddingBottom: 10,
                 borderBottom: '1px dotted #cdcdcd',
         },
-        
-    },
-    HeaderLogo: {
-        padding: '20px 0',
-        textAlign: 'center',
-        '& img': {
-            maxWidth: '100%',
-        },
-        '& p': {
-          fontFamily: 'Oswald',
-          color: '#a0a0a0',
-          fontSize: '0.9rem',
-          marginBottom: 0,
-        },
-    },
-
-    Home: {
         '& h4.widget-title': {
             fontSize: '.875rem',
             color: '#fff',
@@ -108,14 +91,12 @@ const styles = theme => ({
         '& a': {
             textDecoration: 'none',
         },
+        
         '& a:hover h3': {
             color: '#d00',
         },
         '& a:hover h4': {
             color: '#d00',
-        },
-        '& a:hover p': {
-           // color: '#d00',
         },
         '& h2': {
             lineHeight: '1.3',
@@ -126,6 +107,30 @@ const styles = theme => ({
         '& h4': {
             lineHeight: '1.3',
         },
+        '& a p': {
+            color: '#1f1e1e',
+        },
+        '& a:hover p': {
+            color: '#d00',
+        },
+    },
+    HeaderLogo: {
+        padding: '20px 0',
+        textAlign: 'center',
+        '& img': {
+            maxWidth: '100%',
+        },
+        '& p': {
+          fontFamily: 'Oswald',
+          color: '#a0a0a0',
+          fontSize: '0.9rem',
+          marginBottom: 0,
+        },
+    },
+
+    Home: {
+        
+        
     },
     Navbar: {
         position: 'relative',
@@ -232,17 +237,13 @@ const styles = theme => ({
         },
     },
     SubCategory: {
-        //position: 'absolute',
-        //top: 44,
-        //left: 0,
-//        width: '100%',
-        //display: 'none',
-        //background: '#222',
-        //color: '#fff',
         '& h3.cat-title': {
             color: '#fff',
             textTransform: 'none',
             size: '1rem'
+        },
+        '& a:hover h3.cat-title': {
+            color: '#fff',
         },
         '& .image': {
             width: '100%',
@@ -255,6 +256,9 @@ const styles = theme => ({
             display: 'none',
         },
     },
+    Loading: {
+        textAlign: 'center',
+    },  
     LoadingPostCategories: {
         [theme.breakpoints.down(800)]: {
             display: 'none',
@@ -323,12 +327,15 @@ const styles = theme => ({
                     fontSize: '1.5rem',
                 },
             },
-            '& p': {
+            '& .excerpt': {
                 color: '#fff',
                 [theme.breakpoints.down(800)]: {
                     display: 'none',
                 },
             },
+            '& a:hover .excerpt': {
+                color: '#fff',
+            }
         },
         '& .size-b': {
             height: 261,
@@ -435,6 +442,7 @@ const styles = theme => ({
         marginBottom: 20,
     },
     PostContent: {
+        paddingTop: 20,
         '& .colgado': {
             fontFamily: 'Oswald',
             color: '#6a6a6a',
@@ -587,6 +595,9 @@ const styles = theme => ({
         padding: '5%',
         '& .result-items': {
             paddingTop: 10,
+            '& a': {
+                textDecoration: 'none',
+            },
         },
         '& .search': {
             background: '#fff',
@@ -609,12 +620,14 @@ const styles = theme => ({
         '& h4': {
             margin: 0,
         },
+        marginBottom: '1.875rem',
     },
 
     GridPosts: {
         borderBottom: '1px dotted #cdcdcd',
         marginBottom: 20,
         paddingBottom: 20,
+        
         '& h2': {
             margin: 0,
         },
@@ -729,6 +742,7 @@ const styles = theme => ({
     },
     Banner: {
         textAlign: 'center',
+        marginBottom: 20,
         '&::before': {
             content: `'PUBLICIDAD'`,
             fontFamily: 'arial,helvetica',
@@ -741,6 +755,7 @@ const styles = theme => ({
         },
     },
     Columnistas: {
+        marginBottom: '1.875rem',
         '& .columnista': {
             textAlign: 'center',
             '& .avatar': {
@@ -759,7 +774,7 @@ const styles = theme => ({
         }
     },
     EdicionImpresa: {
-        '& img': {
+        '& img.tapa': {
             width: '100%',
         },
         '& a': {
@@ -771,7 +786,10 @@ const styles = theme => ({
         '& h3': {
             marginTop: 0,
         },
-    }
+    },
+    Sidebar: {
+        paddingTop: 30
+    },
 })
 
 export default styles

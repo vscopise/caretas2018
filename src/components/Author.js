@@ -66,13 +66,14 @@ class Author extends Component {
     }
     
     render() {
-        if ( ! this.state.isLoading ) {
-            const Title = this.state.userName
-            return (
-                <Grid container spacing={24} className={this.props.classes.Author}>
-                    <ScrollUpButton />
-                    <Grid item md={8} xs={12}>
-                        <h1 className='page-title'>Artículos de {Title}</h1>
+        return(
+            <Grid container spacing={24} className={this.props.classes.Author}>
+                <ScrollUpButton />
+                <Grid item md={8} xs={12}>
+                {
+                    ! this.state.isLoading && 
+                    <div>
+                        <h1 className='page-title'>Artículos de {this.state.userName}</h1>
                         {
                             this.state.posts.map( (post, index) => (
                                 
@@ -94,13 +95,15 @@ class Author extends Component {
                                 currentPage={this.state.currentPage} 
                             />
                         }
-                    </Grid>
-                    <Grid item md={4} xs={12}>Sidebar</Grid>
+                    </div>
+                }
+                {
+                    this.state.isLoading && <Loading/>
+                }
                 </Grid>
-            )
-        } else {
-            return <Loading/>
-        }
+                <Grid item md={4} xs={12}>Sidebar</Grid>
+            </Grid>
+        )
     }
 }
 export default withStyles(styles)(Author)

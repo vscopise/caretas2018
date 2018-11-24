@@ -12,6 +12,7 @@ const PostCabezal = ( props ) => (
                 {pathname: '/' + props.post.slug, 
                 state: {postId: props.post.id, post: props.post}}
             }
+            title={props.post.title.rendered}
         >
             <div className={props.size}>
                 <div 
@@ -25,8 +26,9 @@ const PostCabezal = ( props ) => (
                         />
                         {
                             (props.size==='size-a') &&
-                            <p 
+                            <div 
                                 dangerouslySetInnerHTML={{__html: props.post.excerpt.rendered}} 
+                                className={'excerpt'}
                             /> 
                         }
                     </div>

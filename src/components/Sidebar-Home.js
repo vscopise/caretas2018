@@ -5,11 +5,12 @@ import ColumnasDestacadas from './Columnas-Destacadas'
 import LasMasVistas from './Las-Mas-Vistas'
 import Columnistas from './Columnistas'
 import TapaRevista from './Tapa-Revista'
+import BannerSuplementos from './Banner-Suplementos';
 
 class SidebarHome extends Component {
     render() {
         return (
-            <div className='sidebar'>
+            <div className={'sidebar'}>
                 <SearchPosts/>
                 <ColumnasDestacadas 
                     categorias={this.props.categorias}
@@ -17,6 +18,7 @@ class SidebarHome extends Component {
                 />
                 <LasMasVistas/>
                 <Columnistas columnistas={this.props.columnistas}/>
+                <BannerSuplementos/>
                 <TapaRevista tapa={this.props.tapa}/>
             </div>
                 

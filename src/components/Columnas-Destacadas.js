@@ -69,16 +69,16 @@ class ColumnasDestacadas extends Component {
                                     </Link>
                                 </Grid>
                                 <Grid item xs={8}>
-                                    <h4>
                                         <Link 
                                             to={{
                                                 pathname: '/' + post.slug, 
                                                 state: {postId: post.id, post: post}
                                             }}
                                         >
+                                        <h4>
                                             {post.title.rendered}
+                                        </h4>
                                         </Link>
-                                    </h4>
                                     <p>Por: {
                                         this.props.users.find(
                                             user => user.id === post.author

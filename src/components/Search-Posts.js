@@ -68,16 +68,16 @@ class SearchPosts extends Component {
                     {
                         this.state.results.map(post => (
                             <div className='result-item' key={post.id}>
-                                <h4>
-                                    <Link 
-                                        to={{
-                                            pathname: '/' + post.slug, 
-                                            state: {postId: post.id, post: post}
-                                        }}
-                                    >
-                                        {post.title.rendered}
-                                    </Link>
-                                </h4>
+                                <Link 
+                                    to={{
+                                        pathname: '/' + post.slug, 
+                                        state: {postId: post.id, post: post}
+                                    }}
+                                >
+                                    <h4
+                                        dangerouslySetInnerHTML={{__html: post.title.rendered}}
+                                    />
+                                </Link>
                             </div>
                         ))
                     }

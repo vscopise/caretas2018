@@ -62,12 +62,13 @@ class Categoria extends Component {
     }
     
     render() {
-        if ( ! this.state.isLoading ) {
-            //const catTitle = this.props.location.state.catTitle
-            return (
-                <Grid container spacing={24} className={this.props.classes.Categoria}>
-                    <ScrollUpButton />
-                    <Grid item md={8} xs={12}>
+        return(
+            <Grid container spacing={24} className={this.props.classes.Categoria}>
+                <ScrollUpButton />
+                <Grid item md={8} xs={12}>
+                {
+                    ! this.state.isLoading && 
+                    <div>
                         <h1 className='page-title'>
                             {this.props.location.state.Title}
                         </h1>
@@ -92,13 +93,16 @@ class Categoria extends Component {
                                 currentPage={this.state.currentPage} 
                             />
                         }
-                    </Grid>
-                    <Grid item md={4} xs={12}>Sidebar</Grid>
+                    </div>
+                }
+                {
+                    this.state.isLoading && <Loading/>
+                }
                 </Grid>
-            )
-        } else {
-            return <Loading/>
-        }
+                <Grid item md={4} xs={12}>Sidebar</Grid>
+            </Grid>
+        )
+        
     }
 }
 export default withStyles(styles)(Categoria)

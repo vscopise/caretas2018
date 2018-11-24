@@ -1,32 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { 
     withStyles
 } from '@material-ui/core'
-import { DFPSlotsProvider, DFPManager, AdSlot } from 'react-dfp'
 import styles from '../assets/styles'
 
-class Banner extends Component {
-
-    componentDidMount() {
-        window.setInterval(
-            function refreshAds() { 
-                DFPManager.refresh(); 
-            }, 15000
-        )
-    }
-
-    render() {
-        return(
-            <div className={this.props.classes.Banner}>
-                <DFPSlotsProvider 
-                    dfpNetworkId={this.props.dfpNetworkId} 
-                    adUnit={this.props.adUnit}>
-                    <AdSlot 
-                        sizes={this.props.sizes} 
-                    />
-                </DFPSlotsProvider>
-            </div>
-        )
-    }
-}
+const Banner = (props) => (
+    <div className={props.classes.Banner}>
+        <a 
+            href={props.link} 
+            target={'_blank'}
+        >
+            <img src={props.image} alt={''}/>
+        </a>
+    </div>
+)
 export default withStyles(styles)(Banner)

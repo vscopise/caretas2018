@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { 
-    Grid,
     withStyles
 } from '@material-ui/core'
 import styles from '../assets/styles'
@@ -13,8 +12,16 @@ const TapaRevista = ( props ) => (
         </h4>
         <Link to={{
             pathname: '/edicion-impresa/',
+            state: { 
+                termId: 2,
+                page: 1
+            }
         }}>
-            <img src={props.tapa[0].image} alt={'Caras y Caretas'} />
+            <img 
+                src={props.tapa[0].image} 
+                alt={'Caras y Caretas'}
+                title={'Caras y Caretas'}
+            />
         </Link>
     </div>
                 

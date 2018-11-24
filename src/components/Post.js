@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 
 import Loading from './Loading'
 import PostContent from './Post-Content'
-import Sidebar from './Sidebar'
+import SidebarSingle from './Sidebar-Single'
 
 import { Grid } from '@material-ui/core'
 
@@ -43,7 +43,7 @@ class Post extends Component {
                         <PostContent post={this.state.post} />
                     </Grid>
                     <Grid item md={4} xs={12}>
-                        <Sidebar/>
+                        <SidebarSingle/>
                     </Grid>
                 </Grid>
             )
