@@ -9,7 +9,7 @@ const Pagination = (props) => {
     //var Title = props.terms.find(
     //    term => term.term_id === props.termId
     //).name
-    var Title = props.title
+    //var Title = props.title
 
     const currentPage = props.currentPage
 

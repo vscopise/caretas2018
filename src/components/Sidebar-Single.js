@@ -21,7 +21,12 @@ class SidebarSingle extends Component {
                 <DfpBanner
                     dfpNetworkId={'90767959'} 
                     adUnit={'columna_lateral'}
-                    sizes={[ [300, 250], [290, 290], [160, 600], [300, 300]]}
+                    sizes={[ 
+                        [300, 250], 
+                        [290, 290], 
+                        [160, 600], 
+                        [300, 300]
+                    ]}
                 />
                 <div className='banner'>
                     <img 

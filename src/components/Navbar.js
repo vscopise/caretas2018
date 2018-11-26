@@ -158,7 +158,7 @@ class Navbar extends Component {
                         }
                         <li>
                             <Link to={{
-                                pathname: '/',
+                                pathname: '/contacto/',
                             }}>
                                 Contacto
                             </Link>

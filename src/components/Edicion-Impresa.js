@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 import axios from 'axios'
 import { TinyButton as ScrollUpButton} from 'react-scroll-up-button'

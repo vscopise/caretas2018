@@ -2,6 +2,7 @@ import 'typeface-pt-serif'
 import 'typeface-oswald'
 
 const styles = theme => ({
+    
     layout: {
         width: 'auto',
         marginLeft: theme.spacing.unit * 3,
@@ -63,6 +64,7 @@ const styles = theme => ({
         },
         '& a': {
             color: '#1f1e1e',
+            textDecoration: 'none',
         },
         '& a:hover': {
             color: '#d00',
@@ -88,10 +90,6 @@ const styles = theme => ({
                 background: '#d00',
             }
         },
-        '& a': {
-            textDecoration: 'none',
-        },
-        
         '& a:hover h3': {
             color: '#d00',
         },
@@ -112,6 +110,11 @@ const styles = theme => ({
         },
         '& a:hover p': {
             color: '#d00',
+        },
+        '& .button': {
+            marginTop: 14,
+            padding: 14,
+            fontFamily: 'Oswald',
         },
     },
     HeaderLogo: {
@@ -552,13 +555,7 @@ const styles = theme => ({
                 background:'#fff'
            }
         },
-        '& .button': {
-            marginTop: 14,
-            background: '#d00',
-            color: '#fff',
-            padding: 14,
-            fontFamily: 'Oswald',
-        },
+        
         '& .sending-comment-label': {
             display: 'inline-block',
             marginTop: 14,
@@ -650,7 +647,7 @@ const styles = theme => ({
                 height: 200,
             },
             '& h2': {
-                fontSize: '2rem',
+                fontSize: '1.9rem',
             },
         },
         '& .size-b': {
@@ -785,6 +782,19 @@ const styles = theme => ({
         },
         '& h3': {
             marginTop: 0,
+        },
+    },
+    Contacto: {
+        background: '#efefef',
+        padding: '1.25rem 1.25rem .625rem',
+        '& .textfield': {
+            marginTop:14,
+            '& input': {
+                background: '#fff',
+            },
+           '& div': {
+                background:'#fff'
+           }
         },
     },
     Sidebar: {

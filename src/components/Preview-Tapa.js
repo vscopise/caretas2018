@@ -38,6 +38,7 @@ const PreviewTapa = ( props ) => {
                 <a 
                     href={pagesuiteLink} 
                     target='_blank' 
+                    rel='noopener noreferrer'
                     title={props.revista.title.rendered}
                 >
                     <img 
