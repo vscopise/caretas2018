@@ -2,7 +2,6 @@ import 'typeface-pt-serif'
 import 'typeface-oswald'
 
 const styles = theme => ({
-    
     layout: {
         width: 'auto',
         marginLeft: theme.spacing.unit * 3,
@@ -115,6 +114,8 @@ const styles = theme => ({
             marginTop: 14,
             padding: 14,
             fontFamily: 'Oswald',
+            backgroundColor: '#d00',
+            color: '#fff',
         },
     },
     HeaderLogo: {

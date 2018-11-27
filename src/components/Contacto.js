@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import Loading from './Loading'
-import {Carousel} from 'react-responsive-carousel'
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { Link } from 'react-router-dom'
 
@@ -18,7 +16,7 @@ import {
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'
-import MyTheme from '../assets/MyTheme'
+import Theme from '../assets/MyTheme'
 const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
 
 
@@ -52,7 +50,8 @@ class Contacto extends Component {
                 error: false
             },
             chk1: false,
-            submitDisabled: false,
+            chk2: false,
+            chk3: false,
         }
     }
 
@@ -60,8 +59,78 @@ class Contacto extends Component {
         
     }
 
-    onChange = () => {}
-    onBlur = () => {}
+    onChange = (e) => {
+        this.setState({
+            [e.target.name]: {
+                value: e.target.value,
+                error: false
+            }
+        })
+    }
+
+    onBlur = (e) => {
+        if (e.target.value.length < 3) {
+            this.setState({
+                [e.target.name]:{
+                    helperText: `Error, debe ingresar el ${this.errorMessage(e.target.name)}`,
+                    error: true
+                },
+            })
+        }
+
+        const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if ('email' === e.target.name && !regex.test(e.target.value)) {
+            this.setState({
+                [e.target.name]:{
+                    helperText: `Error, el email no tiene el formato correcto`,
+                    error: true
+                },
+            })
+        }
+
+    }
+
+    validate = () => {
+        let isError = false
+
+        if ( this.state.name.error || '' === this.state.name.value ) {
+            isError = true
+            this.setState({
+                name: {
+                    helperText: 'Debe ingresar el Nombre',
+                    error: true
+                }
+            })
+        }
+
+        if ( this.state.phone.error || '' === this.state.phone.value ) {
+            isError = true
+            this.setState({
+                phone: {
+                    helperText: 'Debe ingresar el teléfono',
+                    error: true
+                }
+            })
+        }
+
+        const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if ( this.state.email.error ||
+            ( '' === this.state.email.value || 
+            !regex.test(this.state.email.value) )
+        ) {
+            isError = true
+            this.setState({
+                email: {
+                    helperText: 'Debe ingresar el Email',
+                    error: true
+                }
+            })
+        }
+
+        return isError
+    }
+
     handleContactSubmit = () => {}
     handleCheck = (name) => (e) => {
         this.setState({
@@ -69,8 +138,21 @@ class Contacto extends Component {
         })
     }
 
+    errorMessage = (field) => {
+        let message = {
+            name: 'Nombre',
+            phone: 'Teléfono',
+            email: 'Email'
+        }
+        return message[field]
+    }
 
     render() {
+        const enabled =
+            this.state.chk1 &&
+            this.state.chk2 &&
+            this.state.chk3 &&
+            !this.validate
         return (
             <Grid container spacing={24}>
                 <Grid item md={8} xs={12}>
@@ -174,10 +256,9 @@ class Contacto extends Component {
                         </FormGroup>
                         <Button 
                             variant='contained' 
-                            color='primary' 
-                            className={this.props.primary}
+                            color='secondary' 
                             onClick={this.handleContactSubmit}
-                            disabled={this.state.submitDisabled}
+                            disabled={!enabled}
                         >
                             Enviar
                         </Button>
