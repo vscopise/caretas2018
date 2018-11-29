@@ -1,11 +1,13 @@
 import 'typeface-pt-serif'
 import 'typeface-oswald'
 
+const imageHeight = 2/3 * (window.innerWidth - 40)
+
 const styles = theme => ({
     layout: {
         width: 'auto',
-        marginLeft: theme.spacing.unit * 3,
-        marginRight: theme.spacing.unit * 3,
+        //marginLeft: theme.spacing.unit * 3,
+        //marginRight: theme.spacing.unit * 3,
         paddingLeft: 20,
         paddingRight: 20,
         paddingTop: 20,
@@ -20,7 +22,10 @@ const styles = theme => ({
         '& h1, h2, h3, h4, h5, h6': {
             fontFamily: 'Oswald',
             fontWeight: 400,
-            color: '#1f1e1e'
+            color: '#1f1e1e',
+            [theme.breakpoints.down(960)]: {
+                fontSize: '1.5rem',
+            },
         },
         '& .page-title': {
             fontSize: '2.375rem',
@@ -70,6 +75,7 @@ const styles = theme => ({
         },
         '& .image img': {
             maxWidth: '100%',
+            width: '100%',
         },
         '& .result-item': {
                 marginBottom: 10,
@@ -316,7 +322,7 @@ const styles = theme => ({
             position: 'relative',
             overflow: 'hidden', 
             [theme.breakpoints.down(960)]: {
-                height: 300,
+                height: imageHeight,
                 marginBottom:10
             },                                                                                                                                                    
             '& .content': {
@@ -396,7 +402,7 @@ const styles = theme => ({
             marginBottom: 5,
             backgroundPosition: 'center',
             [theme.breakpoints.down(960)]: {
-                height: 300,
+                height: imageHeight,
             },
         },
         '& h4': {
@@ -423,8 +429,7 @@ const styles = theme => ({
             margin: 0,
             color: '#1f1e1e',
         },
-        [theme.breakpoints.down(800)]: {
-            height: 300,
+        [theme.breakpoints.down(960)]: {
             marginBottom: 10,
         },
     },
@@ -649,6 +654,9 @@ const styles = theme => ({
             },
             '& h2': {
                 fontSize: '1.9rem',
+                [theme.breakpoints.down(960)]: {
+                    fontSize: '1.5rem',
+                }
             },
         },
         '& .size-b': {
@@ -694,7 +702,7 @@ const styles = theme => ({
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             [theme.breakpoints.down(960)]: {
-                height: 300,
+                height: imageHeight,
             },
         },
         '& h2': {
@@ -728,7 +736,7 @@ const styles = theme => ({
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             [theme.breakpoints.down(960)]: {
-                height: 300,
+                height: imageHeight,
             },
         },
         '& h2': {

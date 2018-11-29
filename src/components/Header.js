@@ -22,13 +22,16 @@ const Header = ( props ) => (
                 }
             />
         </Grid>
-        <Grid item md={9} xs={12}>
-            <DfpBanner
-                dfpNetworkId={'90767959'} 
-                adUnit={'banner_top_home'}
-                sizes={[ [900, 90], [728, 90]]}
-            />
-        </Grid>
+        {
+            window.innerWidth > 960 &&
+            <Grid item md={9} xs={12}>
+                <DfpBanner
+                    dfpNetworkId={'90767959'} 
+                    adUnit={'banner_top_home'}
+                    sizes={[ [900, 90], [728, 90]]}
+                />
+            </Grid>
+        }
     </Grid>
 )
 export default withStyles(styles)(Header)

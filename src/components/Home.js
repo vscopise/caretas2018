@@ -27,13 +27,13 @@ const Home = ( props ) => (
             editorial={props.editorial}
         />
         <Grid container spacing={24}>
-            <Grid item lg={8} sm={12}>
+            <Grid item lg={8} xs={12}>
                 <Grid container spacing={24}>
-                    <Grid item lg={6} sm={12}>
+                    <Grid item md={6} xs={12}>
                         <ZonePost post={props.zona1}/>
                         <VideoPost post={props.video}/>
                     </Grid>
-                    <Grid item lg={6} sm={12}>
+                    <Grid item md={6} xs={12}>
                         <ZonePost post={props.zona2}/>
                     </Grid>
                 </Grid>
@@ -80,7 +80,7 @@ const Home = ( props ) => (
                     category={'Humor Gráfico'}
                 />
             </Grid>
-            <Grid item lg={4} sm={12}>
+            <Grid item lg={4} xs={12}>
                 <SidebarHome 
                     categorias={props.categorias}
                     users={props.users}

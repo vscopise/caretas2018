@@ -57,37 +57,40 @@ class GridPosts extends Component {
                                 />
                             </Grid>
                         }
-                        <Grid item md={6} xs={12}>
-                            <Grid container spacing={16}>
-                                <Grid item sm={6} xs={12}>
-                                    <GridPost 
-                                        post={this.state.posts[1]} 
-                                        size='size-b'
-                                    />
+                        {
+                            window.innerWidth > 960 &&
+                            <Grid item md={6} xs={12}>
+                                <Grid container spacing={16}>
+                                    <Grid item sm={6} xs={12}>
+                                        <GridPost 
+                                            post={this.state.posts[1]} 
+                                            size='size-b'
+                                        />
+                                    </Grid>
+                                    <Grid item sm={6} xs={12}>
+                                        <GridPost 
+                                            post={this.state.posts[2]} 
+                                            size='size-b'
+                                        />
+                                    </Grid>
                                 </Grid>
-                                <Grid item sm={6} xs={12}>
-                                    <GridPost 
-                                        post={this.state.posts[2]} 
-                                        size='size-b'
-                                    />
+                                <hr/>
+                                <Grid container spacing={16}>
+                                    <Grid item sm={6} xs={12}>
+                                        <GridPost 
+                                            post={this.state.posts[3]} 
+                                            size='size-b'
+                                        />
+                                    </Grid>
+                                    <Grid item sm={6} xs={12}>
+                                        <GridPost 
+                                            post={this.state.posts[4]} 
+                                            size='size-b'
+                                        />
+                                    </Grid>
                                 </Grid>
                             </Grid>
-                            <hr/>
-                            <Grid container spacing={16}>
-                                <Grid item sm={6} xs={12}>
-                                    <GridPost 
-                                        post={this.state.posts[3]} 
-                                        size='size-b'
-                                    />
-                                </Grid>
-                                <Grid item sm={6} xs={12}>
-                                    <GridPost 
-                                        post={this.state.posts[4]} 
-                                        size='size-b'
-                                    />
-                                </Grid>
-                            </Grid>
-                        </Grid>
+                        }
                         {
                             !this.props.left &&
                             <Grid item sm={6} xs={12}>

@@ -58,7 +58,7 @@ class ColumnasDestacadas extends Component {
                     {
                         this.state.results.map(post => (
                             <Grid container spacing={16} key={post.id} className='result-item'>
-                                <Grid item xs={4} className='image'>
+                                <Grid item lg={4} xs={12} className='image'>
                                     <Link 
                                         to={{
                                             pathname: '/' + post.slug, 
@@ -68,7 +68,7 @@ class ColumnasDestacadas extends Component {
                                         <img src={post.image_url[1]} alt='' />
                                     </Link>
                                 </Grid>
-                                <Grid item xs={8}>
+                                <Grid item lg={8} xs={12}>
                                         <Link 
                                             to={{
                                                 pathname: '/' + post.slug, 
