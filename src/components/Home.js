@@ -29,7 +29,7 @@ const Home = ( props ) => (
         <Grid container spacing={24}>
             <Grid item lg={8} xs={12}>
                 <Grid container spacing={24}>
-                    <Grid item md={6} xs={12}>
+                    <Grid item md={6} xs={12} className={'zone-video'}>
                         <ZonePost post={props.zona1}/>
                         <VideoPost post={props.video}/>
                     </Grid>

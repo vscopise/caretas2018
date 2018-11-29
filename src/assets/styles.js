@@ -123,6 +123,9 @@ const styles = theme => ({
             backgroundColor: '#d00',
             color: '#fff',
         },
+        '& .zone-video': {
+            paddingBottom: 0,
+        },
     },
     HeaderLogo: {
         padding: '20px 0',
@@ -303,6 +306,19 @@ const styles = theme => ({
             width: '100%',
             background: 'linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,.65) 50%)',
             zIndex: 2,
+            '& .content': {
+                [theme.breakpoints.down(960)]: {
+                    width: '100%',
+                    margin: 0,
+                    padding: '0 10px',
+                },
+                '& h2': {
+                    [theme.breakpoints.down(960)]: {
+                        fontSize: '1.5rem',
+                        marginBottom: 20,
+                    }
+                }
+            },
         },
         '& .image': {
             position: 'absolute',
@@ -313,6 +329,9 @@ const styles = theme => ({
             backgroundPosition: 'center',
             zIndex: '1',
             backgroundSize: 'cover',
+            [theme.breakpoints.down(960)]: {
+                height: 400, 
+            },
         },
         '& .image:hover': {
             transform: 'scale(1.1)',
@@ -320,11 +339,11 @@ const styles = theme => ({
         '& .size-a': {
             height: 462,
             position: 'relative',
-            overflow: 'hidden', 
+            overflow: 'hidden',
             [theme.breakpoints.down(960)]: {
-                height: imageHeight,
-                marginBottom:10
-            },                                                                                                                                                    
+                height: 400, 
+                marginBottom: 20,
+            },
             '& .content': {
                 width: '85%',
                 margin:'0 0 15px 20px'
@@ -333,9 +352,6 @@ const styles = theme => ({
                 color: '#fff',
                 fontSize: '2.7rem',
                 marginBottom: 0,
-                [theme.breakpoints.down(800)]: {
-                    fontSize: '1.5rem',
-                },
             },
             '& .excerpt': {
                 color: '#fff',
@@ -352,8 +368,9 @@ const styles = theme => ({
             position: 'relative',
             overflow: 'hidden', 
             [theme.breakpoints.down(960)]: {
-                height: 300,
-                marginBottom:10
+                height: 400, 
+                marginBottom: 20,
+                backgroundColor: '#555',
             },                                                                                                                                                      
             '& .content': {
                 width: '85%',
@@ -362,19 +379,13 @@ const styles = theme => ({
             '& h2': {
                 color: '#fff',
                 fontSize: '1.8rem',
-                [theme.breakpoints.down(800)]: {
-                    fontSize: '1.5rem',
-                },
             }
         },
         '& .size-c': {
             height: 201,
             position: 'relative',
             overflow: 'hidden', 
-            [theme.breakpoints.down(960)]: {
-                height: 300,
-                marginBottom:10
-            },                                                                                                                                                        
+                                                                                                                                                                    
             '& .content': {
                 width: '85%',
                 margin:'0 0 15px 11px'
@@ -382,10 +393,13 @@ const styles = theme => ({
             '& h2': {
                 color: '#fff',
                 fontSize: '1.2rem',
-                [theme.breakpoints.down(800)]: {
-                    fontSize: '1.5rem',
-                },
-            }
+            },
+            
+            [theme.breakpoints.down(960)]: {
+                height: 400, 
+                marginBottom: 20,
+                backgroundColor: '#555',
+            }, 
         },
     },
     DestacadasEditorial: {
@@ -643,6 +657,10 @@ const styles = theme => ({
                 height: '100%',
                 width: '100%',
                 backgroundSize: 'cover',
+                [theme.breakpoints.down(960)]: {
+                    height: imageHeight,
+                    marginBottom:10
+                },                                                                                                                                                    
             },
         },
         '& a:hover h2': {
