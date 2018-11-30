@@ -37,24 +37,22 @@ const Home = ( props ) => (
                         <ZonePost post={props.zona2}/>
                     </Grid>
                 </Grid>
-                <DfpBanner
-                    dfpNetworkId={'90767959'} 
-                    adUnit={'home_body_1'}
-                    sizes={[ 
-                        [300, 100], 
-                        [250, 250], 
-                        [320, 50], 
-                        [728, 90], 
-                        [300, 250], 
-                        [336, 280], 
-                        [125, 125], 
-                        [240, 400], 
-                        [468, 60], 
-                        [200, 200], 
-                        [180, 150], 
-                        [234, 60]
-                    ]}
-                />
+                {
+                    window.innerWidth < 960 &&
+                    <DfpBanner
+                        dfpNetworkId={'90767959'} 
+                        adUnit={'home_body_1'}
+                        sizes={[ [300, 250], ]}
+                    />
+                }
+                {
+                    window.innerWidth > 960 &&
+                    <DfpBanner
+                        dfpNetworkId={'90767959'} 
+                        adUnit={'home_body_1'}
+                        sizes={[ [728, 90], ]}
+                    />
+                }
                 <GridPosts
                     categorias={props.categorias}
                     category={'Deportes'}
