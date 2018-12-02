@@ -72,11 +72,8 @@ class Navbar extends Component {
         super(props)
         this.state = {
             menuOpen: false,
-            //showSubmenu: false,
-            //subMenu: '',
             categoryPosts: [],
             subNavbar: ''
-            //isLoading: false
           }
     }
 
@@ -114,8 +111,8 @@ class Navbar extends Component {
         })
     }
 
-    componentWillReceiveProps(nextProps, prevState) {
-        if (nextProps.value !== prevState.value) {
+    componentDidUpdate(prevProps, prevState) {
+        if ('hide' === prevState.subNavbar) {
             this.setState({
                 subNavbar: ''
             })

@@ -7,7 +7,7 @@ import SidebarSingle from './Sidebar-Single'
 
 import { Grid } from '@material-ui/core'
 
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
+const urlCaretas = 'https://www.carasycaretas.com.uy/'
 
 class Post extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class Post extends Component {
     }
 
     fetch_post = ( pathname ) => {
-        var url = urlCaretas + 'wp/v2/posts?slug=' + pathname
+        var url = urlCaretas + 'wp-json/wp/v2/posts?slug=' + pathname
         axios
             .get( url )
             .then(res => {
@@ -27,8 +27,20 @@ class Post extends Component {
                     post:res.data[0],
                     isLoading:false
                 })
+                this.setPostViews(this.state.post.id)
             })
             .catch(error => console.log(error))
+    }
+
+    setPostViews = (post_id) => {
+        axios
+            .post(
+                urlCaretas + 'wp-admin/admin-ajax.php', 
+                {
+                    action: 'set_post_views',
+                    post_id: post_id
+                }
+            )
     }
 
     componentDidMount() {
@@ -39,6 +51,7 @@ class Post extends Component {
                 isLoading: false,
                 post: this.props.location.state.post, 
             })
+            this.setPostViews(this.props.location.state.post.id)
         }
         window.scrollTo(0,0)
     }
@@ -48,6 +61,7 @@ class Post extends Component {
             this.setState({post: nextProps.location.state.post})
             //const { catId, page } = nextProps.location.state
             //this.fetch_posts(catId, page)
+            this.setPostViews(nextProps.location.state.post.id)
         }
     }
 
