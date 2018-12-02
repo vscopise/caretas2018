@@ -182,6 +182,9 @@ const styles = theme => ({
                 '& li .sub-navbar': {
                     display: 'none',
                 },
+                '& li .sub-navbar.hide': {
+                    display: 'none !important',
+                },
                 '& li:hover .sub-navbar':{
                     display: 'block',
                     [theme.breakpoints.down(800)]: {

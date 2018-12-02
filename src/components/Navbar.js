@@ -75,6 +75,7 @@ class Navbar extends Component {
             //showSubmenu: false,
             //subMenu: '',
             categoryPosts: [],
+            subNavbar: ''
             //isLoading: false
           }
     }
@@ -97,16 +98,31 @@ class Navbar extends Component {
 
     getLastCategoryPosts = (catId) => {
         let categoryPosts = this.state.categoryPosts
-        //this.setState({isLoading: true})
         axios
-        .get( urlCaretas + 'wp/v2/posts?per_page=4&categories=' + catId )
-        .then(res => {
-            this.setState({ 
-                categoryPosts: [...categoryPosts, {catId: catId, data:res.data}],
+            .get( urlCaretas + 'wp/v2/posts?per_page=4&categories=' + catId )
+            .then(res => {
+                this.setState({ 
+                    categoryPosts: [...categoryPosts, {catId: catId, data:res.data}],
+                })
             })
-        })
-        .catch(error => console.log(error))
+            .catch(error => console.log(error))
     }
+
+    handleClickSubCategory = () => {
+        this.setState({
+            subNavbar: 'hide'
+        })
+    }
+
+    componentWillReceiveProps(nextProps, prevState) {
+        if (nextProps.value !== prevState.value) {
+            this.setState({
+                subNavbar: ''
+            })
+        }
+    }
+
+    
 
     render() {
         return(
@@ -139,7 +155,7 @@ class Navbar extends Component {
                                     >
                                         {section.label}
                                     </Link>
-                                    <div className='sub-navbar'>
+                                    <div className={'sub-navbar ' + this.state.subNavbar}>
                                         {
                                             ( !this.state.categoryPosts.find (
                                                     category => category.catId === section.catId )
@@ -150,6 +166,7 @@ class Navbar extends Component {
                                                     category => category.catId === section.catId
                                                 ).data }
                                                 catId = {section.id}
+                                                handleClickSubCategory = {this.handleClickSubCategory}
                                             />
                                         }
                                     </div> 

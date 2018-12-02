@@ -34,16 +34,16 @@ class Categoria extends Component {
         axios
             .get( url + 'posts/?categories=' + catId + '&page=' + page )
             .then(res => {
-            this.setState({ 
-                posts: res.data,
-                headers: res.headers,
-                currentPage: page,
-                total: res.headers['x-wp-total'],
-                pages: res.headers['x-wp-totalpages'],
-                isLoading: false 
+                this.setState({ 
+                    posts: res.data,
+                    headers: res.headers,
+                    currentPage: page,
+                    total: res.headers['x-wp-total'],
+                    pages: res.headers['x-wp-totalpages'],
+                    isLoading: false 
+                })
             })
-        })
-        .catch(error => console.log(error))
+            .catch(error => console.log(error))
     }
 
     componentDidMount(){

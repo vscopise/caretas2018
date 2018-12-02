@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//import axios from 'axios'
+import axios from 'axios'
 
 import Loading from './Loading'
 import PostContent from './Post-Content'
@@ -7,7 +7,7 @@ import SidebarSingle from './Sidebar-Single'
 
 import { Grid } from '@material-ui/core'
 
-//const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
+const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
 
 class Post extends Component {
     constructor(props) {
@@ -18,11 +18,28 @@ class Post extends Component {
         }
     }
 
+    fetch_post = ( pathname ) => {
+        var url = urlCaretas + 'wp/v2/posts?slug=' + pathname
+        axios
+            .get( url )
+            .then(res => {
+                this.setState({
+                    post:res.data[0],
+                    isLoading:false
+                })
+            })
+            .catch(error => console.log(error))
+    }
+
     componentDidMount() {
-        this.setState({ 
-            isLoading: false,
-            post: this.props.location.state.post, 
-        })
+        if ( undefined === this.props.location.state ) {
+            this.fetch_post( window.location.pathname )
+        } else {
+            this.setState({ 
+                isLoading: false,
+                post: this.props.location.state.post, 
+            })
+        }
         window.scrollTo(0,0)
     }
 

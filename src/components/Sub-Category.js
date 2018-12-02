@@ -18,6 +18,7 @@ const SubCategory = (props) => (
                             pathname: '/' + post.slug, 
                             state: {postId: post.id, post: post}
                         }}
+                        onClick={props.handleClickSubCategory}
                     >
                         <div 
                             className='image' 
