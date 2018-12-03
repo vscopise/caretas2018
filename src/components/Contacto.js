@@ -131,7 +131,29 @@ class Contacto extends Component {
         return isError
     }
 
-    handleContactSubmit = () => {}
+    handleContactSubmit = () => {
+        const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
+        //const url = 'http://localhost/caretas/wp-json/wp/v2/'
+        let state = this.state
+        axios
+            .post(
+                url + 'send', {
+                    'name': state.name.value,
+                    'phone': state.phone.value,
+                    'email': state.email.value,
+                    'subject': state.subject.value,
+                    'message': state.message.value,
+                }
+            )
+            .then(
+                res => {
+                    console.log('res')
+                    alert(res.data.message)
+                }
+            )
+            .catch(error => console.log(error))
+    }
+
     handleCheck = (name) => (e) => {
         this.setState({
             [name]: e.target.checked
@@ -152,7 +174,7 @@ class Contacto extends Component {
             this.state.chk1 &&
             this.state.chk2 &&
             this.state.chk3 &&
-            !this.validate
+            !this.validate()
         return (
             <Grid container spacing={24}>
                 <Grid item md={8} xs={12}>
