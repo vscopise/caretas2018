@@ -28,6 +28,7 @@ class Post extends Component {
                     isLoading:false
                 })
                 this.setPostViews(this.state.post.id)
+                document.title = this.state.post.title.rendered + ' - Caras y Caretas'
             })
             .catch(error => console.log(error))
     }
@@ -44,14 +45,16 @@ class Post extends Component {
     }
 
     componentDidMount() {
-        if ( undefined === this.props.location.state ) {
+        let location = this.props.location
+        if ( undefined === location.state ) {
             this.fetch_post( window.location.pathname )
         } else {
             this.setState({ 
                 isLoading: false,
-                post: this.props.location.state.post, 
+                post: location.state.post, 
             })
-            this.setPostViews(this.props.location.state.post.id)
+            this.setPostViews(location.state.post.id)
+            document.title = location.state.post.title.rendered + ' - Caras y Caretas'
         }
         window.scrollTo(0,0)
     }
@@ -59,9 +62,8 @@ class Post extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.location !== this.props.location) {
             this.setState({post: nextProps.location.state.post})
-            //const { catId, page } = nextProps.location.state
-            //this.fetch_posts(catId, page)
             this.setPostViews(nextProps.location.state.post.id)
+            document.title = nextProps.location.state.post.title.rendered + ' - Caras y Caretas'
         }
     }
 

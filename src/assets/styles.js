@@ -509,6 +509,16 @@ const styles = theme => ({
             },
         },
     },
+    PostSharing: {
+        display: 'inline-block',
+        marginLeft: 10,
+        '& .SocialMediaShareButton': {
+            verticalAlign: 'bottom',
+            display: 'inline-block',
+            marginRight: 5,
+            cursor: 'pointer'
+        }
+    },
     Comments: {
         '& .comments-section-title': {
             background: '#ccdee8',

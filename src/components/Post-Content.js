@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core'
 import Comments from './Comments'
 
 import styles from '../assets/styles'
+import PostSharing from './Post-Sharing';
 
 const PostContent = (props) => (
     <div className={props.classes.PostContent}>
@@ -52,6 +53,7 @@ const PostContent = (props) => (
                     day: "numeric"
                 })
             }
+            <PostSharing post={props.post} />
         </div>
         <div 
             className='entry-content'
