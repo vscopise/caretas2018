@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import Loading from './Loading'
+import SidebarPage from './Sidebar-Page'
 
 import { Link } from 'react-router-dom'
 
@@ -52,6 +53,8 @@ class Contacto extends Component {
             chk1: false,
             chk2: false,
             chk3: false,
+            status: 'ready',
+            message: '',
         }
     }
 
@@ -135,6 +138,9 @@ class Contacto extends Component {
         const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         //const url = 'http://localhost/caretas/wp-json/wp/v2/'
         let state = this.state
+        this.setState({
+            status: 'sending'
+        })
         axios
             .post(
                 url + 'send', {
@@ -147,8 +153,12 @@ class Contacto extends Component {
             )
             .then(
                 res => {
-                    console.log('res')
-                    alert(res.data.message)
+                    //console.log('res')
+                    //alert(res.data.message)
+                    this.setState({
+                        status: 'send',
+                        message: res.data.message
+                    })
                 }
             )
             .catch(error => console.log(error))
@@ -181,114 +191,126 @@ class Contacto extends Component {
                     <h1 className={'page-title'}>
                         Contacto
                     </h1>
-                    <div className={this.props.classes.Contacto}>
-                        <TextField 
-                            name='name'
-                            label='Nombre'
-                            className='textfield'
-                            fullWidth
-                            required
-                            onChange={this.onChange}
-                            onBlur={this.onBlur}
-                            error={this.state.name.error}
-                            helperText={this.state.name.helperText}
-                            variant='filled'
-                        />
-                        <TextField 
-                            name='phone'
-                            label='Teléfono'
-                            className='textfield'
-                            fullWidth
-                            required
-                            onChange={this.onChange}
-                            onBlur={this.onBlur}
-                            error={this.state.phone.error}
-                            helperText={this.state.phone.helperText}
-                            variant='filled'
-                        />
-                        <TextField 
-                            name='email'
-                            label='Correo electrónico'
-                            className='textfield'
-                            fullWidth
-                            required
-                            onChange={this.onChange}
-                            onBlur={this.onBlur}
-                            error={this.state.email.error}
-                            helperText={this.state.email.helperText}
-                            variant='filled'
-                        />
-                        <TextField 
-                            name='subject'
-                            label='Asunto'
-                            className='textfield'
-                            fullWidth
-                            required
-                            onChange={this.onChange}
-                            onBlur={this.onBlur}
-                            error={this.state.subject.error}
-                            helperText={this.state.subject.helperText}
-                            variant='filled'
-                        />
-                        <TextField 
-                            name='message'
-                            label='Mensaje'
-                            multiline
-                            rows={5}
-                            className='textfield'
-                            fullWidth
-                            required
-                            onChange={this.onChange}
-                            onBlur={this.onBlur}
-                            error={this.state.subject.error}
-                            helperText={this.state.subject.helperText}
-                            variant='filled'
-                        />
-                        <FormGroup row>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        checked={this.state.chk1}
-                                        onChange={this.handleCheck('chk1')}
-                                        value='chk1'
-                                    />
-                                }
-                                label={'He leído y acepto el Aviso Legal y la Política de Privacidad.'}
+                    {
+                        this.state.status==='ready' &&
+                        <div className={this.props.classes.Contacto}>
+                            <TextField 
+                                name='name'
+                                label='Nombre'
+                                className='textfield'
+                                fullWidth
+                                required
+                                onChange={this.onChange}
+                                onBlur={this.onBlur}
+                                error={this.state.name.error}
+                                helperText={this.state.name.helperText}
+                                variant='filled'
                             />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        checked={this.state.chk2}
-                                        onChange={this.handleCheck('chk2')}
-                                        value='chk2'
-                                    />
-                                }
-                                label={' Declaro, bajo mi propia responsabilidad, ser mayor de 18 años y respondo de manera exclusiva de la veracidad de dicha declaración.'}
+                            <TextField 
+                                name='phone'
+                                label='Teléfono'
+                                className='textfield'
+                                fullWidth
+                                required
+                                onChange={this.onChange}
+                                onBlur={this.onBlur}
+                                error={this.state.phone.error}
+                                helperText={this.state.phone.helperText}
+                                variant='filled'
                             />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        checked={this.state.chk3}
-                                        onChange={this.handleCheck('chk3')}
-                                        value='chk3'
-                                    />
-                                }
-                                label={'Acepto recibir la información que la entidad considere oportuno enviarme por correo electrónico o medio de comunicación electrónica equivalente. (Es posible darse de baja en cualquier momento).'}
+                            <TextField 
+                                name='email'
+                                label='Correo electrónico'
+                                className='textfield'
+                                fullWidth
+                                required
+                                onChange={this.onChange}
+                                onBlur={this.onBlur}
+                                error={this.state.email.error}
+                                helperText={this.state.email.helperText}
+                                variant='filled'
                             />
-                        </FormGroup>
-                        <Button 
-                            variant='contained' 
-                            color='secondary' 
-                            onClick={this.handleContactSubmit}
-                            disabled={!enabled}
-                        >
-                            Enviar
-                        </Button>
-                    </div>
-
+                            <TextField 
+                                name='subject'
+                                label='Asunto'
+                                className='textfield'
+                                fullWidth
+                                required
+                                onChange={this.onChange}
+                                onBlur={this.onBlur}
+                                error={this.state.subject.error}
+                                helperText={this.state.subject.helperText}
+                                variant='filled'
+                            />
+                            <TextField 
+                                name='message'
+                                label='Mensaje'
+                                multiline
+                                rows={5}
+                                className='textfield'
+                                fullWidth
+                                required
+                                onChange={this.onChange}
+                                onBlur={this.onBlur}
+                                error={this.state.subject.error}
+                                helperText={this.state.subject.helperText}
+                                variant='filled'
+                            />
+                            <FormGroup row>
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            checked={this.state.chk1}
+                                            onChange={this.handleCheck('chk1')}
+                                            value='chk1'
+                                        />
+                                    }
+                                    label={'He leído y acepto el Aviso Legal y la Política de Privacidad.'}
+                                />
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            checked={this.state.chk2}
+                                            onChange={this.handleCheck('chk2')}
+                                            value='chk2'
+                                        />
+                                    }
+                                    label={' Declaro, bajo mi propia responsabilidad, ser mayor de 18 años y respondo de manera exclusiva de la veracidad de dicha declaración.'}
+                                />
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            checked={this.state.chk3}
+                                            onChange={this.handleCheck('chk3')}
+                                            value='chk3'
+                                        />
+                                    }
+                                    label={'Acepto recibir la información que la entidad considere oportuno enviarme por correo electrónico o medio de comunicación electrónica equivalente. (Es posible darse de baja en cualquier momento).'}
+                                />
+                            </FormGroup>
+                            <Button 
+                                variant='contained' 
+                                color='secondary' 
+                                onClick={this.handleContactSubmit}
+                                disabled={!enabled}
+                            >
+                                Enviar
+                            </Button>
+                        </div>
+                    }
+                    {
+                        this.state.status==='sending' &&
+                        <Loading/>
+                    }
+                    {
+                        this.state.status==='send' &&
+                        <div className={this.props.classes.Contacto}>
+                            <h3>{this.state.message}</h3>
+                        </div>
+                    }
                 </Grid>
                 <Grid item md={4} xs={12}>
-                    Sidebar
+                    <SidebarPage/>
                 </Grid>
             </Grid>
         )

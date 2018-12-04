@@ -478,7 +478,10 @@ const styles = theme => ({
         '& .entry-title': {
             marginTop: 0,
             fontSize: '2.375rem',
-            marginBottom: 20
+            marginBottom: 20,
+            [theme.breakpoints.down(960)]: {
+                fontSize: '1.8rem',
+            },
         },
         '& .entry-excerpt': {
             borderTop: '1px solid #888',
@@ -826,7 +829,7 @@ const styles = theme => ({
     },
     Contacto: {
         background: '#efefef',
-        padding: '1.25rem 1.25rem .625rem',
+        padding: '1.25rem',
         '& .textfield': {
             marginTop:14,
             '& input': {
@@ -836,10 +839,47 @@ const styles = theme => ({
                 background:'#fff'
            }
         },
+        marginBottom: 20
     },
     Sidebar: {
         paddingTop: 30
     },
+    Footer: {
+        background: '#333',
+        color: '#fff',
+        fontSize: '.75rem',
+        padding: '.625rem 0',
+        '& .wrapper-inner': {
+            width: '90%',
+            maxWidth: 1180,
+            margin: '0 auto',
+            fontFamily: 'Oswald',
+        },
+        [theme.breakpoints.down(960)]: {
+            marginBottom: 56,
+        }
+    },
+    MobileNav: {
+        visibility: 'hidden',
+        display: 'none',
+        position: 'fixed',
+        top: 'auto',
+        bottom: 0,
+        width: '100%',
+        zIndex: '1005',
+        boxShadow: '0 -2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2)',
+        backgroundColor: '#fff',
+        height: 56,
+        '& .mobile-nab-item': {
+            textAlign: 'center',
+            height: '100%',
+            lineHeight: '56px',
+        },
+        [theme.breakpoints.down(960)]: {
+            visibility: 'visible !important',
+            display: 'block !important',
+        },
+    }
 })
 
 export default styles

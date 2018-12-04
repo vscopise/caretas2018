@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import { Switch, Route } from 'react-router-dom'
 import Post from './components/Post'
+import MobileNav from './components/Mobile-Nav'
 
 import { 
   CssBaseline, 
@@ -126,6 +127,7 @@ fetch_users = () => {
             </Switch>
           </div>
           <Footer date={this.state.date}/>
+          <MobileNav/>
         </Fragment>
       );
     } else {

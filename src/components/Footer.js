@@ -1,20 +1,6 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core'
-
-const styles = {
-    Footer: {
-        background: '#333',
-        color: '#fff',
-        fontSize: '.75rem',
-        padding: '.625rem 0',
-        '& .wrapper-inner': {
-            width: '90%',
-            maxWidth: 1180,
-            margin: '0 auto',
-            fontFamily: 'Oswald',
-        },
-    }
-}
+import styles from '../assets/styles'
 
 const Footer = (props) => (
     <div className={props.classes.Footer}>
