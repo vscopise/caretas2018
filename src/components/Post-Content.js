@@ -9,7 +9,10 @@ import PostSharing from './Post-Sharing';
 
 const PostContent = (props) => (
     <div className={props.classes.PostContent}>
-        <ScrollUpButton />
+        {
+            window.innerWidth > 960 &&
+            <ScrollUpButton />
+        }
         {props.post.colgado && (<p className='colgado'>
             {props.post.colgado}
         </p>)}

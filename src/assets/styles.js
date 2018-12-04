@@ -552,6 +552,9 @@ const styles = theme => ({
             background: '#fff',
             borderBottom: '5px solid #ccdee8',
             marginBottom: 20,
+            '& p': {
+                wordBreak: 'break-word'
+            },
             '& .comment-meta': {
                 '& img': {
                     float: 'left',
@@ -562,8 +565,8 @@ const styles = theme => ({
                 '& h4': {
                     marginTop: 0,
                     marginBottom: '1.25rem',
-                }
-            }
+                },
+            },
         }
     },
     CommentForm: {
@@ -856,30 +859,94 @@ const styles = theme => ({
             fontFamily: 'Oswald',
         },
         [theme.breakpoints.down(960)]: {
-            marginBottom: 56,
+            marginBottom: 55,
         }
     },
     MobileNav: {
         visibility: 'hidden',
         display: 'none',
-        position: 'fixed',
-        top: 'auto',
-        bottom: 0,
-        width: '100%',
-        zIndex: '1005',
-        boxShadow: '0 -2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2)',
-        backgroundColor: '#fff',
-        height: 56,
-        '& .mobile-nab-item': {
-            textAlign: 'center',
-            height: '100%',
-            lineHeight: '56px',
+        //backgroundColor: '#d00',
+        //paddingTop: 2,
+        //boxShadow: '0 -2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2)',
+        //backgroundColor: '#d00',
+        '& .drawer': {
+            backgroundColor: '#d00',
+            position: 'fixed',
+            top: 'auto',
+            bottom: 0,
+            zIndex: '1005',
+            width: window.innerWidth,
+            height: 55,
+            margin: 0,
+            '& .mobile-nav-item': {
+                textAlign: 'center',
+                height: '100%',
+                //lineHeight: '75px',
+                color: '#fff',
+                '& a': {
+                    color: '#fff',
+                    textDecoration: 'none',
+                },
+                '& span': {
+                    display: 'block',
+                    fontFamily: 'Arial',
+                    fontSize: '.7rem',
+                    //lineHeight: '.7rem',
+                }
+            },
         },
         [theme.breakpoints.down(960)]: {
             visibility: 'visible !important',
             display: 'block !important',
         },
-    }
+        '& .bottom-div': {
+            color: '#fff',
+            position: 'fixed',
+            bottom: 48,
+            width: '100%',
+            zIndex: '1005',
+            backgroundColor: '#d00',
+            margin: 0,
+            padding: 0,
+            '& ul': {
+                listStyleType: 'none',
+                '& a': {
+                    textTransform: 'uppercase',
+                    color: '#fff',
+                    float: 'left',
+                    fontFamily: 'Oswald',
+                    width: '100%',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    paddingBottom: '.5rem',
+                }
+            },
+            '& .bottom-search': {
+                padding: '.5rem',
+                '& .search': {
+                    '& input': {
+                       color: '#fff',
+                    },
+                    '& label': {
+                        color: '#fff',
+                    },
+                    '& div:after': {
+                        borderColor: '#fff'
+                    }
+                },
+            },
+            '& .result-items': {
+                padding: '0 .5rem',
+            },
+            '& p': {
+                fontFamily: 'Arial',
+            },
+            '& .result-item a': {
+                color: '#fff',
+                textDecoration:'none',
+            }
+        }
+    },
 })
 
 export default styles

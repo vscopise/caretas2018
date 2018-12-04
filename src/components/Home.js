@@ -18,7 +18,10 @@ import { TinyButton as ScrollUpButton } from 'react-scroll-up-button'
 
 const Home = ( props ) => (
     <div className={props.classes.Home}>
-        <ScrollUpButton />
+        {
+            window.innerWidth > 960 &&
+            <ScrollUpButton />
+        }
         <CabezalHome 
             posts={props.cabezal}
         />
