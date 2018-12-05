@@ -153,8 +153,12 @@ class MobileNav extends Component {
                         <span>Buscar</span>
                     </Grid>
                     <Grid item xs={3} className={'mobile-nav-item'}>
+                        <Link to={{
+                            pathname:'/suscripciones'
+                        }}>
                         <Subscriptions/>
                         <span>Suscripciones</span>
+                        </Link>
                     </Grid>
                     <Grid item xs={3} 
                         className={'mobile-nav-item'} 

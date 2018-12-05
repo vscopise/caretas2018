@@ -22,13 +22,13 @@ class Comments extends Component {
         }
     }
 
-    componentDidMount() {
+    fetchComments(postId) {
         const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         this.setState({ 
             isLoading: true 
         })
         axios
-            .get( url + 'comments/?order=asc&post='+ this.props.post.id )
+            .get( url + 'comments/?order=asc&post='+ postId )
             .then(res => {
                 this.setState({ 
                     comments: res.data,
@@ -36,6 +36,17 @@ class Comments extends Component {
                 })
         })
         .catch(error => console.log(error))
+    }
+
+    componentDidMount() {
+        this.fetchComments(this.props.post.id)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.location !== this.props.location) {
+            this.setState({comments: null})
+            this.fetchComments(this.props.post.id)
+        }
     }
 
     sendComment = (comment) => {
@@ -71,10 +82,12 @@ class Comments extends Component {
                             en {this.props.post.title.rendered}
                         </span>
                     </h4>
-                    
-                    <CommentList 
-                        comments={this.state.comments} 
-                    />
+                    {
+                        this.state.comments.length > 0 &&
+                        <CommentList 
+                            comments={this.state.comments} 
+                        />
+                    }
                     <CommentForm 
                         handleComment={this.sendComment} 
                         sendingCommentLabel={this.state.sendingCommentLabel}

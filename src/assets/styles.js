@@ -505,12 +505,18 @@ const styles = theme => ({
             paddingBottom: 15,
         },
         '& .entry-content p': {
+            
             margin: '0 0 1.25rem',
             fontSize: '107%',
             '& br': {
                 marginBottom: 20,
             },
+            '& img': {
+                maxWidth: '100%',
+                height: 'auto',
+            }
         },
+        
     },
     PostSharing: {
         display: 'inline-block',
@@ -947,6 +953,16 @@ const styles = theme => ({
             }
         }
     },
+    Suscripciones: {
+        '& h4': {
+            borderTop: '1px solid #000',
+            paddingTop: 20,
+            marginTop: 20,
+        },
+        '& .item-button': {
+            textAlign: 'center',
+        }
+    }
 })
 
 export default styles

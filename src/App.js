@@ -19,6 +19,8 @@ import Categoria from './components/Categoria'
 import Author from './components/Author'
 import EdicionImpresa from './components/Edicion-Impresa'
 import Contacto from './components/Contacto'
+import Suscripciones from './components/Suscripciones'
+
 import Loading from './components/Loading'
 import SubNav from './components/Sub-Nav'
 
@@ -117,6 +119,9 @@ fetch_users = () => {
               />
               <Route 
                 exact path={"/contacto"} component={Contacto} 
+              />
+              <Route 
+                exact path={"/suscripciones"} component={Suscripciones} 
               />
               <Route 
                 path={"/:slug"} component={Post} 
