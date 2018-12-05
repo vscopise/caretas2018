@@ -49,14 +49,16 @@ const PostContent = (props) => (
             }
         </div>
         <div className='entry-meta'>
-            {
-                new Date(props.post.date).toLocaleDateString('es-ES', {
-                    year: "numeric", 
-                    month: "long", 
-                    day: "numeric"
-                })
-            }
-            <PostSharing post={props.post} />
+            <span className={'entry-meta-date'}>
+                {
+                    new Date(props.post.date).toLocaleDateString('es-ES', {
+                        year: "numeric", 
+                        month: "long", 
+                        day: "numeric"
+                    })
+                }
+            </span>
+            <PostSharing post={props.post} isMobile={props.isMobile} />
         </div>
         <div 
             className='entry-content'

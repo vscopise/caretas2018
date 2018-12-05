@@ -43,7 +43,7 @@ class Comments extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.location !== this.props.location) {
+        if (nextProps.post.id !== this.props.post.id) {
             this.setState({comments: null})
             this.fetchComments(this.props.post.id)
         }

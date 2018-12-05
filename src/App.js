@@ -59,6 +59,7 @@ fetch_home_data = () => {
             zona1: res.data.zona1,
             zona2: res.data.zona2,
             video: res.data.video,
+            videoDestacado: res.data.featured_video,
             columnistas: res.data.columnistas,
             tapa: res.data.tapa,
             isLoading: false 
@@ -99,6 +100,7 @@ fetch_users = () => {
                   zona1={this.state.zona1}
                   zona2={this.state.zona2}
                   video={this.state.video}
+                  videoDestacado={this.state.videoDestacado}
                   categorias={this.state.categories}
                   users={this.state.users}
                   columnistas={this.state.columnistas}

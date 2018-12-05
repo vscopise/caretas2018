@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { 
     Grid,
     withStyles
@@ -14,7 +15,10 @@ import Galeria from './Galeria';
 import VideoPost from './Video-Post';
 import DfpBanner from './Dfp-Banner'
 
+
 import { TinyButton as ScrollUpButton } from 'react-scroll-up-button'
+import VideoDestacado from './Video-destacado';
+import PromoCycTv from './Promo-Cyc-Tv';
 
 const Home = ( props ) => (
     <div className={props.classes.Home}>
@@ -32,6 +36,11 @@ const Home = ( props ) => (
         <Grid container spacing={24}>
             <Grid item lg={8} xs={12}>
                 <Grid container spacing={24}>
+                    {
+                        props.videoDestacado.id && props.videoDestacado.title &&
+                        <VideoDestacado video={props.videoDestacado}/>
+                    }
+                    <PromoCycTv/>
                     <Grid item md={6} xs={12} className={'zone-video'}>
                         <ZonePost post={props.zona1}/>
                         <VideoPost post={props.video}/>

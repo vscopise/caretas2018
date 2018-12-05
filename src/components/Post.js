@@ -8,6 +8,7 @@ import SidebarSingle from './Sidebar-Single'
 import { Grid } from '@material-ui/core'
 
 const urlCaretas = 'https://www.carasycaretas.com.uy/'
+const isMobile = window.innerWidth < 960
 
 class Post extends Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class Post extends Component {
         this.state = {
             post: {},
             isLoading: true,
+            isMobile: isMobile
         }
     }
 
@@ -73,7 +75,7 @@ class Post extends Component {
             return (
                 <Grid container spacing={24}>
                     <Grid item md={8} xs={12}>
-                        <PostContent post={this.state.post} />
+                        <PostContent post={this.state.post} isMobile={this.state.isMobile} />
                     </Grid>
                     <Grid item md={4} xs={12}>
                         <SidebarSingle/>

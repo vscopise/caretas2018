@@ -503,6 +503,15 @@ const styles = theme => ({
             borderBottom: '1px solid #888',
             marginBottom: 15,
             paddingBottom: 15,
+            '& .entry-meta-date': {
+                [theme.breakpoints.down(960)]: {
+                    fontSize: '1rem',
+                    textTransform: 'none',
+                    textAlign: 'center',
+                    display: 'block',
+                    width: '100%',
+                },
+            },
         },
         '& .entry-content p': {
             
@@ -525,7 +534,15 @@ const styles = theme => ({
             verticalAlign: 'bottom',
             display: 'inline-block',
             marginRight: 5,
-            cursor: 'pointer'
+            cursor: 'pointer',
+            [theme.breakpoints.down(960)]: {
+                marginRight: 10,
+            }
+        },
+        [theme.breakpoints.down(960)]: {
+            display: 'block',
+            textAlign: 'center',
+            marginTop: 15,
         }
     },
     Comments: {
@@ -954,7 +971,23 @@ const styles = theme => ({
         }
     },
     Suscripciones: {
-        '& h4': {
+        marginBottom: 20,
+        '& .video-container': {
+            position: 'relative',
+            paddingBottom: '56.25%',
+            paddingTop: 30, 
+            height: 0, 
+            overflow: 'hidden',
+        },
+        '&  .video-container video': {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+        },
+
+        '& h3': {
             borderTop: '1px solid #000',
             paddingTop: 20,
             marginTop: 20,
@@ -962,6 +995,28 @@ const styles = theme => ({
         '& .item-button': {
             textAlign: 'center',
         }
+    },
+    VideoDestacado: {
+        width: '100%',
+        marginBottom: 20,
+        '& .video-container': {
+            position: 'relative',
+            paddingBottom: '56.25%',
+            paddingTop: 30, 
+            height: 0, 
+            overflow: 'hidden',
+        },
+        '& .video-container iframe': {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+        }
+    },
+    PromoCyCTv: {
+        width: '100%',
+        textAlign: 'center'
     }
 })
 

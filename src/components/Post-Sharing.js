@@ -16,24 +16,23 @@ import {
 } from 'react-share'
 
 import styles from '../assets/styles'
-
 const PostSharing = (props) => (
     <div className={props.classes.PostSharing}>
-        <FacebookShareButton url={props.post.link}>
-            <FacebookIcon size={15} round={false} />
-        </FacebookShareButton>
-        <TwitterShareButton url={props.post.link} title={'Twitter'}>
-            <TwitterIcon size={15} round={false} />
-        </TwitterShareButton>
-        <WhatsappShareButton url={props.post.link} title={'WhatsApp'}>
-            <WhatsappIcon size={15} round={false} />
-        </WhatsappShareButton>
-        <GooglePlusShareButton url={props.post.link} title={'Google+'}>
-            <GooglePlusIcon size={15} round={false} />
-        </GooglePlusShareButton>
-        <EmailShareButton url={props.post.link} title={'Mail'}>
-            <EmailIcon size={15} round={false} />
-        </EmailShareButton>
+            <FacebookShareButton url={props.post.link}>
+                <FacebookIcon size={props.isMobile ? 30 : 15} round={props.isMobile} />
+            </FacebookShareButton>
+            <TwitterShareButton url={props.post.link} title={'Twitter'}>
+                <TwitterIcon size={props.isMobile ? 30 : 15} round={props.isMobile} />
+            </TwitterShareButton>
+            <WhatsappShareButton url={props.post.link} title={'WhatsApp'}>
+                <WhatsappIcon size={props.isMobile ? 30 : 15} round={props.isMobile} />
+            </WhatsappShareButton>
+            <GooglePlusShareButton url={props.post.link} title={'Google+'}>
+                <GooglePlusIcon size={props.isMobile ? 30 : 15} round={props.isMobile} />
+            </GooglePlusShareButton>
+            <EmailShareButton url={props.post.link} title={'Mail'}>
+                <EmailIcon size={props.isMobile ? 30 : 15} round={props.isMobile} />
+            </EmailShareButton>
     </div>
 )
 
