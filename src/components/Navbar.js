@@ -31,23 +31,31 @@ class Navbar extends Component {
         })
     }
 
-    handleShowSubMenu = (catId) => {
+    handleShowSubMenu = (catSlug) => {
         this.setState({
-            catId: catId
+            catSlug: catSlug
         })
+        if ( !this.state.categoryPosts.find (
+                category => category.catSlug === catSlug )) {
+            this.getLastCategoryPosts(catSlug)
+        }
+        /*
         if ( !this.state.categoryPosts.find (
                 category => category.catId === catId )) {
             this.getLastCategoryPosts(catId)
         }
+         */
     }
 
-    getLastCategoryPosts = (catId) => {
+    getLastCategoryPosts = (catSlug) => {
         let categoryPosts = this.state.categoryPosts
+
+        let catId = this.props.categories.find(category => category.slug===catSlug).term_id
         axios
             .get( urlCaretas + 'wp/v2/posts?per_page=4&categories=' + catId )
             .then(res => {
                 this.setState({ 
-                    categoryPosts: [...categoryPosts, {catId: catId, data:res.data}],
+                    categoryPosts: [...categoryPosts, {catSlug: catSlug, data:res.data}],
                 })
             })
             .catch(error => console.log(error))
@@ -88,29 +96,29 @@ class Navbar extends Component {
                                     <Link 
                                         key={section.id} 
                                         to={{
-                                            pathname: section.link,
+                                            pathname: '/categoria/' + section.slug,
                                             state: { 
                                                 //termId: section.catId,
                                                 //page: 1,
-                                                Title: section.label 
+                                                Title: section.title 
                                             }
                                         }}
                                         onClick={this.handleMenuOpen}
-                                        onMouseEnter={() => this.handleShowSubMenu(section.catId)}
+                                        onMouseEnter={() => this.handleShowSubMenu(section.slug)}
                                     >
-                                        {section.label}
+                                        {section.title}
                                     </Link>
                                     <div className={'sub-navbar ' + this.state.subNavbar}>
                                         {
                                             ( !this.state.categoryPosts.find (
-                                                    category => category.catId === section.catId )
+                                                    category => category.catSlug === section.slug )
                                             ) ?
                                             <LoadingPostCategories/> :
                                             <SubCategory 
                                                 posts = { this.state.categoryPosts.find(
-                                                    category => category.catId === section.catId
+                                                    category => category.catSlug === section.slug
                                                 ).data }
-                                                catId = {section.id}
+                                //                catId = {section.id}
                                                 handleClickSubCategory = {this.handleClickSubCategory}
                                             />
                                         }

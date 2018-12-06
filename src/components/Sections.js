@@ -1,51 +1,43 @@
 const sections = [
     {
         id: 2,
-        catId: 7,
-        link: '/categoria/politica',
-        label: 'Política'
+        slug: 'politica',
+        title: 'Política'
     },
     {
         id: 3,
-        catId: 43,
-        link: '/categoria/sociedad',
-        label: 'Sociedad'
+        slug: 'sociedad',
+        title: 'Sociedad'
     },
     {
         id: 4,
-        catId: 11,
-        link: '/categoria/internacionales',
-        label: 'Internacionales'
+        slug: 'internacionales',
+        title: 'Internacionales'
     },
     {
         id: 5,
-        catId: 14,
-        link: '/categoria/deportes',
-        label: 'Deportes'
+        slug: 'deportes',
+        title: 'Deportes'
     },
     {
         id: 6,
-        catId: 44,
-        link: '/categoria/economia',
-        label: 'Economía'
+        slug: 'economia-2',
+        title: 'Economía'
     },
     {
         id: 7,
-        catId: 50,
-        link: '/categoria/cultura',
-        label: 'Cultura'
+        slug: 'cultura-y-espectaculos',
+        title: 'Cultura'
     },
     {
         id: 8,
-        catId: 27,
-        link: '/categoria/vida-y-ocio',
-        label: 'Vida y Ocio'
+        slug: 'vida-y-ocio',
+        title: 'Vida y Ocio'
     },
     {
         id: 9,
-        catId: 26,
-        link: '/categoria/empresariales',
-        label: 'Empresariales'
+        slug: 'empresariales',
+        title: 'Empresariales'
     },
 ]
 

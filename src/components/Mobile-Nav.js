@@ -74,25 +74,21 @@ class MobileNav extends Component {
                         <ul>
                             {
                                 sections.map(section => (
-                                    <li key={section.catId}>
-                                    <Link 
-                                        key={section.id} 
-                                        to={{
-                                            pathname: section.link,
-                                            state: { 
-                                                termId: section.catId,
-                                                page: 1,
-                                                Title: section.label 
-                                            }
-                                        }}
-                                        onClick = {this.handleMenuOpen}
-                                    >
-                                        {section.label}
-                                    </Link>
-
+                                    <li key={section.id}>
+                                        <Link 
+                                            key={section.id} 
+                                            to={{
+                                                pathname: '/categoria/' + section.slug,
+                                                state: { 
+                                                    Title: section.title 
+                                                }
+                                            }}
+                                            onClick = {this.handleMenuOpen}
+                                        >
+                                            {section.title}
+                                        </Link>
                                     </li>
-                                )
-                                )
+                                ))
                             }
                         </ul>
                     </div>

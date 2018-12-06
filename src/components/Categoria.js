@@ -26,48 +26,93 @@ class Categoria extends Component {
         } 
     }
 
-    fetch_posts = (catName, page=1) => {
+    /*fetch_posts_by_cat_slug = (catName, page=1) => {
         const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         this.setState({ 
             posts: [],
             isLoading: true 
         })
         axios
-            .get( url + 'posts/?cat=' + catName + '&page=' + page )
-            .then(res => {
-                this.setState({ 
-                    posts: res.data,
-                    headers: res.headers,
-                    currentPage: page,
-                    total: res.headers['x-wp-total'],
-                    pages: res.headers['x-wp-totalpages'],
-                    isLoading: false 
-                })
+            .get( url + 'categories/?slug=' + catName )
+            .then( res => {
+                return(
+                    axios
+                        .get( url + 'posts/?categories=' + res.data[0].id + '&page=' + page )
+                        .then(res=> {
+                            this.setState({
+                                posts: res.data,
+                                headers: res.headers,
+                                currentPage: page,
+                                total: res.headers['x-wp-total'],
+                                pages: res.headers['x-wp-totalpages'],
+                                isLoading: false
+                            })
+                        })
+                        .catch(error => console.log(error))
+                )
             })
             .catch(error => console.log(error))
+    }*/
+
+    fetch_posts_by_cat_id = (catId, page=1) => {
+        const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
+        this.setState({ 
+            posts: [],
+            isLoading: true 
+        })
+        axios
+        .get( url + 'posts/?categories=' + catId + '&page=' + page )
+        .then(res => {
+            this.setState({ 
+                posts: res.data,
+                headers: res.headers,
+                currentPage: page,
+                total: res.headers['x-wp-total'],
+                pages: res.headers['x-wp-totalpages'],
+                isLoading: false 
+            })
+        })
+        .catch(error => console.log(error))
     }
 
     componentDidMount() {
         //let location = this.props.location
         //if ( undefined === location.state ) {
-            this.fetch_posts( window.location.pathname.split('/').pop() )
+            let pathCatName = window.location.pathname.split('/').filter(x=>x).pop()
+            let catId = this.props.categories.find(
+                category => category.slug === pathCatName
+            ).term_id
+
+            //this.fetch_posts_by_cat_slug( window.location.pathname.split('/').pop() )
+
+            this.fetch_posts_by_cat_id( catId )
+
+            let catTitle = this.props.categories.find(
+                category => category.slug === pathCatName
+            ).name
+            this.setState({catTitle: catTitle})
         //} else {
             //const { termId, page } = this.props.location.state
             //this.setState({catId: termId})
-            //this.fetch_posts(termId, page)
+            //this.fetch_posts_by_cat_slug(termId, page)
 
         //}
         window.scrollTo(0,0)
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.location.pathname !== this.props.location.pathname) {
+        if (nextProps.location !== this.props.location) {
             //this.setState({posts:null})
             //const { termId, page } = nextProps.location.state
             const page = nextProps.location.state.page
            // this.setState({catId: termId})
-            //this.fetch_posts(termId, page)
-            this.fetch_posts(window.location.pathname.split('/').pop(), page)
+            //this.fetch_posts_by_cat_slug(termId, page)
+            //this.fetch_posts_by_cat_slug(window.location.pathname.split('/').pop(), page)
+            this.setState({catTitle: nextProps.location.state.Title})
+            let catId = this.props.categories.find(
+                category => category.slug === window.location.pathname.split('/').pop()
+            ).term_id
+            this.fetch_posts_by_cat_id( catId, page )
         }
     }
     
@@ -80,7 +125,7 @@ class Categoria extends Component {
                     ! this.state.isLoading && 
                     <div>
                         <h1 className='page-title'>
-                            {this.props.location.state.Title}
+                            {this.state.catTitle}
                         </h1>
                         {
                             this.state.posts.map( (post, index) => (
@@ -97,7 +142,7 @@ class Categoria extends Component {
                             this.state.pages > 1 &&
                             <Pagination 
                                 termId={this.state.catId}
-                                title={this.props.location.state.Title}
+                                title={this.state.catTitle}
                                 total={this.state.total} 
                                 pages={this.state.pages} 
                                 currentPage={this.state.currentPage} 

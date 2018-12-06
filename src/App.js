@@ -39,45 +39,49 @@ class App extends Component {
       users: [],
       isLoading: true
     }
-}
+  }
 
-componentDidMount() {
-    this.fetch_home_data()
-    this.fetch_users()
-}
+  componentDidMount() {
+      this.fetch_home_data()
+      this.fetch_users()
+  }
 
-fetch_home_data = () => {
-    axios
-        .get( urlCaretas + 'wp/v2/home/' )
-        .then(res => {
-        this.setState({ 
-            categories: res.data.categorias,
-            ultimos: res.data.ultimos,
-            cabezal: res.data.cabezal,
-            destacadas: res.data.destacadas,
-            editorial: res.data.editorial,
-            zona1: res.data.zona1,
-            zona2: res.data.zona2,
-            video: res.data.video,
-            videoDestacado: res.data.featured_video,
-            columnistas: res.data.columnistas,
-            tapa: res.data.tapa,
-            isLoading: false 
-        })
-    })
-    .catch(error => console.log(error))
-}
+  componentWillReceiveProps(nextProps) {
+    window.scrollTo(0,0)
+  }
 
-fetch_users = () => {
-    axios
-        .get( urlCaretas + 'wp/v2/users?per_page=99' )
-        .then(res => {
-        this.setState({ 
-            users: res.data,
-        })
-    })
-    .catch(error => console.log(error))
-}
+  fetch_home_data = () => {
+      axios
+          .get( urlCaretas + 'wp/v2/home/' )
+          .then(res => {
+          this.setState({ 
+              categories: res.data.categorias,
+              ultimos: res.data.ultimos,
+              cabezal: res.data.cabezal,
+              destacadas: res.data.destacadas,
+              editorial: res.data.editorial,
+              zona1: res.data.zona1,
+              zona2: res.data.zona2,
+              video: res.data.video,
+              videoDestacado: res.data.featured_video,
+              columnistas: res.data.columnistas,
+              tapa: res.data.tapa,
+              isLoading: false 
+          })
+      })
+      .catch(error => console.log(error))
+  }
+
+  fetch_users = () => {
+      axios
+          .get( urlCaretas + 'wp/v2/users?per_page=99' )
+          .then(res => {
+          this.setState({ 
+              users: res.data,
+          })
+      })
+      .catch(error => console.log(error))
+  }
 
   render() {
     const {classes} = this.props
@@ -87,7 +91,7 @@ fetch_users = () => {
           <CssBaseline />
           <div className={classes.layout}>
             <Header date={this.state.date}/>
-            <Navbar/>
+            <Navbar categories={this.state.categories}/>
             <SubNav lastPost={this.state.ultimos}/>
             <Switch>
               <Route 
