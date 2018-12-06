@@ -19,20 +19,21 @@ class Categoria extends Component {
         super(props)
 
         this.state = {
-            catId: null,
+            catName: null,
             posts: [],
-            post: null,
+           // post: null,
             isLoading: true
         } 
     }
 
-    fetch_posts = (catId, page=1) => {
+    fetch_posts = (catName, page=1) => {
         const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         this.setState({ 
+            posts: [],
             isLoading: true 
         })
         axios
-            .get( url + 'posts/?categories=' + catId + '&page=' + page )
+            .get( url + 'posts/?cat=' + catName + '&page=' + page )
             .then(res => {
                 this.setState({ 
                     posts: res.data,
@@ -46,18 +47,27 @@ class Categoria extends Component {
             .catch(error => console.log(error))
     }
 
-    componentDidMount(){
-        const { termId, page } = this.props.location.state
-        this.setState({catId: termId})
-        this.fetch_posts(termId, page)
+    componentDidMount() {
+        //let location = this.props.location
+        //if ( undefined === location.state ) {
+            this.fetch_posts( window.location.pathname.split('/').pop() )
+        //} else {
+            //const { termId, page } = this.props.location.state
+            //this.setState({catId: termId})
+            //this.fetch_posts(termId, page)
+
+        //}
+        window.scrollTo(0,0)
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.location !== this.props.location) {
-            this.setState({post:null})
-            const { termId, page } = nextProps.location.state
-            this.setState({catId: termId})
-            this.fetch_posts(termId, page)
+        if (nextProps.location.pathname !== this.props.location.pathname) {
+            //this.setState({posts:null})
+            //const { termId, page } = nextProps.location.state
+            const page = nextProps.location.state.page
+           // this.setState({catId: termId})
+            //this.fetch_posts(termId, page)
+            this.fetch_posts(window.location.pathname.split('/').pop(), page)
         }
     }
     

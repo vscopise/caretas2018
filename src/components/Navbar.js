@@ -4,8 +4,6 @@ import {
     withStyles
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-//import ResponsiveMenu from 'react-responsive-navbar'
-
 
 import { Menu } from '@material-ui/icons'
 import styles from '../assets/styles'
@@ -92,8 +90,8 @@ class Navbar extends Component {
                                         to={{
                                             pathname: section.link,
                                             state: { 
-                                                termId: section.catId,
-                                                page: 1,
+                                                //termId: section.catId,
+                                                //page: 1,
                                                 Title: section.label 
                                             }
                                         }}
@@ -120,6 +118,13 @@ class Navbar extends Component {
                                 </li>
                             ))
                         }
+                        <li>
+                            <Link to={{
+                                pathname: '/suscripciones/',
+                            }}>
+                                Suscripciones
+                            </Link>
+                        </li>
                         <li>
                             <Link to={{
                                 pathname: '/contacto/',

@@ -11,6 +11,7 @@ const urlCaretas = 'https://www.carasycaretas.com.uy/'
 const isMobile = window.innerWidth < 960
 
 class Post extends Component {
+    
     constructor(props) {
         super(props)
         this.state = {
@@ -67,8 +68,8 @@ class Post extends Component {
             this.setPostViews(nextProps.location.state.post.id)
             document.title = nextProps.location.state.post.title.rendered + ' - Caras y Caretas'
         }
+        window.scrollTo(0,0)
     }
-
 
     render() {
         if (!this.state.isLoading) {

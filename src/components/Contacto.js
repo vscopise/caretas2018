@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { TinyButton as ScrollUpButton} from 'react-scroll-up-button'
+
 
 import Loading from './Loading'
 import SidebarPage from './Sidebar-Page'
-
-import { Link } from 'react-router-dom'
-
 
 import { 
     Button,
@@ -187,6 +186,7 @@ class Contacto extends Component {
             !this.validate()
         return (
             <Grid container spacing={24}>
+                <ScrollUpButton />
                 <Grid item md={8} xs={12}>
                     <h1 className={'page-title'}>
                         Contacto
