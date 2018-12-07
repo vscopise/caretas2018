@@ -14,7 +14,7 @@ import {
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'
-const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
+import constants from '../assets/Constants'
 
 class MobileNav extends Component {
 
@@ -28,6 +28,7 @@ class MobileNav extends Component {
             searchResults: {},
             isLoading: false,
             hasResults: false,
+            urlCaretas: constants.urlCaretas
           }
     }
 
@@ -53,7 +54,7 @@ class MobileNav extends Component {
             })
 
             axios
-            .get( url + 'posts/?search=' + e.target.value )
+            .get( this.state.urlCaretas + 'posts/?search=' + e.target.value )
             .then(res => {
             this.setState({ 
                 searchResults: res.data,
@@ -134,9 +135,7 @@ class MobileNav extends Component {
                 }
                 <Grid container spacing={16} className={'drawer'}>
                     <Grid item xs={3} className={'mobile-nav-item'}>
-                        <Link to={{
-                            pathname: '/',
-                        }}>
+                        <Link to={{ pathname: '/' }}>
                             <Home/>
                             <span>Home</span>
                         </Link>
@@ -149,9 +148,7 @@ class MobileNav extends Component {
                         <span>Buscar</span>
                     </Grid>
                     <Grid item xs={3} className={'mobile-nav-item'}>
-                        <Link to={{
-                            pathname:'/suscripciones'
-                        }}>
+                        <Link to={{ pathname: '/suscripciones' }}>
                         <Subscriptions/>
                         <span>Suscripciones</span>
                         </Link>

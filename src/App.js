@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core'
 
 import styles from './assets/styles'
+import constants from './assets/Constants'
 
 import Header from './components/Header'
 import Navbar from './components/Navbar'
@@ -27,9 +28,6 @@ import SubNav from './components/Sub-Nav'
 
 import Footer from './components/Footer'
 
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
-
-
 class App extends Component {
   
   constructor(props) {
@@ -38,7 +36,8 @@ class App extends Component {
       date: new Date(),
       categories: [],
       users: [],
-      isLoading: true
+      isLoading: true,
+      urlCaretas: constants.urlCaretas
     }
   }
 
@@ -53,7 +52,7 @@ class App extends Component {
 
   fetch_home_data = () => {
       axios
-          .get( urlCaretas + 'wp/v2/home/' )
+          .get( this.state.urlCaretas + 'home/' )
           .then(res => {
           this.setState({ 
               categories: res.data.categorias,
@@ -75,7 +74,7 @@ class App extends Component {
 
   fetch_users = () => {
       axios
-          .get( urlCaretas + 'wp/v2/users?per_page=99' )
+          .get( this.state.urlCaretas + 'users?per_page=99' )
           .then(res => {
           this.setState({ 
               users: res.data,

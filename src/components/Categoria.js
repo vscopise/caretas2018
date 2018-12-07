@@ -12,6 +12,7 @@ import Loading from './Loading'
 import PreviewPost from './Preview-Post'
 
 import styles from '../assets/styles'
+import constants from '../assets/Constants'
 
 class Categoria extends Component {
 
@@ -21,47 +22,18 @@ class Categoria extends Component {
         this.state = {
             catName: null,
             posts: [],
-           // post: null,
-            isLoading: true
+            isLoading: true,
+            urlCaretas: constants.urlCaretas
         } 
     }
 
-    /*fetch_posts_by_cat_slug = (catName, page=1) => {
-        const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
-        this.setState({ 
-            posts: [],
-            isLoading: true 
-        })
-        axios
-            .get( url + 'categories/?slug=' + catName )
-            .then( res => {
-                return(
-                    axios
-                        .get( url + 'posts/?categories=' + res.data[0].id + '&page=' + page )
-                        .then(res=> {
-                            this.setState({
-                                posts: res.data,
-                                headers: res.headers,
-                                currentPage: page,
-                                total: res.headers['x-wp-total'],
-                                pages: res.headers['x-wp-totalpages'],
-                                isLoading: false
-                            })
-                        })
-                        .catch(error => console.log(error))
-                )
-            })
-            .catch(error => console.log(error))
-    }*/
-
     fetch_posts_by_cat_id = (catId, page=1) => {
-        const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         this.setState({ 
             posts: [],
             isLoading: true 
         })
         axios
-        .get( url + 'posts/?categories=' + catId + '&page=' + page )
+        .get( this.state.urlCaretas + 'posts/?categories=' + catId + '&page=' + page )
         .then(res => {
             this.setState({ 
                 posts: res.data,
@@ -76,14 +48,10 @@ class Categoria extends Component {
     }
 
     componentDidMount() {
-        //let location = this.props.location
-        //if ( undefined === location.state ) {
             let pathCatName = window.location.pathname.split('/').filter(x=>x).pop()
             let catId = this.props.categories.find(
                 category => category.slug === pathCatName
             ).term_id
-
-            //this.fetch_posts_by_cat_slug( window.location.pathname.split('/').pop() )
 
             this.fetch_posts_by_cat_id( catId )
 
@@ -91,25 +59,14 @@ class Categoria extends Component {
                 category => category.slug === pathCatName
             ).name
             this.setState({catTitle: catTitle})
-        //} else {
-            //const { termId, page } = this.props.location.state
-            //this.setState({catId: termId})
-            //this.fetch_posts_by_cat_slug(termId, page)
-
-        //}
         window.scrollTo(0,0)
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.location !== this.props.location) {
-            //this.setState({posts:null})
-            //const { termId, page } = nextProps.location.state
             const page = nextProps.location.state.page
-           // this.setState({catId: termId})
-            //this.fetch_posts_by_cat_slug(termId, page)
-            //this.fetch_posts_by_cat_slug(window.location.pathname.split('/').pop(), page)
             this.setState({catTitle: nextProps.location.state.Title})
-            let catId = this.props.categories.find(
+            let catId = this.props.categories.find (
                 category => category.slug === window.location.pathname.split('/').filter(x=>x).pop()
             ).term_id
             this.fetch_posts_by_cat_id( catId, page )

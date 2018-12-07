@@ -12,8 +12,7 @@ import {
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
-
+import constants from '../assets/Constants'
 
 class Galeria extends Component {
     constructor(props) {
@@ -22,6 +21,7 @@ class Galeria extends Component {
             results: {},
             categories: {},
             isLoading: true,
+            urlCaretas: constants.urlCaretas
         }
     }
 
@@ -31,7 +31,7 @@ class Galeria extends Component {
         ).term_id
         
         axios
-        .get( urlCaretas + 'posts/?categories=' + catId )
+        .get( this.state.urlCaretas + 'posts/?categories=' + catId )
         .then(res => {
             this.setState({ 
                 posts: res.data,

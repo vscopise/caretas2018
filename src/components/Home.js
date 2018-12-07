@@ -7,6 +7,7 @@ import {
 import CabezalHome from './Cabezal-Home'
 import DestacadasEditorial from './Destacadas-Editorial'
 //import LastPosts from './Last-Posts'
+import constants from '../assets/Constants'
 import styles from '../assets/styles'
 import SidebarHome from './Sidebar-Home';
 import ZonePost from './Zone-Post';
@@ -23,7 +24,7 @@ import PromoCycTv from './Promo-Cyc-Tv';
 const Home = ( props ) => (
     <div className={props.classes.Home}>
         {
-            window.innerWidth > 960 &&
+            !constants.isMobile &&
             <ScrollUpButton />
         }
         <CabezalHome 
@@ -50,7 +51,7 @@ const Home = ( props ) => (
                     </Grid>
                 </Grid>
                 {
-                    window.innerWidth < 960 &&
+                    constants.isMobile &&
                     <DfpBanner
                         dfpNetworkId={'90767959'} 
                         adUnit={'home_body_1'}
@@ -58,7 +59,7 @@ const Home = ( props ) => (
                     />
                 }
                 {
-                    window.innerWidth > 960 &&
+                    !constants.isMobile &&
                     <DfpBanner
                         dfpNetworkId={'90767959'} 
                         adUnit={'home_body_1'}

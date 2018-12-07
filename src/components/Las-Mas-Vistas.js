@@ -10,8 +10,7 @@ import {
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
-
+import constants from '../assets/Constants'
 
 class LasMasVistas extends Component {
     constructor(props) {
@@ -20,13 +19,13 @@ class LasMasVistas extends Component {
             results: {},
             categories: {},
             isLoading: true,
+            urlCaretas: constants.urlCaretas
         }
     }
 
     componentDidMount() {
-        
         axios
-        .get( urlCaretas + 'posts/?views=' )
+        .get( this.state.urlCaretas + 'posts/?views=' )
         .then(res => {
             this.setState({ 
                 results: res.data,
@@ -34,8 +33,6 @@ class LasMasVistas extends Component {
             })
         })
     }
-
-    
 
     render() {
         return (

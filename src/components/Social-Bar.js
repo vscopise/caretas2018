@@ -11,10 +11,11 @@ import {
 } from 'react-icons/fa';
 
 import styles from '../assets/styles'
+import constants from '../assets/Constants'
 
 const SocialBar = ( props ) => (
     <div className={props.classes.SocialBar}>
-        <a href='https://www.twitter.com/CarasyCaretasuy' 
+        <a href={constants.urlTwitter} 
             target='_blank' 
             alt='Twitter' 
             title='Twitter'
@@ -22,7 +23,7 @@ const SocialBar = ( props ) => (
         >
             <FaTwitterSquare className='icon'/>
         </a>
-        <a href='https://www.facebook.com/CarasyCaretasuy/' 
+        <a href={constants.urlFacebook} 
             target='_blank' 
             alt='Facebook' 
             title='Facebook'
@@ -30,7 +31,7 @@ const SocialBar = ( props ) => (
         >
             <FaFacebookSquare className='icon'/>
         </a>
-        <a href='https://www.instagram.com/carasycaretasuy/' 
+        <a href={constants.urlInstagram} 
             target='_blank' 
             alt='Instagram' 
             title='Instagram'
@@ -38,7 +39,7 @@ const SocialBar = ( props ) => (
         >
             <FaInstagram className='icon'/>
         </a>
-        <a href='https://www.youtube.com/channel/UCUWwJ-F8S0e0lArnOaSdR2Q' 
+        <a href={constants.urlYoutube} 
             target='_blank' 
             alt='Youtube' 
             title='Youtube'

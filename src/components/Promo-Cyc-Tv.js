@@ -5,10 +5,11 @@ import {
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'
+import constants from '../assets/Constants'
 
 const PromoCyCTv = ( props ) => (
     <div className={props.classes.PromoCyCTv}>
-        <a href='https://www.youtube.com/channel/UCGc2JWsZwMX9w4BQ3w2ubcA' target='_blank' className='image'>
+        <a href={constants.urlYoutube} target='_blank' className='image'>
             <img src={promoCycTv} alt={'Caras & Caretas TV'} />
         </a>
     </div>    

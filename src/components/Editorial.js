@@ -23,7 +23,6 @@ const Editorial = ( props ) => (
             <p>Por: {props.posts[0].author}</p>
         </Link>
     </div>
-    
 )
 
 export default withStyles(styles)(Editorial)

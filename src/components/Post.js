@@ -6,9 +6,12 @@ import PostContent from './Post-Content'
 import SidebarSingle from './Sidebar-Single'
 
 import { Grid } from '@material-ui/core'
+import constants from '../assets/Constants'
 
-const urlCaretas = 'https://www.carasycaretas.com.uy/'
+//const urlCaretas = 'https://www.carasycaretas.com.uy/'
 const isMobile = window.innerWidth < 960
+
+
 
 class Post extends Component {
     
@@ -17,14 +20,17 @@ class Post extends Component {
         this.state = {
             post: {},
             isLoading: true,
-            isMobile: isMobile
+            isMobile: isMobile,
+            urlCaretas: constants.urlCaretas,
+            urlAdminCaretas: constants.urlAdminCaretas,
         }
     }
 
     fetch_post = ( pathname ) => {
-        var url = urlCaretas + 'wp-json/wp/v2/posts?slug=' + pathname
+        //var url = urlCaretas + 'wp-json/wp/v2/posts?slug=' + pathname
         axios
-            .get( url )
+            //.get( url )
+            .get(this.state.urlCaretas + 'posts?slug=' + pathname)
             .then(res => {
                 this.setState({
                     post:res.data[0],
@@ -39,7 +45,7 @@ class Post extends Component {
     setPostViews = (post_id) => {
         axios
             .post(
-                urlCaretas + 'wp-admin/admin-ajax.php', 
+                this.state.urlAdminCaretas, 
                 {
                     action: 'set_post_views',
                     post_id: post_id

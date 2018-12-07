@@ -9,6 +9,7 @@ import CommentForm from './Comment-Form'
 import CommentList from './Comment-List'
 
 import styles from '../assets/styles'
+import constants from '../assets/Constants'
 
 class Comments extends Component {
 
@@ -18,24 +19,40 @@ class Comments extends Component {
             postId: this.props.id,
             comments: {},
             isLoading: true,
-            sendingCommentLabel: ''
+            sendingCommentLabel: '',
+            urlCaretas: constants.urlCaretas
         }
     }
 
     fetchComments(postId) {
-        const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         this.setState({ 
             isLoading: true 
         })
         axios
-            .get( url + 'comments/?order=asc&post='+ postId )
+            .get( this.state.urlCaretas + 'comments/?order=asc&post='+ postId )
             .then(res => {
                 this.setState({ 
+                    //comments: this.unflatten(res.data, 0),
                     comments: res.data,
                     isLoading: false
                 })
         })
         .catch(error => console.log(error))
+    }
+
+    unflatten = (array, parent) => {
+        var out = []
+        for(var i in array) {
+            if(array[i].parent == parent) {
+                var children = this.unflatten(array, array[i].id)
+
+                if(children.length) {
+                    array[i].children = children
+                }
+                out.push(array[i])
+            }
+        }
+        return out
     }
 
     componentDidMount() {
@@ -44,29 +61,27 @@ class Comments extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.post.id !== this.props.post.id) {
-            this.setState({comments: null})
-            this.fetchComments(this.props.post.id)
+            this.fetchComments(nextProps.post.id)
         }
     }
 
     sendComment = (comment) => {
-        const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         const postId = this.props.post.id
         this.setState({sendingCommentLabel: 'Enviando...'})
         axios
-        .post( url + 'comments', {
-            'author_name': comment.author,
-            'author_email': comment.email,
-            'content': comment.content,
-            'post': postId
-        })
-        .then(res => {
-            console.log(res.data)
-            this.setState({
-                sendingCommentLabel: 'Muchas gracias, su comentario fue enviado'
+            .post( this.state.urlCaretas + 'comments', {
+                'author_name': comment.author,
+                'author_email': comment.email,
+                'content': comment.content,
+                'post': postId
             })
-        })
-        .catch(error => console.log(error))
+            .then(res => {
+                console.log(res.data)
+                this.setState({
+                    sendingCommentLabel: 'Muchas gracias, su comentario fue enviado'
+                })
+            })
+            .catch(error => console.log(error))
     }
 
     render() {

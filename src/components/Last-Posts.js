@@ -4,13 +4,6 @@ import { Link } from 'react-router-dom'
 import '../assets/ticker-styles.css'
 
 
-/*import { 
-    Grid,
-    withStyles
-} from '@material-ui/core'*/
-
-  
-
 const LastPosts = ( props ) => (
     <div className='last-posts'>
         <span className='ticker-title'>Ultimas Noticias</span>

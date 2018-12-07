@@ -4,6 +4,7 @@ import {
 } from '@material-ui/core'
 import HeaderLogo from './Header-Logo'
 import DfpBanner from './Dfp-Banner'
+import constants from '../assets/Constants'
 import styles from '../assets/styles'
 
 const Header = ( props ) => (
@@ -23,7 +24,7 @@ const Header = ( props ) => (
             />
         </Grid>
         {
-            window.innerWidth > 960 &&
+            !constants.isMobile &&
             <Grid item md={9} xs={12}>
                 <DfpBanner
                     dfpNetworkId={'90767959'} 

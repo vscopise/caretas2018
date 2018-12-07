@@ -12,6 +12,7 @@ import Loading from './Loading'
 import PreviewPost from './Preview-Post'
 
 import styles from '../assets/styles'
+import constants from '../assets/Constants'
 
 class Author extends Component {
 
@@ -22,17 +23,17 @@ class Author extends Component {
             userId: null,
             posts: [],
             post: null,
-            isLoading: true
+            isLoading: true,
+            urlCaretas: constants.urlCaretas
         } 
     }
 
     fetch_posts = (userId, page=1) => {
-        const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
         this.setState({ 
             isLoading: true 
         })
         axios
-            .get( url + 'posts/?author=' + userId + '&page=' + page )
+            .get( this.state.urlCaretas + 'posts/?author=' + userId + '&page=' + page )
             .then(res => {
             this.setState({ 
                 posts: res.data,

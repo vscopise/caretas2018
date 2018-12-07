@@ -13,35 +13,33 @@ const Columnistas = ( props ) => (
         </h4>
         <Grid container spacing={24}>
             {
-                props.columnistas.map(columnista => 
-                    <Grid 
-                        item xs={4} 
-                        key={columnista.id}
-                        className='columnista'
-                    >
-                        <Link
-                            to = {
-                                {pathname: '/author/' + columnista.user_login, 
-                                    state: {
-                                        userId: columnista.id, 
-                                        userLogin: columnista.user_login,
-                                        userName: columnista.name,
-                                    }
+            props.columnistas.map(columnista => 
+                <Grid 
+                    item xs={4} 
+                    key={columnista.id}
+                    className='columnista'
+                >
+                    <Link
+                        to = {
+                            {pathname: '/author/' + columnista.user_login, 
+                                state: {
+                                    userId: columnista.id, 
+                                    userLogin: columnista.user_login,
+                                    userName: columnista.name,
                                 }
-                            }  
-                        >
-                            <div 
-                                className='avatar'
-                                dangerouslySetInnerHTML={{__html: columnista.avatar}}
-                            />
-                            <p>{columnista.name}</p>
-                        </Link>
-                    </Grid>)
+                            }
+                        }  
+                    >
+                        <div 
+                            className='avatar'
+                            dangerouslySetInnerHTML={{__html: columnista.avatar}}
+                        />
+                        <p>{columnista.name}</p>
+                    </Link>
+                </Grid>)
             }
         </Grid>
-        
     </div>
-                
 )
 
 export default withStyles(styles)(Columnistas)

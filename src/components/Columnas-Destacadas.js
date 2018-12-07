@@ -11,8 +11,7 @@ import {
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
-
+import constants from '../assets/Constants'
 
 class ColumnasDestacadas extends Component {
     constructor(props) {
@@ -21,6 +20,7 @@ class ColumnasDestacadas extends Component {
             results: {},
             categories: {},
             isLoading: true,
+            urlCaretas: constants.urlCaretas
         }
     }
 
@@ -29,22 +29,15 @@ class ColumnasDestacadas extends Component {
             category => category.slug === 'columna-destacada'
         ).term_id
 
-        /*
-        { this.state.categoryPosts.find(
-            category => category.catId === section.catId
-        ).data }
-        */
         axios
-        .get( urlCaretas + 'posts/?categories=' + cat_id )
-        .then(res => {
-            this.setState({ 
-                results: res.data,
-                isLoading: false,
-            })
+            .get( this.state.urlCaretas + 'posts/?categories=' + cat_id )
+            .then(res => {
+                this.setState({ 
+                    results: res.data,
+                    isLoading: false,
+                })
         })
     }
-
-    
 
     render() {
         return (

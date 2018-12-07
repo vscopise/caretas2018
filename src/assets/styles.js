@@ -1020,9 +1020,13 @@ const styles = theme => ({
             width: '100%',
             height: '100%',
         },
-        '& .sharing div': {
-            display: 'inline-block',
-        }
+        '& .sharing': {
+            marginTop: 10,
+            '& .sharing-button': {
+                float: 'left',
+                cursor: 'pointer'
+            }
+        },
     },
     PromoCyCTv: {
         width: '100%',

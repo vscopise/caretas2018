@@ -12,8 +12,9 @@ import {
 } from '@material-ui/core'
 
 import Loading from './Loading'
-import styles from '../assets/styles'
 import PreviewTapa from './Preview-Tapa';
+import styles from '../assets/styles'
+import constants from '../assets/Constants'
 
 class EdicionImpresa extends Component {
 
@@ -22,17 +23,14 @@ class EdicionImpresa extends Component {
 
         this.state = {
             revistas: [],
-            isLoading: true
+            isLoading: true,
+            urlCaretas: constants.urlCaretas
         } 
     }
 
     fetch_revistas = (termId=2, page=1) => {
-        const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
-        this.setState({ 
-            isLoading: true 
-        })
         axios
-            .get( url + 'revistas/?per_page=20&productos=' + termId + '&page=' + page )
+            .get( this.state.urlCaretas + 'revistas/?per_page=20&productos=' + termId + '&page=' + page )
             .then( res => {
             this.setState({ 
                 revistas:res.data,
@@ -56,7 +54,6 @@ class EdicionImpresa extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.location !== this.props.location) {
-            //this.setState({revistas:[]})
             const { termId, page, issuu } = nextProps.location.state
             this.setState({
                 termId: termId,
@@ -117,7 +114,6 @@ class EdicionImpresa extends Component {
                 <Grid item md={4} xs={12}>Sidebar</Grid>
             </Grid>            
         )
-        
     }
 }
 export default withStyles(styles)(EdicionImpresa)

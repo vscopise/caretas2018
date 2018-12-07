@@ -12,16 +12,16 @@ import LoadingPostCategories from './Loading-Post-Categories'
 
 import sections from './Sections'
 
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
+import constants from '../assets/Constants'
 
 class Navbar extends Component {
-
     constructor(props) {
         super(props)
         this.state = {
             menuOpen: false,
             categoryPosts: [],
-            subNavbar: ''
+            subNavbar: '',
+            urlCaretas: constants.urlCaretas
           }
     }
 
@@ -40,23 +40,22 @@ class Navbar extends Component {
                 category => category.catSlug === catSlug )) {
             this.getLastCategoryPosts(catSlug)
         }
-        /*
-        if ( !this.state.categoryPosts.find (
-                category => category.catId === catId )) {
-            this.getLastCategoryPosts(catId)
-        }
-         */
     }
 
     getLastCategoryPosts = (catSlug) => {
         let categoryPosts = this.state.categoryPosts
 
-        let catId = this.props.categories.find(category => category.slug===catSlug).term_id
+        let catId = this.props.categories.find(
+            category => category.slug===catSlug
+        ).term_id
         axios
-            .get( urlCaretas + 'wp/v2/posts?per_page=4&categories=' + catId )
+            .get( this.state.urlCaretas + 'posts?per_page=4&categories=' + catId )
             .then(res => {
                 this.setState({ 
-                    categoryPosts: [...categoryPosts, {catSlug: catSlug, data:res.data}],
+                    categoryPosts: [
+                        ...categoryPosts, 
+                        {catSlug: catSlug, data:res.data}
+                    ],
                 })
             })
             .catch(error => console.log(error))
@@ -76,8 +75,6 @@ class Navbar extends Component {
         }
     }
 
-    
-
     render() {
         return(
             <div className={this.props.classes.Navbar} >
@@ -85,59 +82,48 @@ class Navbar extends Component {
                     <Menu className='show-menu' onClick={this.handleMenuOpen}/>
                     <ul className={this.state.menuOpen ? 'active' : null}>
                         <li>
-                            <Link to={{
-                                pathname: '/',
-                            }}>
+                            <Link to={{ pathname: '/' }}>
                                 Inicio
                             </Link>
                         </li>
-                        {
-                            sections.map((section) => (
-                                <li key={section.id} >
-                                    <Link 
-                                        key={section.id} 
-                                        to={{
-                                            pathname: '/categoria/' + section.slug,
-                                            state: { 
-                                                //termId: section.catId,
-                                                //page: 1,
-                                                Title: section.title 
-                                            }
-                                        }}
-                                        onClick={this.handleMenuOpen}
-                                        onMouseEnter={() => this.handleShowSubMenu(section.slug)}
-                                    >
-                                        {section.title}
-                                    </Link>
-                                    <div className={'sub-navbar ' + this.state.subNavbar}>
-                                        {
-                                            ( !this.state.categoryPosts.find (
-                                                    category => category.catSlug === section.slug )
-                                            ) ?
-                                            <LoadingPostCategories/> :
-                                            <SubCategory 
-                                                posts = { this.state.categoryPosts.find(
-                                                    category => category.catSlug === section.slug
-                                                ).data }
-                                //                catId = {section.id}
-                                                handleClickSubCategory = {this.handleClickSubCategory}
-                                            />
-                                        }
-                                    </div> 
-                                </li>
-                            ))
-                        }
+                        { sections.map((section) => (
+                        <li key={section.id} >
+                            <Link 
+                                key={section.id} 
+                                to={{
+                                    pathname: '/categoria/' + section.slug,
+                                    state: { Title: section.title }
+                                }}
+                                onClick={this.handleMenuOpen}
+                                onMouseEnter={
+                                    () => this.handleShowSubMenu(section.slug)
+                                }
+                            >
+                                {section.title}
+                            </Link>
+                            <div className={'sub-navbar ' + this.state.subNavbar}>
+                                {
+                                ( !this.state.categoryPosts.find (
+                                        category => category.catSlug === section.slug )
+                                ) ?
+                                <LoadingPostCategories/> :
+                                <SubCategory 
+                                    posts = { this.state.categoryPosts.find(
+                                        category => category.catSlug === section.slug
+                                    ).data }
+                                    handleClickSubCategory = {this.handleClickSubCategory}
+                                />
+                                }
+                            </div> 
+                        </li>
+                        )) }
                         <li>
-                            <Link to={{
-                                pathname: '/suscripciones/',
-                            }}>
+                            <Link to={{ pathname: '/suscripciones/' }}>
                                 Suscripciones
                             </Link>
                         </li>
                         <li>
-                            <Link to={{
-                                pathname: '/contacto/',
-                            }}>
+                            <Link to={{ pathname: '/contacto/' }}>
                                 Contacto
                             </Link>
                         </li>

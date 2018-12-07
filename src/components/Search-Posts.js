@@ -5,15 +5,12 @@ import Loading from './Loading'
 
 import { Link } from 'react-router-dom'
 
-//const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/'
-
 import { 
     TextField,
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'
-const url = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
-
+import constants from '../assets/Constants'
 
 class SearchPosts extends Component {
     constructor(props) {
@@ -38,7 +35,7 @@ class SearchPosts extends Component {
             })
 
             axios
-            .get( url + 'posts/?search=' + e.target.value )
+            .get( constants.urlCaretas + 'posts/?search=' + e.target.value )
             .then(res => {
             this.setState({ 
                 results: res.data,
@@ -59,7 +56,6 @@ class SearchPosts extends Component {
                     className='search'
                     fullWidth
                     onChange={this.handleChange}
-
                     variant='outlined'
                 />
                 {

@@ -2,18 +2,14 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import Loading from './Loading'
-
 import GridPost from './Grid-Post'
-
-
 
 import { 
     Grid,
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
-
+import constants from '../assets/Constants'
 
 class GridPosts extends Component {
     constructor(props) {
@@ -21,6 +17,8 @@ class GridPosts extends Component {
         this.state = {
             posts: [],
             isLoading: true,
+            urlCaretas: constants.urlCaretas,
+            isMobile: constants.isMobile,
         }
     }
 
@@ -30,7 +28,7 @@ class GridPosts extends Component {
         ).term_id
 
         axios
-        .get( urlCaretas + 'posts/?categories=' + catId )
+        .get( this.state.urlCaretas + 'posts/?categories=' + catId )
         .then(res => {
             this.setState({ 
                 posts: res.data,
@@ -58,7 +56,7 @@ class GridPosts extends Component {
                             </Grid>
                         }
                         {
-                            window.innerWidth > 960 &&
+                            !this.state.isMobile &&
                             <Grid item md={6} xs={12}>
                                 <Grid container spacing={16}>
                                     <Grid item sm={6} xs={12}>

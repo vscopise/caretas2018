@@ -6,11 +6,6 @@ import styles from '../assets/styles'
 const Pagination = (props) => {
     var items = [-1, 0, 1]
 
-    //var Title = props.terms.find(
-    //    term => term.term_id === props.termId
-    //).name
-    //var Title = props.title
-
     const currentPage = props.currentPage
 
     return(
