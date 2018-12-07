@@ -27,7 +27,8 @@ class Navbar extends Component {
 
     handleMenuOpen = () => {
         this.setState({
-            menuOpen: !this.state.menuOpen
+            menuOpen: !this.state.menuOpen,
+            subNavbar: 'hide'
         })
     }
 
@@ -92,7 +93,7 @@ class Navbar extends Component {
                         </li>
                         {
                             sections.map((section) => (
-                                <li key={section.catId} >
+                                <li key={section.id} >
                                     <Link 
                                         key={section.id} 
                                         to={{

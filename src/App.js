@@ -20,6 +20,7 @@ import Author from './components/Author'
 import EdicionImpresa from './components/Edicion-Impresa'
 import Contacto from './components/Contacto'
 import Suscripciones from './components/Suscripciones'
+import TerminosCondiciones from './components/Terminos-y-Condiciones'
 
 import Loading from './components/Loading'
 import SubNav from './components/Sub-Nav'
@@ -128,6 +129,9 @@ class App extends Component {
               />
               <Route 
                 exact path={"/suscripciones"} component={Suscripciones} 
+              />
+              <Route 
+                exact path={"/terminos-y-condiciones"} component={TerminosCondiciones} 
               />
               <Route 
                 path={"/:slug"} component={Post} 

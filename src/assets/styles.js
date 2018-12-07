@@ -875,6 +875,13 @@ const styles = theme => ({
         color: '#fff',
         fontSize: '.75rem',
         padding: '.625rem 0',
+        '& a': {
+            color: '#fff',
+            textDecoration: 'none'
+        },
+        '& a:hover': {
+            textDecoration: 'underline',
+        },
         '& .wrapper-inner': {
             width: '90%',
             maxWidth: 1180,
@@ -1012,6 +1019,9 @@ const styles = theme => ({
             left: 0,
             width: '100%',
             height: '100%',
+        },
+        '& .sharing div': {
+            display: 'inline-block',
         }
     },
     PromoCyCTv: {

@@ -110,7 +110,7 @@ class Categoria extends Component {
             //this.fetch_posts_by_cat_slug(window.location.pathname.split('/').pop(), page)
             this.setState({catTitle: nextProps.location.state.Title})
             let catId = this.props.categories.find(
-                category => category.slug === window.location.pathname.split('/').pop()
+                category => category.slug === window.location.pathname.split('/').filter(x=>x).pop()
             ).term_id
             this.fetch_posts_by_cat_id( catId, page )
         }
