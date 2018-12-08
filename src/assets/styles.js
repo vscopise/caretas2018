@@ -567,12 +567,11 @@ const styles = theme => ({
         },
     },
     CommentList: {
-        padding: '20px 20px 5px',
         marginBottom: 20,
-        background: '#efefef',
+        '& .even':{background: '#fff'},
+        '& .odd':{background: '#f0f0f0'},
         '& .comment': {
-            padding: '20px 20px 10px',
-            background: '#fff',
+            padding: '20px 20px 0',
             borderBottom: '5px solid #ccdee8',
             marginBottom: 20,
             '& p': {
@@ -583,7 +582,8 @@ const styles = theme => ({
                     float: 'left',
                     marginRight: 20,
                     width: 70,
-                    height: 70
+                    height: 70,
+                    borderRadius: '50%',
                 },
                 '& h4': {
                     marginTop: 0,

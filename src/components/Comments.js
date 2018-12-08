@@ -29,7 +29,7 @@ class Comments extends Component {
             isLoading: true 
         })
         axios
-            .get( this.state.urlCaretas + 'comments/?order=asc&post='+ postId )
+            .get( this.state.urlCaretas + 'comments/?order=asc&per_page=99&post='+ postId )
             .then(res => {
                 this.setState({ 
                     //comments: this.unflatten(res.data, 0),
@@ -84,6 +84,10 @@ class Comments extends Component {
             .catch(error => console.log(error))
     }
 
+    respondComment = (comment) => {
+        alert(comment)
+    }
+
     render() {
         if ( !this.state.isLoading ) {
             return(
@@ -93,19 +97,26 @@ class Comments extends Component {
                             {this.state.comments.length>0 && `${this.state.comments.length} comentarios`}
                             {this.state.comments.length===0 && 'Eres el primero en comentar'}
                         </span>
-                        <span className='comments-count-more'>
-                            en {this.props.post.title.rendered}
+                        <span className='comments-count-more'>en:&nbsp; 
+                            <span 
+                                dangerouslySetInnerHTML={{__html: this.props.post.title.rendered}} 
+                            />
                         </span>
                     </h4>
                     {
                         this.state.comments.length > 0 &&
+                        //this.state.comments.filter(c => c.parent === 0).length > 0 &&
                         <CommentList 
                             comments={this.state.comments} 
+                            parent={0}
+                            deep={0}
+                            handleRespondComment={this.respondComment}
                         />
                     }
                     <CommentForm 
                         handleComment={this.sendComment} 
                         sendingCommentLabel={this.state.sendingCommentLabel}
+                        
                     />
                 </div>
             )
