@@ -9,26 +9,12 @@ class CommentList extends Component {
         super(props)
     }
 
-    unflatten =  (array, parent) => {
-        var out = []
-        for(var i in array) {
-            if(array[i].parent == parent) {
-                var children = this.unflatten(array, array[i].id)
-                
-                if(children.length) {
-                    array[i].children = children
-                }
-                out.push(array[i])
-            }
-        }
-        return out
-    }
-
     render(){
+        const children = this.props.comments
+
         return (
-            <div className={this.props.classes.CommentList}>
+            <div className={'CommentList'}>
                 {
-                    //this.unflatten (this.props.comments, 0).map(comment => (
                     this.props.comments.map(comment => (
                         <div className='comment' key={comment.id}>
                             <div className='comment-meta'>
@@ -49,6 +35,10 @@ class CommentList extends Component {
                             <div 
                                 dangerouslySetInnerHTML={{__html: comment.content.rendered}} 
                             />
+                            {
+                                this.props.comments.filter(c => c.parent === comment.id) &&
+                                <CommentList comments={this.props.comments.filter(c => c.parent === comment.id)}/>
+                            }                            
                         </div>
                     ))
                 }

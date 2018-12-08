@@ -26,7 +26,7 @@ const PostContent = (props) => (
         <div className=''>
             {
                 null !== props.post.video && (
-                    <div>
+                    <div className={'video-container'}>
                         <iframe 
                             width="777" 
                             height="437" 
