@@ -16,11 +16,12 @@ class Comments extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            postId: this.props.id,
+            postId: this.props.post.id,
             comments: {},
             isLoading: true,
             sendingCommentLabel: '',
-            urlCaretas: constants.urlCaretas
+            urlCaretas: constants.urlCaretas,
+            respondCommentId: this.props.post.id
         }
     }
 
@@ -32,7 +33,6 @@ class Comments extends Component {
             .get( this.state.urlCaretas + 'comments/?order=asc&per_page=99&post='+ postId )
             .then(res => {
                 this.setState({ 
-                    //comments: this.unflatten(res.data, 0),
                     comments: res.data,
                     isLoading: false
                 })
@@ -40,7 +40,7 @@ class Comments extends Component {
         .catch(error => console.log(error))
     }
 
-    unflatten = (array, parent) => {
+    /*unflatten = (array, parent) => {
         var out = []
         for(var i in array) {
             if(array[i].parent == parent) {
@@ -53,7 +53,7 @@ class Comments extends Component {
             }
         }
         return out
-    }
+    }*/
 
     componentDidMount() {
         this.fetchComments(this.props.post.id)
@@ -73,6 +73,7 @@ class Comments extends Component {
                 'author_name': comment.author,
                 'author_email': comment.email,
                 'content': comment.content,
+                'parent': comment.parent,
                 'post': postId
             })
             .then(res => {
@@ -84,8 +85,19 @@ class Comments extends Component {
             .catch(error => console.log(error))
     }
 
-    respondComment = (comment) => {
-        alert(comment)
+    respondComment = (e) => {
+        e.preventDefault()
+        this.setState({
+            respondCommentId: Math.trunc(e.target.id),
+            sendingCommentLabel: '',
+        })
+    }
+    cancelRespond = (e) => {
+        e.preventDefault()
+        this.setState({
+            respondCommentId: this.state.postId,
+            sendingCommentLabel: '',
+        })
     }
 
     render() {
@@ -105,19 +117,26 @@ class Comments extends Component {
                     </h4>
                     {
                         this.state.comments.length > 0 &&
-                        //this.state.comments.filter(c => c.parent === 0).length > 0 &&
                         <CommentList 
                             comments={this.state.comments} 
                             parent={0}
                             deep={0}
-                            handleRespondComment={this.respondComment}
+                            sendComment={this.sendComment}
+                            respondCommentId={this.state.respondCommentId}
+                            respondComment={this.respondComment}
+                            cancelRespond={this.cancelRespond}
+                            sendingCommentLabel={this.state.sendingCommentLabel}
                         />
                     }
-                    <CommentForm 
-                        handleComment={this.sendComment} 
-                        sendingCommentLabel={this.state.sendingCommentLabel}
-                        
-                    />
+                    {
+                        this.state.respondCommentId === this.state.postId &&
+                        <CommentForm 
+                            sendComment={this.sendComment} 
+                            sendingCommentLabel={this.state.sendingCommentLabel}
+                            postId={this.state.postId}
+                            respondCommentId={0}
+                        />
+                    }
                 </div>
             )
         } else {

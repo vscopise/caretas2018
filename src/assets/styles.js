@@ -588,17 +588,33 @@ const styles = theme => ({
                 '& h4': {
                     marginTop: 0,
                     marginBottom: '1.25rem',
+                    '& span': {
+                        cursor: 'pointer',
+                    },
+                    '& span:hover': {
+                        color: '#d00',
+                        textDecoration: 'underline',
+                    }
                 },
             },
         }
     },
     CommentForm: {
-        background: '#efefef',
+        background: '#e0e0e0',
         padding: '1.25rem 1.25rem .625rem',
         marginBottom: '1.875rem',
         '& .comment-reply-title': {
             marginTop: 0,
-            fontSize: '1.5rem'
+            fontSize: '1.5rem',
+            '& span': {
+                fontSize: '1rem',
+                marginLeft: 10,
+                cursor: 'pointer',
+            },
+            '& span:hover': {
+                color: '#d00',
+                textDecoration: 'underline',
+            }
         },
         
         

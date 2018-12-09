@@ -1,6 +1,8 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core'
 
+import CommentForm from './Comment-Form'
+
 import styles from '../assets/styles'
 
 const CommentList = ( props ) => (
@@ -21,12 +23,24 @@ const CommentList = ( props ) => (
                                 day: "numeric",
                                 hour: "numeric",
                                 minute: "numeric"})}&nbsp;|&nbsp;
-                                <span onClick={props.handleRespondComment}>Responder</span>
+                                <span id={comment.id} onClick={props.respondComment}>
+                                    Responder
+                                </span>
                         </h4>
                     </div>
                     <div 
                         dangerouslySetInnerHTML={{__html: comment.content.rendered}} 
                     />
+                    {
+                        props.respondCommentId === comment.id &&
+                        <CommentForm 
+                            sendComment={props.sendComment}
+                            sendingCommentLabel={props.sendingCommentLabel}
+                            postId={comment.id}
+                            respondCommentId={props.respondCommentId}
+                            cancelRespond={props.cancelRespond}
+                        />
+                    }
                     {
                         props.comments.filter(c => c.parent === comment.id).length > 0 &&
                         <CommentList 

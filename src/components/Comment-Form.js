@@ -121,17 +121,25 @@ class CommentForm extends Component {
             let Comment = {
                 author: this.state.author.value,
                 email: this.state.email.value,
-                content: this.state.content.value
+                content: this.state.content.value,
+                parent:  this.props.respondCommentId
             }
-           this.props.handleComment(Comment)
-           //alert('submit')
+           this.props.sendComment(Comment)
         }
     }
 
     render() {
         return(
             <div className={this.props.classes.CommentForm}>
-                <h3 className='comment-reply-title'>Deja un comentario</h3>
+                <h3 className='comment-reply-title'>
+                    Deja un comentario
+                    {
+                        this.props.respondCommentId !== 0 &&
+                        <span onClick={this.props.cancelRespond}>
+                            Cancelar respuesta
+                        </span>
+                    }
+                </h3>
                 <p>Tu dirección de correo no será publicada</p>
                 <TextField 
                     name='content'
