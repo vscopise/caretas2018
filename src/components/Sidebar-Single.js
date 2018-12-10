@@ -28,13 +28,16 @@ class SidebarSingle extends Component {
                         [300, 300]
                     ]}
                 />
-                <div className='banner'>
-                    <img 
-                        src={bannerSusc} 
-                        alt='' 
-                        title='' 
-                    />
-                </div>
+                <DfpBanner
+                    dfpNetworkId={'90767959'} 
+                    adUnit={'columna_lateral_1'}
+                    sizes={[ 
+                        [300, 250], 
+                        [290, 290], 
+                        [160, 600], 
+                        [300, 300]
+                    ]}
+                />
                 <SearchPosts/>
                 <div className='sidebar-component'>
                     <img 

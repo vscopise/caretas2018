@@ -8,10 +8,7 @@ import SidebarSingle from './Sidebar-Single'
 import { Grid } from '@material-ui/core'
 import constants from '../assets/Constants'
 
-//const urlCaretas = 'https://www.carasycaretas.com.uy/'
-const isMobile = window.innerWidth < 960
-
-
+//const isMobile = window.innerWidth < 960
 
 class Post extends Component {
     
@@ -20,7 +17,7 @@ class Post extends Component {
         this.state = {
             post: {},
             isLoading: true,
-            isMobile: isMobile,
+            isMobile: constants.isMobile,
             urlCaretas: constants.urlCaretas,
             urlAdminCaretas: constants.urlAdminCaretas,
         }
@@ -53,6 +50,12 @@ class Post extends Component {
             )
     }
 
+    sanitizeTitle = (title) => {
+        var cleanString = title.replace(/[\|&;\$%@"<>\(\)\+,]/g, "");
+        let titleSanitized = cleanString + '- Caras y Caretas'
+        return titleSanitized
+    }
+
     componentDidMount() {
         let location = this.props.location
         if ( undefined === location.state ) {
@@ -63,7 +66,8 @@ class Post extends Component {
                 post: location.state.post, 
             })
             this.setPostViews(location.state.post.id)
-            document.title = location.state.post.title.rendered + ' - Caras y Caretas'
+            document.title = this.sanitizeTitle(location.state.post.title.rendered)
+            //document.title = location.state.post.title.rendered + ' - Caras y Caretas'
         }
         window.scrollTo(0,0)
     }

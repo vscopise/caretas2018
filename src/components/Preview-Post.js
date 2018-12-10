@@ -15,6 +15,7 @@ const PreviewPost = ( props ) => {
                         pathname: '/' + props.post.slug, 
                         state: {postId: props.post.id, post: props.post}
                     }}
+                    title = {props.post.title.rendered}
                 >
                 {
                     (props.post.image_url) &&
@@ -60,6 +61,7 @@ const PreviewPost = ( props ) => {
                     to={{
                         pathname: '/' + props.post.slug, 
                         state: {postId: props.post.id, post: props.post}}}
+                        title = {props.post.title.rendered}
                 >
                     <Grid 
                         container spacing={24} 
