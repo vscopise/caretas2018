@@ -63,6 +63,7 @@ class App extends Component {
               zona1: res.data.zona1,
               zona2: res.data.zona2,
               video: res.data.video,
+              imageGallery: res.data.image_gallery,
               videoDestacado: res.data.featured_video,
               columnistas: res.data.columnistas,
               tapa: res.data.tapa,
@@ -104,6 +105,7 @@ class App extends Component {
                   zona1={this.state.zona1}
                   zona2={this.state.zona2}
                   video={this.state.video}
+                  imageGallery={this.state.imageGallery}
                   videoDestacado={this.state.videoDestacado}
                   categorias={this.state.categories}
                   users={this.state.users}

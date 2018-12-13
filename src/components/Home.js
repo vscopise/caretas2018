@@ -20,6 +20,7 @@ import DfpBanner from './Dfp-Banner'
 import { TinyButton as ScrollUpButton } from 'react-scroll-up-button'
 import VideoDestacado from './Video-destacado';
 import PromoCycTv from './Promo-Cyc-Tv';
+import HomeImageGallery from './Home-Image-Gallery';
 
 const Home = ( props ) => (
     <div className={props.classes.Home}>
@@ -48,6 +49,7 @@ const Home = ( props ) => (
                     </Grid>
                     <Grid item md={6} xs={12}>
                         <ZonePost post={props.zona2}/>
+                        <HomeImageGallery imageGallery={props.imageGallery}/>
                     </Grid>
                 </Grid>
                 {
