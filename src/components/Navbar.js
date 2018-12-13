@@ -118,7 +118,10 @@ class Navbar extends Component {
                         </li>
                         )) }
                         <li>
-                            <Link to={{ pathname: '/suscripciones/' }}>
+                            <Link 
+                                to={{ pathname: '/suscripciones/' }}
+                                className={'btn-suscripciones'}
+                            >
                                 Suscripciones
                             </Link>
                         </li>

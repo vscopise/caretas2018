@@ -51,9 +51,16 @@ class Post extends Component {
     }
 
     sanitizeTitle = (title) => {
-        var cleanString = title.replace(/[\|&;\$%@"<>\(\)\+,]/g, "");
-        let titleSanitized = cleanString + '- Caras y Caretas'
-        return titleSanitized
+        let replacements = [
+            ['&#8220;', '"'],
+            ['&#8221;', '"'],
+        ]
+        
+        let newTitle = title
+        replacements.map(r => {
+            newTitle = newTitle.replace(r[0], r[1])
+        })
+        return newTitle
     }
 
     componentDidMount() {

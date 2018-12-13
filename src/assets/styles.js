@@ -158,6 +158,7 @@ const styles = theme => ({
                 padding: 0,
                 listStyleType: 'none',
                 position: 'relative',
+                height: 44,
                 '& li': {
                     display: 'inline-block',
                     margin: 0,
@@ -178,6 +179,10 @@ const styles = theme => ({
                         width: '100%',
                     },
                     
+                },
+                '& .btn-suscripciones': {
+                    backgroundColor: '#0f0',
+                    color: '#000'
                 },
                 '& li .sub-navbar': {
                     display: 'none',

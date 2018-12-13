@@ -10,6 +10,7 @@ import {
 
 import Loading from './Loading'
 import PreviewPost from './Preview-Post'
+import SidebarPage from './Sidebar-Page'
 
 import styles from '../assets/styles'
 import constants from '../assets/Constants'
@@ -111,7 +112,9 @@ class Categoria extends Component {
                     this.state.isLoading && <Loading/>
                 }
                 </Grid>
-                <Grid item md={4} xs={12}>Sidebar</Grid>
+                <Grid item md={4} xs={12}>
+                    <SidebarPage/>
+                </Grid>
             </Grid>
         )
         
