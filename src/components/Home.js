@@ -78,11 +78,43 @@ const Home = ( props ) => (
                     category={'Internacionales'}
                     left={true}
                 />
+                {
+                    constants.isMobile &&
+                    <DfpBanner
+                        dfpNetworkId={'90767959'} 
+                        adUnit={'home_body_2'}
+                        sizes={[ [300, 250], ]}
+                    />
+                }
+                {
+                    !constants.isMobile &&
+                    <DfpBanner
+                        dfpNetworkId={'90767959'} 
+                        adUnit={'home_body_2'}
+                        sizes={[ [728, 90], ]}
+                    />
+                }
                 <GridPosts
                     categorias={props.categorias}
                     category={'Sociedad'}
                     left={false}
                 />
+                {
+                    constants.isMobile &&
+                    <DfpBanner
+                        dfpNetworkId={'90767959'} 
+                        adUnit={'home_body_3'}
+                        sizes={[ [300, 250], ]}
+                    />
+                }
+                {
+                    !constants.isMobile &&
+                    <DfpBanner
+                        dfpNetworkId={'90767959'} 
+                        adUnit={'home_body_3'}
+                        sizes={[ [728, 90], ]}
+                    />
+                }
                 <GridPosts
                     categorias={props.categorias}
                     category={'Vida y Ocio'}

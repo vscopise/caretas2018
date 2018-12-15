@@ -25,7 +25,7 @@ class LasMasVistas extends Component {
 
     componentDidMount() {
         axios
-        .get( this.state.urlCaretas + 'posts/?views=' )
+        .get( this.state.urlCaretas + 'most-views/?range=' + this.props.range )
         .then(res => {
             this.setState({ 
                 results: res.data,

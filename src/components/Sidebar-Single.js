@@ -46,7 +46,7 @@ class SidebarSingle extends Component {
                         title='' 
                     />
                 </div>
-                <LasMasVistas/>
+                <LasMasVistas range={3}/>
             </div>
         )
     }

@@ -41,13 +41,9 @@ class Post extends Component {
 
     setPostViews = (post_id) => {
         axios
-            .post(
-                this.state.urlAdminCaretas, 
-                {
-                    action: 'set_post_views',
-                    post_id: post_id
-                }
-            )
+            .get(this.state.urlCaretas + 'views/' + post_id)
+            .then()
+            .catch(error => console.log(error))
     }
 
     sanitizeTitle = (title) => {

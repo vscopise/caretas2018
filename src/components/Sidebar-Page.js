@@ -41,7 +41,7 @@ const SidebarPage = (props) => (
                 title='' 
             />
         </div>
-        <LasMasVistas/>
+        <LasMasVistas range={3}/>
     </div>
 )
 
