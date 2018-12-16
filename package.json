@@ -9,6 +9,7 @@
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
     "react": "^16.6.0",
+    "react-adsense": "0.0.6",
     "react-announcement-ticker": "^1.0.1",
     "react-content-loader": "^3.2.0",
     "react-dom": "^16.6.0",

@@ -2,7 +2,6 @@ import React from 'react'
 import { 
     Grid, withStyles
 } from '@material-ui/core'
-import HeaderLogo from './Header-Logo'
 import {Carousel} from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import styles from '../assets/styles'
@@ -20,7 +19,7 @@ const HomeImageGallery = ( props ) => (
         >
         {
             props.imageGallery.images.map( image => (
-                <img src={image} alt='' />
+                <img src={image} alt='' key={image} />
 
             ))
         }

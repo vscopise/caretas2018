@@ -4,6 +4,7 @@ import {
     Grid,
     withStyles
 } from '@material-ui/core'
+import AdSense from 'react-adsense'
 import CabezalHome from './Cabezal-Home'
 import DestacadasEditorial from './Destacadas-Editorial'
 //import LastPosts from './Last-Posts'
@@ -37,7 +38,7 @@ const Home = ( props ) => (
         />
         <Grid container spacing={24}>
             <Grid item lg={8} xs={12}>
-                <Grid container spacing={24}>
+                <Grid container spacing={24} className={''}>
                     {
                         props.videoDestacado.id && props.videoDestacado.title &&
                         <VideoDestacado video={props.videoDestacado}/>
@@ -52,22 +53,6 @@ const Home = ( props ) => (
                         <HomeImageGallery imageGallery={props.imageGallery}/>
                     </Grid>
                 </Grid>
-                {
-                    constants.isMobile &&
-                    <DfpBanner
-                        dfpNetworkId={'90767959'} 
-                        adUnit={'home_body_1'}
-                        sizes={[ [300, 250], ]}
-                    />
-                }
-                {
-                    !constants.isMobile &&
-                    <DfpBanner
-                        dfpNetworkId={'90767959'} 
-                        adUnit={'home_body_1'}
-                        sizes={[ [728, 90], ]}
-                    />
-                }
                 <GridPosts
                     categorias={props.categorias}
                     category={'Deportes'}
@@ -78,47 +63,27 @@ const Home = ( props ) => (
                     category={'Internacionales'}
                     left={true}
                 />
-                {
-                    constants.isMobile &&
-                    <DfpBanner
-                        dfpNetworkId={'90767959'} 
-                        adUnit={'home_body_2'}
-                        sizes={[ [300, 250], ]}
-                    />
-                }
-                {
-                    !constants.isMobile &&
-                    <DfpBanner
-                        dfpNetworkId={'90767959'} 
-                        adUnit={'home_body_2'}
-                        sizes={[ [728, 90], ]}
-                    />
-                }
+                <AdSense.Google
+                    client='ca-pub-8087314495786312'
+                    slot='3978222980'
+                />
                 <GridPosts
                     categorias={props.categorias}
                     category={'Sociedad'}
                     left={false}
                 />
-                {
-                    constants.isMobile &&
-                    <DfpBanner
-                        dfpNetworkId={'90767959'} 
-                        adUnit={'home_body_3'}
-                        sizes={[ [300, 250], ]}
-                    />
-                }
-                {
-                    !constants.isMobile &&
-                    <DfpBanner
-                        dfpNetworkId={'90767959'} 
-                        adUnit={'home_body_3'}
-                        sizes={[ [728, 90], ]}
-                    />
-                }
+                <AdSense.Google
+                    client='ca-pub-8087314495786312'
+                    slot='2779935381'
+                />
                 <GridPosts
                     categorias={props.categorias}
                     category={'Vida y Ocio'}
                     left={true}
+                />
+                <AdSense.Google
+                    client='ca-pub-8087314495786312'
+                    slot='2530755385'
                 />
                 <Galeria
                     categorias={props.categorias}

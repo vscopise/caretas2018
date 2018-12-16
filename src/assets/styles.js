@@ -126,6 +126,23 @@ const styles = theme => ({
         '& .zone-video': {
             paddingBottom: 0,
         },
+        '& .adsbygoogle': {
+            textAlign: 'center',
+            marginBottom: 20,
+            textDecoration: 'none',
+            '&::before': {
+                content: `'PUBLICIDAD'`,
+                fontFamily: 'arial,helvetica',
+                fontSize: 10,
+                color: '#aaa',
+                display: 'inherit',
+                lineHeight: '10px',
+                letterSpacing: 5,
+                marginBottom: 5,
+            },
+        },
+    
+    
     },
     HeaderLogo: {
         padding: '20px 0',
@@ -141,8 +158,14 @@ const styles = theme => ({
         },
     },
 
-    Home: {
-        
+    HomeImageGallery: {
+        marginBottom: 20,
+        paddingBottom: 20,
+        borderBottom: '1px dotted #cdcdcd',
+        '& h2': {
+            margin: 0,
+            fontSize: '2rem'
+        }
         
     },
     Navbar: {
