@@ -37,13 +37,28 @@ class App extends Component {
       categories: [],
       users: [],
       isLoading: true,
-      urlCaretas: constants.urlCaretas
+      urlCaretas: constants.urlCaretas,
+      popup: false,
+      //popupPosition: 100,
     }
+  }
+
+  tick() {
+    this.setState(prevState => ({
+      popupPosition: prevState.popupPosition - 1
+    }));
   }
 
   componentDidMount() {
       this.fetch_home_data()
       this.fetch_users()
+      setTimeout(function(){
+          this.setState({
+              popup: true,
+              //popupPosition: 500
+          })
+      }.bind(this), 10000)
+      //this.interval = setInterval(() => this.tick(), 1)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -84,6 +99,10 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
+  closePopup = () => {
+    this.setState({popup: false})
+  }
+
   render() {
     const {classes} = this.props
     if ( ! this.state.isLoading ) {
@@ -111,6 +130,9 @@ class App extends Component {
                   users={this.state.users}
                   columnistas={this.state.columnistas}
                   tapa={this.state.tapa}
+                  popup={this.state.popup}
+                  closePopup={this.closePopup}
+                  popupPosition={this.state.popupPosition}
                 />}
               />
               <Route 

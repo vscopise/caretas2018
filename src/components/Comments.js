@@ -40,21 +40,6 @@ class Comments extends Component {
         .catch(error => console.log(error))
     }
 
-    /*unflatten = (array, parent) => {
-        var out = []
-        for(var i in array) {
-            if(array[i].parent == parent) {
-                var children = this.unflatten(array, array[i].id)
-
-                if(children.length) {
-                    array[i].children = children
-                }
-                out.push(array[i])
-            }
-        }
-        return out
-    }*/
-
     componentDidMount() {
         this.fetchComments(this.props.post.id)
     }
@@ -106,8 +91,9 @@ class Comments extends Component {
                 <div className={this.props.classes.Comments}>
                     <h4 className='comments-section-title'>
                         <span className='comments-count'>
-                            {this.state.comments.length>0 && `${this.state.comments.length} comentarios`}
-                            {this.state.comments.length===0 && 'Eres el primero en comentar'}
+                            {this.state.comments.length > 0 && `${this.state.comments.length} comentario`}
+                            {this.state.comments.length > 1 && 's'}
+                            {this.state.comments.length === 0 && 'Eres el primero en comentar'}
                         </span>
                         <span className='comments-count-more'>en:&nbsp; 
                             <span 

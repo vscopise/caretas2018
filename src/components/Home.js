@@ -16,12 +16,16 @@ import GridPosts from './Grid-Posts';
 import Galeria from './Galeria';
 import VideoPost from './Video-Post';
 import DfpBanner from './Dfp-Banner'
+//import Popup from 'reactjs-popup'
+import Modal from 'react-responsive-modal'
+//https://react-responsive-modal.leopradel.com/
 
 
 import { TinyButton as ScrollUpButton } from 'react-scroll-up-button'
 import VideoDestacado from './Video-destacado';
 import PromoCycTv from './Promo-Cyc-Tv';
 import HomeImageGallery from './Home-Image-Gallery';
+import BotonEdicionImpresa from './Boton-Edicion-impresa';
 
 const Home = ( props ) => (
     <div className={props.classes.Home}>
@@ -32,6 +36,7 @@ const Home = ( props ) => (
         <CabezalHome 
             posts={props.cabezal}
         />
+        <BotonEdicionImpresa/>
         <DestacadasEditorial
             destacadas={props.destacadas}
             editorial={props.editorial}
@@ -99,6 +104,13 @@ const Home = ( props ) => (
                 />
             </Grid>
         </Grid>
+        <Modal
+            open={props.popup}
+            onClose={props.closePopup}
+            //contentStyle={{top: props.popupPosition}}
+        >
+          <h2>Simple centered modal</h2>
+        </Modal>
     </div>
 )
 

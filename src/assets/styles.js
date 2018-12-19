@@ -43,6 +43,7 @@ const styles = theme => ({
             marginBottom: 10
         },
         '& .content-list-thumb': {
+            width: '100%',
             maxWidth: '100%',
             height: 'auto'
         },
@@ -193,12 +194,13 @@ const styles = theme => ({
                         width: '100%',
                         padding: '.625rem .5rem',
                         color: '#fff',
-                      //  [theme.breakpoints.down(900)]: {
+                        [theme.breakpoints.down(900)]: {
                       //      width: '100%',
-                      //  }
+                        padding: '.3rem .5rem',
+                        }
                     },
                     [theme.breakpoints.down(900)]: {
-                        marginBottom: 1,
+                        //marginBottom: 1,
                         width: '100%',
                     },
                     
@@ -222,6 +224,7 @@ const styles = theme => ({
                 [theme.breakpoints.down(900)]: {
                     position: 'static',
                     display: 'none',
+                    height: 'auto',
                 }
             },
             '& .submenu': {
@@ -233,7 +236,13 @@ const styles = theme => ({
             '& ul.active': {
                 [theme.breakpoints.down(900)]: {
                     display: 'block',
-                }
+                    zIndex: 10,
+                    position: 'relative',
+                    marginTop: 24,
+                },
+                '& li': {
+                    backgroundColor: '#d00',
+                },
             },
 
             '& .show-menu': {
@@ -327,7 +336,10 @@ const styles = theme => ({
         float: 'left',
         '& a:hover p': {
             color: '#fff',
-        },    
+        },
+        [theme.breakpoints.down(960)]: {
+            marginBottom: 0
+        }
     },
     PostCabezal: {
         '& .meta': {
@@ -525,6 +537,15 @@ const styles = theme => ({
             fontSize: '120%',
             color: '#333',
         },
+        '& p.caption': {
+            textAlign: 'right',
+            fontStyle: 'italic',
+            margin: 0,
+            color: '#777',
+            [theme.breakpoints.down(960)]: {
+                display: 'none',
+            }
+        },
         '& .entry-meta': {
             fontSize: '.75rem',
             textTransform: 'uppercase',
@@ -622,6 +643,9 @@ const styles = theme => ({
                     '& span:hover': {
                         color: '#d00',
                         textDecoration: 'underline',
+                    },
+                    [theme.breakpoints.down(960)]: {
+                        fontSize: '1rem',
                     }
                 },
             },
@@ -723,6 +747,11 @@ const styles = theme => ({
         '& h4': {
             margin: 0,
         },
+        '& .result .result-item a h4': {
+            [theme.breakpoints.down(960)]: {
+                fontSize: '1rem',
+            }
+        },
         marginBottom: '1.875rem',
     },
 
@@ -755,6 +784,9 @@ const styles = theme => ({
         '& .size-a': {
             '& .image-container': {
                 height: 200,
+                [theme.breakpoints.down(960)]: {
+                    height: 'auto',
+                },
             },
             '& h2': {
                 fontSize: '1.9rem',
@@ -1075,6 +1107,22 @@ const styles = theme => ({
     PromoCyCTv: {
         width: '100%',
         textAlign: 'center'
+    },
+    BotonEdicionImpresa: {
+        marginBottom: 20,
+        fontFamily: 'Oswald',
+        backgroundColor: '#d00',
+        float: 'left',
+        width: '100%',
+        fontSize: '1.5rem',
+        padding: '.5rem',
+        '& a.link': {
+            color: '#fff',
+            display: 'block',
+        },
+        '& a.link:hover': {
+            color: '#fff',
+        },
     }
 })
 

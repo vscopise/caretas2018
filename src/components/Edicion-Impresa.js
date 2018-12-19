@@ -12,7 +12,8 @@ import {
 } from '@material-ui/core'
 
 import Loading from './Loading'
-import PreviewTapa from './Preview-Tapa';
+import PreviewTapa from './Preview-Tapa'
+import SidebarPage from './Sidebar-Page'
 import styles from '../assets/styles'
 import constants from '../assets/Constants'
 
@@ -85,7 +86,7 @@ class EdicionImpresa extends Component {
                                 <Grid container spacing={24}>
                                     {
                                         this.state.revistas.map( (revista, index) => (
-                                            <Grid item md={3} xs={12} key={revista.id}>
+                                            <Grid item md={3} xs={6} key={revista.id}>
                                                 <PreviewTapa 
                                                     revista={revista}
                                                     termId={this.state.termId}
@@ -111,7 +112,9 @@ class EdicionImpresa extends Component {
                         this.state.isLoading && ! this.state.issuu && <Loading/>
                     }
                 </Grid>
-                <Grid item md={4} xs={12}>Sidebar</Grid>
+                <Grid item md={4} xs={12}>
+                    <SidebarPage/>
+                </Grid>
             </Grid>            
         )
     }

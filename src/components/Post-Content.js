@@ -48,6 +48,13 @@ const PostContent = (props) => (
                 )
             }
         </div>
+        {
+            null !== props.post.image_title && (
+                <p className={'caption'}>
+                    {props.post.image_title}
+                </p>
+            )
+        }
         <div className='entry-meta'>
             <span className={'entry-meta-date'}>
                 {
