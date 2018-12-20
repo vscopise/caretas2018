@@ -157,14 +157,24 @@ const styles = theme => ({
         },
     },
     HomePopup: {
-        position: 'absolute',
-        width: theme.spacing.unit * 50,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
+        //'& div': {
+            position: 'absolute',
+
+            //padding: theme.spacing.unit * 4,
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+        //}
+        //width: theme.spacing.unit * 50,
+        //height: 100,
+        overflow: 'hidden',
+        //'&::after' : {
+            //content: `'X'`,
+            //display: 'table',
+            //clear: 'both',
+        //},
       },
 
     HomeImageGallery: {
