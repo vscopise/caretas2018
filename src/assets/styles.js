@@ -142,8 +142,6 @@ const styles = theme => ({
                 marginBottom: 5,
             },
         },
-    
-    
     },
     HeaderLogo: {
         padding: '20px 0',
@@ -158,6 +156,16 @@ const styles = theme => ({
           marginBottom: 0,
         },
     },
+    HomePopup: {
+        position: 'absolute',
+        width: theme.spacing.unit * 50,
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing.unit * 4,
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+      },
 
     HomeImageGallery: {
         marginBottom: 20,

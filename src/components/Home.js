@@ -2,6 +2,7 @@ import React from 'react'
 
 import { 
     Grid,
+    Modal,
     withStyles
 } from '@material-ui/core'
 import AdSense from 'react-adsense'
@@ -17,7 +18,9 @@ import Galeria from './Galeria';
 import VideoPost from './Video-Post';
 import DfpBanner from './Dfp-Banner'
 //import Popup from 'reactjs-popup'
-import Modal from 'react-responsive-modal'
+//import Modal from 'react-responsive-modal'
+//import Modal from '@material-ui/core/Modal';
+
 //https://react-responsive-modal.leopradel.com/
 
 
@@ -26,6 +29,7 @@ import VideoDestacado from './Video-destacado';
 import PromoCycTv from './Promo-Cyc-Tv';
 import HomeImageGallery from './Home-Image-Gallery';
 import BotonEdicionImpresa from './Boton-Edicion-impresa';
+import HomePopup from './Home-Popup';
 
 const Home = ( props ) => (
     <div className={props.classes.Home}>
@@ -104,13 +108,10 @@ const Home = ( props ) => (
                 />
             </Grid>
         </Grid>
-        <Modal
-            open={props.popup}
-            onClose={props.closePopup}
-            //contentStyle={{top: props.popupPosition}}
-        >
-          <h2>Simple centered modal</h2>
-        </Modal>
+        <HomePopup 
+            popup={props.popup} 
+            closePopup={props.closePopup}
+        />
     </div>
 )
 
