@@ -111,6 +111,8 @@ const Home = ( props ) => (
         <HomePopup 
             popup={props.popup} 
             closePopup={props.closePopup}
+            popupEnabled={props.popupEnabled}
+            popupContent={props.popupContent}
         />
     </div>
 )

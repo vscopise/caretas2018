@@ -39,15 +39,17 @@ class App extends Component {
       isLoading: true,
       urlCaretas: constants.urlCaretas,
       popup: false,
+      popupEnabled: null,
+      popupContent: ''
       //popupPosition: 100,
     }
   }
 
-  tick() {
+  /*tick() {
     this.setState(prevState => ({
       popupPosition: prevState.popupPosition - 1
     }));
-  }
+  }*/
 
   componentDidMount() {
       this.fetch_home_data()
@@ -82,6 +84,8 @@ class App extends Component {
               videoDestacado: res.data.featured_video,
               columnistas: res.data.columnistas,
               tapa: res.data.tapa,
+              popupEnabled: res.data.popup.enable,
+              popupContent: res.data.popup.content,
               isLoading: false 
           })
       })
@@ -132,7 +136,9 @@ class App extends Component {
                   tapa={this.state.tapa}
                   popup={this.state.popup}
                   closePopup={this.closePopup}
-                  popupPosition={this.state.popupPosition}
+     //             popupPosition={this.state.popupPosition}
+                  popupEnabled={this.state.popupEnabled}
+                  popupContent={this.state.popupContent}
                 />}
               />
               <Route 

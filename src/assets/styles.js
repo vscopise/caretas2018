@@ -156,6 +156,7 @@ const styles = theme => ({
           marginBottom: 0,
         },
     },
+    /*
     HomePopup: {
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
@@ -175,7 +176,7 @@ const styles = theme => ({
             //display: 'table',
             //clear: 'both',
         //},
-      },
+    },*/
 
     HomeImageGallery: {
         marginBottom: 20,
