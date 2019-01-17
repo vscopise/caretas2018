@@ -26,7 +26,7 @@ import DfpBanner from './Dfp-Banner'
 
 import { TinyButton as ScrollUpButton } from 'react-scroll-up-button'
 import VideoDestacado from './Video-destacado';
-import PromoCycTv from './Promo-Cyc-Tv';
+//import PromoCycTv from './Promo-Cyc-Tv';
 import HomeImageGallery from './Home-Image-Gallery';
 import BotonEdicionImpresa from './Boton-Edicion-impresa';
 import HomePopup from './Home-Popup';
@@ -50,9 +50,22 @@ const Home = ( props ) => (
                 <Grid container spacing={24} className={''}>
                     {
                         props.videoDestacado.id && props.videoDestacado.title &&
-                        <VideoDestacado video={props.videoDestacado}/>
+                        <VideoDestacado video={props.videoDestacado.id} item={1} title={props.videoDestacado.title}/>
                     }
-                    <PromoCycTv/>
+                    <h4 className={'widget-title'}>
+                    <span>Más de Caras y Caretas TV</span>
+                    </h4>
+                    <Grid container spacing={24}>
+                        <Grid item lg={4} xs={12} key={'video_1'}>
+                            <VideoDestacado video={props.videoDestacado.video_2} item={2}/>
+                        </Grid>
+                        <Grid item lg={4} xs={12} key={'video_2'}>
+                            <VideoDestacado video={props.videoDestacado.video_3} item={3}/>
+                        </Grid>
+                        <Grid item lg={4} xs={12} key={'video_3'}>
+                            <VideoDestacado video={props.videoDestacado.video_4} item={4}/>
+                        </Grid>
+                    </Grid>
                     <Grid item md={6} xs={12} className={'zone-video'}>
                         <ZonePost post={props.zona1}/>
                         <VideoPost post={props.video}/>

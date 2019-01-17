@@ -156,27 +156,21 @@ const styles = theme => ({
           marginBottom: 0,
         },
     },
-    /*
-    HomePopup: {
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        //'& div': {
-            position: 'absolute',
-
-            //padding: theme.spacing.unit * 4,
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-        //}
-        //width: theme.spacing.unit * 50,
-        //height: 100,
-        overflow: 'hidden',
-        //'&::after' : {
-            //content: `'X'`,
-            //display: 'table',
-            //clear: 'both',
-        //},
-    },*/
+    
+    HomePopupModal: {
+        padding: 0,
+        background: 'transparent',
+        '& .modal': {
+        },
+    },
+    HomePopupCloseButton: {
+        borderRadius: '50%',
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        cursor: 'pointer',
+        '& svg': {
+            fill: '#fff'
+        }
+    },
 
     HomeImageGallery: {
         marginBottom: 20,
@@ -225,7 +219,7 @@ const styles = theme => ({
                     
                 },
                 '& .btn-suscripciones': {
-                    backgroundColor: '#0f0',
+                    backgroundColor: '#fe0',
                     color: '#000'
                 },
                 '& li .sub-navbar': {

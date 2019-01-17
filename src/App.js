@@ -59,6 +59,13 @@ class App extends Component {
               popup: true,
               //popupPosition: 500
           })
+          setTimeout(function(){
+            this.setState({
+                popup: false,
+                //popupPosition: 500
+            })
+            
+        }.bind(this), 500000)
       }.bind(this), 5000)
       //this.interval = setInterval(() => this.tick(), 1)
   }

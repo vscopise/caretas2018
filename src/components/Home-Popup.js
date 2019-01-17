@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { 
-//    Modal,
     withStyles
 } from '@material-ui/core'
 import Modal from 'react-responsive-modal'
@@ -14,10 +13,13 @@ const HomePopup = ( props ) => (
         open={props.popup && props.popupEnabled}
         onClose={props.closePopup}
         center
-        //aria-labelledby="simple-modal-title"
-        //aria-describedby="simple-modal-description"
+        closeIconSize = {20}
+        classNames={{
+            modal:props.classes.HomePopupModal,
+            closeButton:props.classes.HomePopupCloseButton
+        }}
     >
-        <div className={props.classes.HomePopup}
+        <div
             dangerouslySetInnerHTML={{__html: props.popupContent}}
         />            
     </Modal>
