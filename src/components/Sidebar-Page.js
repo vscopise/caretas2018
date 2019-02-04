@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import bannerSusc from '../assets/banner-susc.jpg'
 import SearchPosts from './Search-Posts'
@@ -26,21 +26,15 @@ const SidebarPage = (props) => (
                 [300, 300]
             ]}
         />
-        <div className='banner'>
-            <img 
-                src={bannerSusc} 
-                alt='' 
-                title='' 
-            />
-        </div>
+        <Banner 
+            image={bannerSusc} 
+            link={'https://www.carasycaretas.com.uy/suscribirse/'}
+        />
         <SearchPosts/>
-        <div className='sidebar-component'>
-            <img 
-                src={bannerSusc} 
-                alt='' 
-                title='' 
-            />
-        </div>
+        <Banner 
+            image={bannerSusc} 
+            link={'https://www.carasycaretas.com.uy/suscribirse/'}
+        />
         <LasMasVistas range={3}/>
     </div>
 )

@@ -39,13 +39,10 @@ class SidebarSingle extends Component {
                     ]}
                 />
                 <SearchPosts/>
-                <div className='sidebar-component'>
-                    <img 
-                        src={bannerSusc} 
-                        alt='' 
-                        title='' 
-                    />
-                </div>
+                <Banner 
+                    image={bannerSusc} 
+                    link={'https://www.carasycaretas.com.uy/suscribirse/'}
+                />
                 <LasMasVistas range={3}/>
             </div>
         )

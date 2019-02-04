@@ -39,6 +39,11 @@ const sections = [
         slug: 'empresariales',
         title: 'Empresariales'
     },
+    {
+        id: 10,
+        slug: 'caras-y-caretas-tv',
+        title: 'Caras y Caretas TV'
+    },
 ]
 
 export default sections

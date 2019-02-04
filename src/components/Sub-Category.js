@@ -20,11 +20,24 @@ const SubCategory = (props) => (
                         }}
                         onClick={props.handleClickSubCategory}
                     >
+                    {
+                        post.image_url &&
                         <div 
                             className='image' 
                             style={{backgroundImage: `url(${post.image_url[1]})`}}
                         />
-                        <h3 className='cat-title' dangerouslySetInnerHTML={{__html: post.title.rendered}} />
+                    }
+                    
+                        <h3 
+                            className='cat-title' 
+                            dangerouslySetInnerHTML={{
+                                __html: `${
+                                    post.title.rendered.split(' ').length > 8 ? 
+                                    post.title.rendered.replace(/(([^\s]+\s\s*){8})(.*)/,'$1…') : 
+                                    post.title.rendered
+                                }`
+                            }} 
+                        />
                     </Link>
                 </Grid>
             ) }

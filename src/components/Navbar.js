@@ -101,20 +101,23 @@ class Navbar extends Component {
                             >
                                 {section.title}
                             </Link>
-                            <div className={'sub-navbar ' + this.state.subNavbar}>
-                                {
-                                ( !this.state.categoryPosts.find (
-                                        category => category.catSlug === section.slug )
-                                ) ?
-                                <LoadingPostCategories/> :
-                                <SubCategory 
-                                    posts = { this.state.categoryPosts.find(
-                                        category => category.catSlug === section.slug
-                                    ).data }
-                                    handleClickSubCategory = {this.handleClickSubCategory}
-                                />
-                                }
-                            </div> 
+                            {
+                                section.slug !== 'caras-y-caretas-tv' &&
+                                <div className={'sub-navbar ' + this.state.subNavbar}>
+                                    {
+                                    ( !this.state.categoryPosts.find (
+                                            category => category.catSlug === section.slug )
+                                    ) ?
+                                    <LoadingPostCategories/> :
+                                    <SubCategory 
+                                        posts = { this.state.categoryPosts.find(
+                                            category => category.catSlug === section.slug
+                                        ).data }
+                                        handleClickSubCategory = {this.handleClickSubCategory}
+                                    />
+                                    }
+                                </div> 
+                            }
                         </li>
                         )) }
                         <li>

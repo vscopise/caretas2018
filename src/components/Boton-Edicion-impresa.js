@@ -1,6 +1,6 @@
 import React from 'react'
 import { 
-    Grid, withStyles
+    withStyles
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import styles from '../assets/styles'

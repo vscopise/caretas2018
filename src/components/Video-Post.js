@@ -28,11 +28,18 @@ const VideoPost = ( props ) => (
                         style={{backgroundImage: `url(${props.post[0].image_url[1]})`}}
                 />
                 <PlayArrowRounded/>
-                <h2
-                    dangerouslySetInnerHTML={{__html: props.post[0].title.rendered}} 
-                />
             </Link>
         </div>
+        <Link 
+            to={{
+                pathname: '/' + props.post[0].slug, 
+                state: {postId: props.post[0].id, post: props.post[0]}
+            }}
+        >
+            <h2
+                dangerouslySetInnerHTML={{__html: props.post[0].title.rendered}} 
+            />
+        </Link>
     </div>    
 )
 

@@ -16,9 +16,12 @@ const LastPosts = ( props ) => (
                                 to={{
                                     pathname: '/' + post.slug, 
                                     state: {postId: post.id, post: post}}}
-                            >
-                                {post.title.rendered}
-                            </Link>
+                                dangerouslySetInnerHTML={{
+                                    __html: `${
+                                        post.title.rendered
+                                    }`
+                                }}
+                            />
                         </li>
                     ))
                 }

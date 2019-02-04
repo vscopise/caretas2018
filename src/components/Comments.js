@@ -97,7 +97,13 @@ class Comments extends Component {
                         </span>
                         <span className='comments-count-more'>en:&nbsp; 
                             <span 
-                                dangerouslySetInnerHTML={{__html: this.props.post.title.rendered}} 
+                                dangerouslySetInnerHTML={{
+                                    __html: `${
+                                        this.props.post.title.rendered.split(' ').length > 10 ? 
+                                        this.props.post.title.rendered.replace(/(([^\s]+\s\s*){10})(.*)/,'$1…') : 
+                                        this.props.post.title.rendered
+                                    }`
+                                }} 
                             />
                         </span>
                     </h4>

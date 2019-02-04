@@ -2,7 +2,6 @@ import React from 'react'
 
 import { 
     Grid,
-    Modal,
     withStyles
 } from '@material-ui/core'
 import AdSense from 'react-adsense'
@@ -16,7 +15,6 @@ import ZonePost from './Zone-Post';
 import GridPosts from './Grid-Posts';
 import Galeria from './Galeria';
 import VideoPost from './Video-Post';
-import DfpBanner from './Dfp-Banner'
 //import Popup from 'reactjs-popup'
 //import Modal from 'react-responsive-modal'
 //import Modal from '@material-ui/core/Modal';

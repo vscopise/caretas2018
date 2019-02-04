@@ -3,11 +3,7 @@ import React from 'react'
 
 import { 
     Button,
-    Checkbox,
-    FormControlLabel,
-    FormGroup,
     Grid,
-    TextField,
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'

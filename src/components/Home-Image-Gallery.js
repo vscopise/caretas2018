@@ -1,6 +1,6 @@
 import React from 'react'
 import { 
-    Grid, withStyles
+    withStyles
 } from '@material-ui/core'
 import {Carousel} from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'

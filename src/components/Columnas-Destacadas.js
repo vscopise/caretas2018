@@ -30,7 +30,7 @@ class ColumnasDestacadas extends Component {
         ).term_id
 
         axios
-            .get( this.state.urlCaretas + 'posts/?categories=' + cat_id )
+            .get( this.state.urlCaretas + 'posts/?categories=' + cat_id + '&per_page=5' )
             .then(res => {
                 this.setState({ 
                     results: res.data,

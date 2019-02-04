@@ -16,8 +16,6 @@ import {
     withStyles 
 } from '@material-ui/core'
 import styles from '../assets/styles'
-import Theme from '../assets/MyTheme'
-const urlCaretas = 'https://www.carasycaretas.com.uy/wp-json/wp/v2/'
 
 
 class Contacto extends Component {
@@ -53,7 +51,6 @@ class Contacto extends Component {
             chk2: false,
             chk3: false,
             status: 'ready',
-            message: '',
         }
     }
 

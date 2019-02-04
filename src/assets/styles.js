@@ -459,6 +459,7 @@ const styles = theme => ({
         },
     },
     DestacadasEditorial: {
+        marginBottom: '1.875rem',
         '& a:hover p': {
             color: '#d00',
         },
@@ -519,6 +520,10 @@ const styles = theme => ({
         },
         borderBottom: '1px dotted #cdcdcd',
         marginBottom: 20,
+        '& img': {
+            width: '100%',
+            height: 'auto',
+        }
     },
     PostContent: {
         paddingTop: 20,
@@ -872,7 +877,7 @@ const styles = theme => ({
                 height: 70,
                 width: 70,
                 marginLeft: '-35px',
-                marginTop: '-65px',
+                marginTop: '-35px',
                 color: '#d00',
                 background: 'rgba(0,0,0,.4)',
                 borderRadius: 35,
@@ -897,7 +902,7 @@ const styles = theme => ({
     },
     Banner: {
         textAlign: 'center',
-        marginBottom: 20,
+        marginBottom: '1.875rem',
         '&::before': {
             content: `'PUBLICIDAD'`,
             fontFamily: 'arial,helvetica',
@@ -1035,7 +1040,6 @@ const styles = theme => ({
                     float: 'left',
                     fontFamily: 'Oswald',
                     width: '100%',
-                    color: '#fff',
                     textDecoration: 'none',
                     paddingBottom: '.5rem',
                 }

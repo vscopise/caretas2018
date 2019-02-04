@@ -85,17 +85,20 @@ class Categoria extends Component {
                         <h1 className='page-title'>
                             {this.state.catTitle}
                         </h1>
-                        {
-                            this.state.posts.map( (post, index) => (
-                                
-                                <PreviewPost 
-                                    post={post} 
-                                    key={post.id} 
-                                    categories={this.props.categories}
-                                    size={index===0 ? 'large' : 'medium'} 
-                                />
-                            ))
-                        }
+                        <Grid container spacing={24}>
+                            {
+                                this.state.posts.map( (post, index) => (
+                                    
+                                    <PreviewPost 
+                                        post={post} 
+                                        key={post.id} 
+                                        categories={this.props.categories}
+                                        size={index===0 ? 'large' : 'medium'} 
+                                        format={this.state.catTitle==='Caras y Caretas TV' ? 'video-cat' : ''}
+                                    />
+                                ))
+                            }
+                        </Grid>
                         {
                             this.state.pages > 1 &&
                             <Pagination 
