@@ -69,7 +69,9 @@ const PostContent = (props) => (
         </div>
         <div 
             className='entry-content'
-            dangerouslySetInnerHTML={{__html: props.post.content.rendered}} 
+            dangerouslySetInnerHTML={{
+                __html: props.post.content.rendered.replace( /(\r\n|\n|\r)/gm, '<br />' )
+            }} 
         />
         <Comments post={props.post} />
         
