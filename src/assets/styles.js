@@ -222,6 +222,11 @@ const styles = theme => ({
                     backgroundColor: '#fe0',
                     color: '#000'
                 },
+                '& .btn-search': {
+                    float: 'right',
+                    color: '#fff',
+                    padding: '.55rem .5rem 0',
+                },
                 '& li .sub-navbar': {
                     display: 'none',
                 },

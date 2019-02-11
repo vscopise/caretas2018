@@ -70,7 +70,6 @@ class Post extends Component {
             })
             this.setPostViews(location.state.post.id)
             document.title = this.sanitizeTitle(location.state.post.title.rendered)
-            //document.title = location.state.post.title.rendered + ' - Caras y Caretas'
         }
         window.scrollTo(0,0)
     }
