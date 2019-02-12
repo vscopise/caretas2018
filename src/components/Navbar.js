@@ -23,7 +23,8 @@ class Navbar extends Component {
             categoryPosts: [],
             subNavbar: '',
             urlCaretas: constants.urlCaretas,
-            showSearchBox: false
+            showSearchBox: false,
+            searchNavResults: false,
           }
     }
 
@@ -80,6 +81,33 @@ class Navbar extends Component {
             this.setState({
                 subNavbar: ''
             })
+        }
+    }
+
+    handleCloseSearchNav = () => {
+        this.setState({
+            showSearchBox:!this.state.showSearchBox
+        })
+    }
+
+    handleChangeSearchNav = (e) => {
+        e.preventDefault()
+        if ( e.target.value.length > 4 ){
+            this.setState({
+                isLoading: true,
+                hasResults: false
+            })
+
+            axios
+            .get( constants.urlCaretas + 'posts/?search=' + e.target.value )
+            .then(res => {
+                this.setState({ 
+                    searchNavResults: res.data,
+                    isLoading: false,
+                    hasResults: true, 
+                })
+            })
+
         }
     }
 
@@ -155,7 +183,11 @@ class Navbar extends Component {
                 }
                 {
                     this.state.showSearchBox &&
-                    <SearchNav />
+                    <SearchNav 
+                        handleCloseSearchNav={this.handleCloseSearchNav}
+                        handleChangeSearchNav={this.handleChangeSearchNav}
+                        searchNavResults={this.state.searchNavResults}
+                    />
                 }
                 </nav>
             </div>

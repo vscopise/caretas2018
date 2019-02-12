@@ -1075,6 +1075,39 @@ const styles = theme => ({
             }
         }
     },
+    SearchNav: {
+        position: 'relative',
+        backgroundColor: '#d00',
+        padding: '.625rem .5rem',
+        '& input': {
+            color: '#fff',
+            fontFamily: 'Oswald',
+        }
+
+    },
+    searchResults: {
+        position: 'absolute',
+        left: 0,
+        top: 42,
+        float: 'left',
+        width: '100%',
+        backgroundColor: '#d00',
+        zIndex: '10',
+        '& a': {
+            width: '100%',
+            display: 'block',
+            padding: '0 .5rem !important',
+            '& p': {
+                margin: 0,
+                textTransform: 'none',
+                color: '#fff'
+            }
+        }
+    },
+    buttonCloseSearchNav: {
+        float: 'right',
+        color: '#fff',
+    },
     Suscripciones: {
         marginBottom: 20,
         '& .video-container': {

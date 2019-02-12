@@ -3,11 +3,10 @@ import axios from 'axios'
 import Loading from './Loading'
 import { Link } from 'react-router-dom'
 import { 
-    Home,
+    Close,
     Search,
     Subscriptions,
     Menu } from '@material-ui/icons'
-import sections from './Sections'
 import { 
     Grid,
     TextField,
@@ -68,99 +67,40 @@ class SearchNav extends Component {
 
     render() {
         return(
-            <div className={this.props.classes.MobileNav}>
+            <div className={this.props.classes.SearchNav}>
+                <div style={{float: 'left', width: '90%',}}>
+                    <TextField
+                        placeholder="Ingrese el término de búsqueda"
+                        fullWidth
+                        onChange={this.props.handleChangeSearchNav}
+                    />
+                </div>
+                <div style={{float: 'right', width: '10%'}}>
+                    <Close 
+                        onClick={this.props.handleCloseSearchNav}
+                        className={this.props.classes.buttonCloseSearchNav}
+                    />
+                </div>
                 {
-                    this.state.menuOpen &&
-                    <div className={'bottom-div'}>
-                        <ul>
-                            {
-                                sections.map(section => (
-                                    <li key={section.id}>
-                                        <Link 
-                                            key={section.id} 
-                                            to={{
-                                                pathname: '/categoria/' + section.slug,
-                                                state: { 
-                                                    Title: section.title 
-                                                }
-                                            }}
-                                            onClick = {this.handleMenuOpen}
-                                        >
-                                            {section.title}
-                                        </Link>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                }
-                {
-                    this.state.searchOpen &&
-                    <div className={'bottom-div'}>
-                        <div className={'bottom-search'}>
-                            <TextField 
-                                name='search'
-                                label='Ingrese el término de búsqueda'
-                                fullWidth
-                                className={'search'}
-                                onChange={this.handleChangeSearch}
-                            />
-                        </div>
+                    this.props.searchNavResults.length > 0 &&
+                    <div className={this.props.classes.searchResults}>
                         {
-                            this.state.hasResults &&
-                            <div className='result-items'>
-                                {
-                                    this.state.searchResults.map(post => (
-                                        <div className='result-item' key={post.id}>
-                                            <Link 
-                                                to={{
-                                                    pathname: '/' + post.slug, 
-                                                    state: {postId: post.id, post: post}
-                                                }}
-                                                onClick={this.handleSearchOpen}
-                                            >
-                                                <p
-                                                    dangerouslySetInnerHTML={{__html: post.title.rendered}}
-                                                />
-                                            </Link>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        }
-                        {
-                            this.state.isLoading && <Loading/>
+                            this.props.searchNavResults.map(post => (
+                                <Link 
+                                    to={{
+                                        pathname: '/' + post.slug, 
+                                        state: {postId: post.id, post: post}
+                                    }}
+                                >
+                                    <p
+                                        dangerouslySetInnerHTML={{__html: post.title.rendered}}
+                                    />
+                                </Link>
+                            
+                            ))
                         }
                     </div>
                 }
-                <Grid container spacing={16} className={'drawer'}>
-                    <Grid item xs={3} className={'mobile-nav-item'}>
-                        <Link to={{ pathname: '/' }}>
-                            <Home/>
-                            <span>Home</span>
-                        </Link>
-                    </Grid>
-                    <Grid item xs={3} 
-                        className={'mobile-nav-item'}
-                        onClick={this.handleSearchOpen}
-                    >
-                        <Search/>
-                        <span>Buscar</span>
-                    </Grid>
-                    <Grid item xs={3} className={'mobile-nav-item'}>
-                        <Link to={{ pathname: '/suscripciones' }}>
-                        <Subscriptions/>
-                        <span>Suscripciones</span>
-                        </Link>
-                    </Grid>
-                    <Grid item xs={3} 
-                        className={'mobile-nav-item'} 
-                        onClick={this.handleMenuOpen}
-                    >
-                        <Menu/>
-                        <span>Menú</span>
-                    </Grid>
-                </Grid>
             </div>
         )
     }
