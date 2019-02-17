@@ -25,13 +25,15 @@ class Navbar extends Component {
             urlCaretas: constants.urlCaretas,
             showSearchBox: false,
             searchNavResults: false,
+            isLoading: false,
           }
     }
 
     handleMenuOpen = () => {
         this.setState({
             menuOpen: !this.state.menuOpen,
-            subNavbar: 'hide'
+            //subNavbar: 'hide',
+            subNavbar: this.state.menuOpen ? '': 'hide',
         })
     }
 
@@ -86,7 +88,8 @@ class Navbar extends Component {
 
     handleCloseSearchNav = () => {
         this.setState({
-            showSearchBox:!this.state.showSearchBox
+            showSearchBox:!this.state.showSearchBox,
+            searchNavResults: false,
         })
     }
 
@@ -187,6 +190,7 @@ class Navbar extends Component {
                         handleCloseSearchNav={this.handleCloseSearchNav}
                         handleChangeSearchNav={this.handleChangeSearchNav}
                         searchNavResults={this.state.searchNavResults}
+                        isLoading={this.state.isLoading}
                     />
                 }
                 </nav>

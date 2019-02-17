@@ -226,6 +226,9 @@ const styles = theme => ({
                     float: 'right',
                     color: '#fff',
                     padding: '.55rem .5rem 0',
+                    [theme.breakpoints.down(900)]: {
+                        display: 'none',
+                    },
                 },
                 '& li .sub-navbar': {
                     display: 'none',
@@ -255,8 +258,8 @@ const styles = theme => ({
                 [theme.breakpoints.down(900)]: {
                     display: 'block',
                     zIndex: 10,
-                    position: 'relative',
-                    marginTop: 24,
+                    //position: 'relative',
+                   // marginTop: 24,
                 },
                 '& li': {
                     backgroundColor: '#d00',
@@ -270,6 +273,7 @@ const styles = theme => ({
                 display: 'none',
                 [theme.breakpoints.down(900)]: {
                     display: 'block',
+                    //zIndex:15,
                 },
             },
         },
@@ -597,7 +601,19 @@ const styles = theme => ({
                 height: 'auto',
             }
         },
-        
+        '& .mensaje-lectores': {
+            background: '#d00',
+            '& a h4': {
+                padding: '1rem',
+                color: '#fff',
+
+            },
+            
+            '& a:hover h4': {
+                color: '#fff',
+
+            },
+        },
     },
     PostSharing: {
         display: 'inline-block',
@@ -962,7 +978,16 @@ const styles = theme => ({
             },
            '& div': {
                 background:'#fff'
-           }
+           },
+           '& input[type=radio]': {
+                display: 'inline-block',
+           },
+        },
+        '& .form-select': {
+            marginTop: 14,
+            background: '#fff',
+            padding: '1rem',
+            borderBottom: '1px solid #303f9f',
         },
         marginBottom: 20
     },
@@ -1077,6 +1102,7 @@ const styles = theme => ({
     },
     SearchNav: {
         position: 'relative',
+        height: 44,
         backgroundColor: '#d00',
         padding: '.625rem .5rem',
         '& input': {
@@ -1093,14 +1119,18 @@ const styles = theme => ({
         width: '100%',
         backgroundColor: '#d00',
         zIndex: '10',
+        paddingTop: 10,
         '& a': {
             width: '100%',
             display: 'block',
             padding: '0 .5rem !important',
+            textDecoration: 'none',
+            marginBottom: 10,
+            paddingBottom: 10,
             '& p': {
                 margin: 0,
                 textTransform: 'none',
-                color: '#fff'
+                color: '#fff !important'
             }
         }
     },

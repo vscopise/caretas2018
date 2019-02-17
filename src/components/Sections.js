@@ -29,11 +29,11 @@ const sections = [
         slug: 'cultura-y-espectaculos',
         title: 'Cultura'
     },
-    {
+    /*{
         id: 8,
         slug: 'vida-y-ocio',
         title: 'Vida y Ocio'
-    },
+    },*/
     {
         id: 9,
         slug: 'empresariales',

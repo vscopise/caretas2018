@@ -27,6 +27,7 @@ import Loading from './components/Loading'
 import SubNav from './components/Sub-Nav'
 
 import Footer from './components/Footer'
+import Comunidad from './components/Comunidad';
 
 class App extends Component {
   
@@ -91,7 +92,7 @@ class App extends Component {
               videoDestacado: res.data.featured_video,
               columnistas: res.data.columnistas,
               tapa: res.data.tapa,
-              popupEnabled: res.data.popup.enable,
+              popupEnabled: res.data.popup.enable? true: false,
               popupContent: res.data.popup.content,
               isLoading: false 
           })
@@ -162,6 +163,9 @@ class App extends Component {
               />
               <Route 
                 exact path={"/contacto"} component={Contacto} 
+              />
+              <Route 
+                exact path={"/comunidad"} component={Comunidad} 
               />
               <Route 
                 exact path={"/suscripciones"} component={Suscripciones} 

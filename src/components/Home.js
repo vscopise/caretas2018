@@ -98,7 +98,7 @@ const Home = ( props ) => (
                 />
                 <GridPosts
                     categorias={props.categorias}
-                    category={'Vida y Ocio'}
+                    category={'Cultura y espectáculos'}
                     left={true}
                 />
                 <AdSense.Google

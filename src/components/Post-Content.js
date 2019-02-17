@@ -6,6 +6,7 @@ import Comments from './Comments'
 
 import styles from '../assets/styles'
 import PostSharing from './Post-Sharing';
+import { Link } from 'react-router-dom';
 
 const PostContent = (props) => (
     <div className={props.classes.PostContent}>
@@ -13,9 +14,13 @@ const PostContent = (props) => (
             window.innerWidth > 960 &&
             <ScrollUpButton />
         }
-        {props.post.colgado && (<p className='colgado'>
-            {props.post.colgado}
-        </p>)}
+        {
+            null !== props.post.colgado && (
+                <p className='colgado'>
+                    {props.post.colgado}
+                </p>
+            )
+        }
         <h1 className='entry-title'
             dangerouslySetInnerHTML={{__html: props.post.title.rendered}} 
         />
@@ -74,8 +79,21 @@ const PostContent = (props) => (
                 //__html: props.post.content.rendered.replace( /(\r\n|\n|\r)/gm, '<br />' )
             }} 
         />
+        <MensajeLectores/>
         <Comments post={props.post} />
         
+    </div>
+)
+
+const MensajeLectores = (props) => (
+    <div className='mensaje-lectores'>
+        <Link
+            to={{ pathname: '/comunidad/' }}
+        >
+            <h4>
+            En menos de un minuto podés unirte a la comunidad de Caras y Caretas. Es gratuito y te permite recibir gacetillas con información y artículos de opinión a tu correo electrónico, participar de eventos, promociones, actividades exclusivas para nuestros lectores y recibir obsequios de forma periódica. Es rápido, no te cuesta nada y es una forma de apoyar nuestra mirada y mantenernos en contacto.
+            </h4>
+        </Link>
     </div>
 )
 
